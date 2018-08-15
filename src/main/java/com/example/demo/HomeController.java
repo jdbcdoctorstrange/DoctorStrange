@@ -43,7 +43,9 @@ public class HomeController {
     }
 
     @RequestMapping("/secure")
-    public String secure() {
+    public String secure(Model model) {
+        // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
+        model.addAttribute("user", userService.getCurrentUser());
         return "secure";
     }
 

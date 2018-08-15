@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Secure Page</title>
+    <th:block th:insert="base :: header"></th:block>
 </head>
 <body>
-    <h3>Secure Page</h3>
-    <a href="/logout">logout</a>
+
+    <div th:replace="base :: navlinks"></div>
+
+    <h2>Secure Page</h2>
+
+    <div>Welcome [[${user.firstName}]]!</div>
+
+    <div sec:authorize="hasAuthority('ADMIN')">
+        Administrators will see this text.
+    </div>
+
+    <div sec:authorize="hasAuthority('USER')">
+        Users will see this text.
+    </div>
+
 </body>
 </html>
