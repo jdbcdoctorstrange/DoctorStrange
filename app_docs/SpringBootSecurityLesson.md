@@ -762,6 +762,22 @@ form will also include messages for incorrect attempts.
 	  * Under the new "static" folder, create a new folder "css"
 	  * Go to https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css and save the CSS text as "boostrap.min.css" under the CSS folder
 
+15. **Add custom stylesheet**
+  	* Right click on the css folder and right-click --> New --> Stylesheet
+	  * Name it style.css
+	  * Edit it to look like this:
+
+		```css
+		body {
+			margin: 30px auto;
+			width: 80%;
+		}
+
+		.navbar {
+			margin-bottom: 30px;
+		}
+		```
+
 
 16. **Run your application and open a browser, and you should see this:**
 ![](../src/main/resources/static/img/onload.png)
