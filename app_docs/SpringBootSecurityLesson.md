@@ -100,13 +100,13 @@ public class User {
     * Click Generate -> Getters and Setters
 
 
-2. **Add loaded constructor to User**
+6. **Add loaded constructor to User**
     * Right-click and Select Generate -> Constructor
     * Click on email, password, firstName, lastName, enabled, username
     * Click OK
 
 
-3. **Add default constructor to User**
+7. **Add default constructor to User**
     * Right-click and Select Generate -> Constructor
     * Click on the "Select None" button
     * Click OK
@@ -124,7 +124,7 @@ public class User {
 	}
 	```
 
-6. **Create the Role Class**
+9. **Create the Role Class**
     * Right click on com.example.demo and click New -> Class
     * Name it Role.java
     * Edit it to look like this:
@@ -144,23 +144,23 @@ public class Role {
 }
 ```
 
-7. **Autogenerate getters and setters**
+10. **Autogenerate getters and setters**
     * Right click on the word Role
     * Click Generate -> Getters and Setters
 
 
-4. **Add loaded constructor to Role**
+11. **Add loaded constructor to Role**
     * Right-click and Select Generate -> Constructor
     * Click on role
     * Click OK
 
 
-5. **Add default constructor to Role**
+12. **Add default constructor to Role**
     * Right-click and Select Generate -> Constructor
     * Click on the "Select None" button
     * Click OK
 
-9. **Create a Role Repository**
+13. **Create a Role Repository**
     * Right click on com.example.demo and click New -> Class
     * Name it RoleRepository.java
     * Edit it to look like this:
@@ -168,10 +168,11 @@ public class Role {
 	import org.springframework.data.repository.CrudRepository;
 
 	public interface RoleRepository extends CrudRepository<Role, Long>{
+		Role findByRole(String role);
 	}
 ```
 
-10. **Create a SecurityConfiguration Class**
+14. **Create a SecurityConfiguration Class**
 	* Right click on com.example.demo and click New -> Class
 	* Name it SecurityConfiguration.java
 	* Edit it to look like this (comments are optional):
@@ -352,7 +353,7 @@ specified, Spring's default login page will be generated. The default login
 form will also include messages for incorrect attempts.
 
 
-11. **Create the SSUserDetailsService**
+15. **Create the SSUserDetailsService**
     * Right click on com.example.demo and click New -> Class
     * Name it SSUserDetailsService.java
     * Edit it to look like this:
@@ -410,9 +411,9 @@ form will also include messages for incorrect attempts.
 		}
 		```
 
-12. **Add a UserService Class**
+16. **Add a UserService Class**
     * Right-click on com.example.demo and click New -> Class
-    * Name it UserSer.java
+    * Name it UserService.java
     * Edit the contents to look like this:
 
 	```java
@@ -463,7 +464,7 @@ form will also include messages for incorrect attempts.
 	}
 	```
 
-12. **Add a DataLoader Class**
+17. **Add a DataLoader Class**
     * Right-click on  and click New -> Class
     * Name it DataLoader.java
     * Edit the contents to look like this:
@@ -515,7 +516,7 @@ form will also include messages for incorrect attempts.
 	}
 		```
 
-12. **Create the Controller**
+18. **Create the Controller**
     * Name it HomeController.java
     * Edit it to look like this:
 
@@ -570,7 +571,7 @@ form will also include messages for incorrect attempts.
 	}
 	````
 
-13. **Create the base Template**
+19. **Create the base Template**
 	  * Name it base.html
 	  * Edit it to look like this:
 
@@ -607,7 +608,7 @@ form will also include messages for incorrect attempts.
 	</html>
 	```
 
-13. **Create the Login Template**
+20. **Create the Login Template**
 	  * Name it login.html
 	  * Edit it to look like this:
 
@@ -642,7 +643,7 @@ form will also include messages for incorrect attempts.
 	</html>
 	```
 
-5. **Create the Index Template**
+21. **Create the Index Template**
   	* Right click on templates and click New -> Html
   	* Name it index.html
   	* Edit it to look like this:
@@ -664,7 +665,7 @@ form will also include messages for incorrect attempts.
 	</html>
 	```
 
-15. **Create a Secure Template**
+22. **Create a Secure Template**
   	* Right click on templates and click New -> Html
 	  * Name it secure.html
 	  * Edit it to look like this:
@@ -696,7 +697,7 @@ form will also include messages for incorrect attempts.
 	</html>
 	```
 
-15. **Create a Register Template**
+23. **Create a Register Template**
   	* Right click on templates and click New -> Html
 	  * Name it registration.html
 	  * Edit it to look like this:
@@ -756,13 +757,13 @@ form will also include messages for incorrect attempts.
 	</body>
 	</html>
 	```
-15. **Add Bootstrap stylesheet**
+24. **Add Bootstrap stylesheet**
   	* Right click on templates and click New -> Directory
 	  * Name it static
 	  * Under the new "static" folder, create a new folder "css"
 	  * Go to https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css and save the CSS text as "boostrap.min.css" under the CSS folder
 
-15. **Add custom stylesheet**
+25. **Add custom stylesheet**
   	* Right click on the css folder and right-click --> New --> Stylesheet
 	  * Name it style.css
 	  * Edit it to look like this:
@@ -779,7 +780,7 @@ form will also include messages for incorrect attempts.
 		```
 
 
-16. **Run your application and open a browser, and you should see this:**
+26. **Run your application and open a browser, and you should see this:**
 ![](../src/main/resources/static/img/onload.png)
 
 If you click on the Login link, you should see this:
@@ -795,6 +796,6 @@ If you log out and go to the "Register" link, you should see this:
 
 Try creating a new user and then logging in with that user.
 
-## What's Going On
+## Congratulations!
 
-Congratulations! You're ready to add basic security to your Spring Boot web application. This will help to ensure that people are who they say they are (because they use the appropriate passwords to sign in), and that they can access information within your application because they are authorized to have access to it, since they are assigned authorities.
+You're ready to add basic security to your Spring Boot web application. This will help to ensure that people are who they say they are (because they use the appropriate passwords to sign in), and that they can access information within your application because they are authorized to have access to it, since they are assigned authorities.
