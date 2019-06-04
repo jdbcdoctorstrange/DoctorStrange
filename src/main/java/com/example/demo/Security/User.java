@@ -1,7 +1,4 @@
-package com.example.demo;
-
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+package com.example.demo.Security;
 
 import javax.persistence.*;
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.ClosetApp;
 
 public class Clothes {
     private String color;

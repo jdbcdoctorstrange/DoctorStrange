@@ -1,15 +1,15 @@
-package com.example.demo;
+package com.example.demo.ClosetApp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Footwear extends Clothes {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Closet closet;
 
     public Footwear() {
     }
@@ -24,5 +24,13 @@ public class Footwear extends Clothes {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Closet getCloset() {
+        return closet;
+    }
+
+    public void setCloset(Closet closet) {
+        this.closet = closet;
     }
 }

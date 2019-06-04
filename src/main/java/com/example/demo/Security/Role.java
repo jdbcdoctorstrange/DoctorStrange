@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.Security;
 
 import javax.persistence.*;
 import java.util.Collection;
