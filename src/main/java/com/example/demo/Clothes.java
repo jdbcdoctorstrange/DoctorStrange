@@ -10,10 +10,12 @@ public class Clothes {
     public Clothes() {
     }
 
-    public Clothes(String color, String material, String size) {
+    public Clothes(String color, String material, String size, String season, String imgUrl) {
         this.color = color;
         this.material = material;
         this.size = size;
+        this.season = season;
+        this.imgUrl = imgUrl;
     }
 
     public String getColor() {

@@ -6,15 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Footwear extends Clothes {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+public class Bottom extends Clothes{
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private long id;
 
-    public Footwear() {
+    public Bottom() {
     }
 
-    public Footwear(String color, String material, String size, String season, String imgUrl) {
+    public Bottom(String color, String material, String size, String season, String imgUrl) {
         super(color, material, size, season, imgUrl);
     }
 

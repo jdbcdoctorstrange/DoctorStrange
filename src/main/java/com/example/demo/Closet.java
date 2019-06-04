@@ -1,12 +1,14 @@
 package com.example.demo;
 
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.Collections;
-
+@Entity
 public class Closet {
+
     ArrayList<Jacket> jackets = new ArrayList<>();
-    ArrayList<Shirt> shirts = new ArrayList<>();
-    ArrayList<Pants> pants = new ArrayList<>();
+    ArrayList<Top> tops = new ArrayList<>();
+    ArrayList<Bottom> pants = new ArrayList<>();
     ArrayList<Footwear> footwears = new ArrayList<>();
 
     public Closet(){
@@ -21,19 +23,19 @@ public class Closet {
         jackets.add(jacket);
     }
 
-    public Shirt getShirts(int i) {
-        return shirts.get(i);
+    public Top getShirts(int i) {
+        return tops.get(i);
     }
 
-    public void setShirts(Shirt shirt) {
-        shirts.add(shirt);
+    public void setTops(Top top) {
+        tops.add(top);
     }
 
-    public Pants getPants(int i) {
+    public Bottom getPants(int i) {
         return pants.get(i);
     }
 
-    public void setPants(Pants pant) {
+    public void setPants(Bottom pant) {
         pants.add(pant);
     }
 
@@ -47,11 +49,11 @@ public class Closet {
 
     public String randomOutfit(){
         Collections.shuffle(jackets);
-        Collections.shuffle(shirts);
+        Collections.shuffle(tops);
         Collections.shuffle(pants);
         Collections.shuffle(footwears);
 
-        return "Jacket:\n"+jackets.get(0).toString()+"\nShirt:\n"+shirts.get(0).toString()+"\nPair of Pants:\n"
+        return "Jacket:\n"+jackets.get(0).toString()+"\nTop:\n"+ tops.get(0).toString()+"\nPair of Bottom:\n"
                 +pants.get(0).toString()+"\nShoes:\n"+footwears.get(0).toString()+"\n";
     }
 }
