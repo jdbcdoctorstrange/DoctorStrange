@@ -1,9 +1,9 @@
-package com.example.demo.ClosetApp;
+package com.example.demo;
 
 import javax.persistence.*;
 
 @Entity
-public class Jacket extends Clothes {
+public class Top extends Clothes{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -11,12 +11,15 @@ public class Jacket extends Clothes {
     @ManyToOne(fetch = FetchType.EAGER)
     private Closet closet;
 
+    private String sleeves;//either short or long
 
-    public Jacket() {
+    public Top() {
     }
 
-    public Jacket(String color, String material, String size, String season, String imgUrl) {
+    public Top(String color, String material, String size, String season, String imgUrl, Closet closet, String sleeves) {
         super(color, material, size, season, imgUrl);
+        this.closet = closet;
+        this.sleeves = sleeves;
     }
 
     public long getId() {
@@ -33,5 +36,13 @@ public class Jacket extends Clothes {
 
     public void setCloset(Closet closet) {
         this.closet = closet;
+    }
+
+    public String getSleeves() {
+        return sleeves;
+    }
+
+    public void setSleeves(String sleeves) {
+        this.sleeves = sleeves;
     }
 }

@@ -1,9 +1,9 @@
-package com.example.demo.ClosetApp;
+package com.example.demo;
 
 import javax.persistence.*;
 
 @Entity
-public class Bottom extends Clothes {
+public class Footwear extends Clothes {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -11,10 +11,10 @@ public class Bottom extends Clothes {
     @ManyToOne(fetch = FetchType.EAGER)
     private Closet closet;
 
-    public Bottom() {
+    public Footwear() {
     }
 
-    public Bottom(String color, String material, String size, String season, String imgUrl) {
+    public Footwear(String color, String material, String size, String season, String imgUrl) {
         super(color, material, size, season, imgUrl);
     }
 

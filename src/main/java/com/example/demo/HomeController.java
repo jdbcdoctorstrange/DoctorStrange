@@ -1,7 +1,7 @@
-package com.example.demo.Controllers;
+package com.example.demo;
 
-import com.example.demo.Security.User;
-import com.example.demo.Security.UserService;
+import com.example.demo.User;
+import com.example.demo.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,13 +36,16 @@ public class HomeController {
 
     @RequestMapping("/")
     public String index() {
-        return "index";
+        return "/index";
     }
 
     @RequestMapping("/login")
     public String login() {
-        return "login";
+        return "/login";
     }
 
-
+    @RequestMapping("/hello")
+    public String helloWorld(){
+        return "/HelloWorld";
+    }
 }
