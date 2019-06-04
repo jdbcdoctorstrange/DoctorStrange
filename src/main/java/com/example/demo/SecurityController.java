@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-public class HomeController {
+public class SecurityController {
     @Autowired
     private UserService userService;
     /*--------------------------------------------------------------------------
@@ -45,9 +45,5 @@ public class HomeController {
     public String login() {
         return "/login";
     }
-
-    /*--------------------------------------------------------------------------
-        TESTING
-    ---------------------------------------------------------------------------*/
 
 }

@@ -15,7 +15,7 @@ public class Closet {
     private User user;
 
     @OneToMany(mappedBy = "closet",orphanRemoval = true)
-    Set<Jacket> jackets;
+    private Set<Jacket> jackets;
 
     @OneToMany(mappedBy = "closet",orphanRemoval = true)
     Set<Top> tops;
@@ -25,6 +25,9 @@ public class Closet {
 
     @OneToMany(mappedBy = "closet",orphanRemoval = true)
     Set<Footwear> footwears;
+
+    @OneToMany(mappedBy = "closet", orphanRemoval = true)
+    Set<Accessories> accessories;
 
     public Closet(){
 
@@ -76,6 +79,14 @@ public class Closet {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Accessories> getAccessories() {
+        return accessories;
+    }
+
+    public void setAccessories(Set<Accessories> accessories) {
+        this.accessories = accessories;
     }
 
     //    public String randomOutfit(){

@@ -13,11 +13,8 @@ public class Top extends Clothes{
 
     private String sleeves;//either short or long
 
-    public Top() {
-    }
-
-    public Top(String color, String material, String size, String season, String imgUrl, Closet closet, String sleeves) {
-        super(color, material, size, season, imgUrl);
+    public Top(String color, String material, String size, String season, String imgUrl, String type, String category, Closet closet, String sleeves) {
+        super(color, material, size, season, imgUrl, type, category);
         this.closet = closet;
         this.sleeves = sleeves;
     }

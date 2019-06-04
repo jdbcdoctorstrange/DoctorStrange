@@ -43,7 +43,5 @@ public class DataLoader implements CommandLineRunner{
         user.setRoles(Arrays.asList(adminRole));
         userRepository.save(user);
 
-        Closet summer = new Closet();
-        Top polo = new Top();
     }
 }

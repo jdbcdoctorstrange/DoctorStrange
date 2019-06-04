@@ -11,11 +11,9 @@ public class Footwear extends Clothes {
     @ManyToOne(fetch = FetchType.EAGER)
     private Closet closet;
 
-    public Footwear() {
-    }
-
-    public Footwear(String color, String material, String size, String season, String imgUrl) {
-        super(color, material, size, season, imgUrl);
+    public Footwear(String color, String material, String size, String season, String imgUrl, String type, String category, Closet closet) {
+        super(color, material, size, season, imgUrl, type, category);
+        this.closet = closet;
     }
 
     public long getId() {
