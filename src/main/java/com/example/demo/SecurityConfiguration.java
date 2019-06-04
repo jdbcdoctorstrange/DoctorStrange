@@ -56,7 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/css/**","/", "/h2/**", "/register").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").permitAll() // Must be on it's own line
+                .formLogin().loginPage("/login").permitAll().successForwardUrl("/") // Must be on it's own line
                 .and()
                 // logout() removes the user from the current session
                 // default timeout is 20 minutes
