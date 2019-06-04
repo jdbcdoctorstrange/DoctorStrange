@@ -6,16 +6,15 @@ public class Clothes {
     private String size;
     private String season;
     private String imgUrl;
+    private String type;
 
-    public Clothes() {
-    }
-
-    public Clothes(String color, String material, String size, String season, String imgUrl) {
+    public Clothes(String color, String material, String size, String season, String imgUrl, String type) {
         this.color = color;
         this.material = material;
         this.size = size;
         this.season = season;
         this.imgUrl = imgUrl;
+        this.type = type;
     }
 
     public String getColor() {
@@ -56,6 +55,14 @@ public class Clothes {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override

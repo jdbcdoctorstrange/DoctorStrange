@@ -11,6 +11,9 @@ public class Closet {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User user;
+
     @OneToMany(mappedBy = "closet",orphanRemoval = true)
     Set<Jacket> jackets;
 
@@ -65,6 +68,14 @@ public class Closet {
 
     public void setFootwears(Set<Footwear> footwears) {
         this.footwears = footwears;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     //    public String randomOutfit(){
