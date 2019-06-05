@@ -57,11 +57,11 @@ public class DataLoader implements CommandLineRunner{
                 "polo",
                 "informal",
                 "short");
-        Closet closet = new Closet();
-        shirt1.setCloset(closet);
-        closet.setUser(user);
-        closet.setTops(Arrays.asList(shirt1));
-        user.setClosets(Arrays.asList(closet));
+//        Closet closet = new Closet();
+//        shirt1.setCloset(closet);
+//        closet.setUser(user);
+//        closet.setTops(Arrays.asList(shirt1));
+//        user.setClosets(Arrays.asList(closet));
         userRepository.save(user);
     }
 }

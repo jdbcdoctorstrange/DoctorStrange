@@ -18,6 +18,9 @@ public class Accessories{
     @ManyToOne(fetch = FetchType.EAGER)
     private Closet closet;
 
+    public Accessories() {
+    }
+
     public Accessories(String color, String material, String size, String season, String imgUrl, String type, String category) {
         this.color = color;
         this.material = material;
