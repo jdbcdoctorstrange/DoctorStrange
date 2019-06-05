@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="base :: nav"></div>
+<h2>Your suggested outfit for today</h2>
+<div class="container">
+    Top:
+    <ul th:href="@{/addtop}">
+        <th:block th:each="top : ${closet.tops}">
+            <div th:if="${top.imgUrl} !=null">
+                <img th:src="${top.imgUrl}" />
+                <hr />
+            </div>
+            <li th:inline="text">[[${top.color}]] [[${top.material}]]</li>
+            <li th:inline="text">[[${top.size}]] [[${top.season}]]</li>
+        </th:block>
+    </ul>
+    Jacket:
+    <ul th:href="@{/addjacket}">
+        <th:block th:each="jacket : ${closet.jackets}">
+            <div th:if="${jacket.imgUrl} !=null">
+                <img th:src="${jacket}.imgUrl}" />
+                <hr />
+            </div>
+            <li th:inline="text">[[${jacket.color}]] [[${jacket.material}]]</li>
+            <li th:inline="text">[[${jacket.size}]] [[${jacket.season}]]</li>
+        </th:block>
+    </ul>
+    Bottom:
+    <ul th:href="@{/addjacket}">
+        <th:block th:each="jacket : ${closet.jackets}">
+            <div th:if="${jacket.imgUrl} !=null">
+                <img th:src="${jacket}.imgUrl}" />
+                <hr />
+            </div>
+            <li th:inline="text">[[${jacket.color}]] [[${jacket.material}]]</li>
+            <li th:inline="text">[[${jacket.size}]] [[${jacket.season}]]</li>
+        </th:block>
+    </ul>
+    Footwear:
+    <ul th:href="@{/addfootwear}">
+        <th:block th:each="footwear : ${closet.footwears}">
+            <div th:if="${footwear.imgUrl} !=null">
+                <img th:src="${footwear}.imgUrl}" />
+                <hr />
+            </div>
+            <li th:inline="text">[[${footwear}.color}]] [[${footwear.material}]]</li>
+            <li th:inline="text">[[${footwear.size}]] [[${footwear}.season}]]</li>
+        </th:block>
+
+
+
+
+</div>
+<h2> Enjoy your day!</h2>
+</body>
+</html>

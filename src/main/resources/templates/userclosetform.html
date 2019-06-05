@@ -15,127 +15,17 @@
         <input type="hidden" th:field="*{id}"/>
 
         Location: <input type="text"/>
-        <!--<span th:if="${#fields.hasErrors('location')}" th:errors="*{location}"></span><br/>-->
         <input type="file" name="file"/><br/>
 
-        Category :<select name="category" />
+        Occasion :<select name="occasion" />
         <option value="formal" >Formal</option>
         <option value="informal">Informal</option>
         </select><br />
 
-        <!--Temperature: <input type="text" th:field="*{temperature}"/>-->
-        <!--<span th:if="${#fields.hasErrors('temperature')}" th:errors="*{temperature}"></span><br/>-->
-        <!--<input type="file" name="file"/><br/>-->
 
         <input type="submit" value="Submit"/>
     </form>
 </div>
-
-</body>
-</html>
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-    <!--<style>-->
-        <!--* {-->
-            <!--box-sizing: border-box;-->
-        <!--}-->
-
-        <!--input[type=text], select, textarea {-->
-            <!--width: 100%;-->
-            <!--padding: 12px;-->
-            <!--border: 1px solid #ccc;-->
-            <!--border-radius: 4px;-->
-            <!--resize: vertical;-->
-        <!--}-->
-
-        <!--label {-->
-            <!--padding: 12px 12px 12px 0;-->
-            <!--display: inline-block;-->
-        <!--}-->
-
-        <!--input[type=submit] {-->
-            <!--background-color: #4CAF50;-->
-            <!--color: white;-->
-            <!--padding: 12px 20px;-->
-            <!--border: none;-->
-            <!--border-radius: 4px;-->
-            <!--cursor: pointer;-->
-            <!--float: right;-->
-        <!--}-->
-
-        <!--input[type=submit]:hover {-->
-            <!--background-color: #45a049;-->
-        <!--}-->
-
-        <!--.container {-->
-            <!--border-radius: 5px;-->
-            <!--background-color: #f2f2f2;-->
-            <!--padding: 20px;-->
-        <!--}-->
-
-        <!--.col-25 {-->
-            <!--float: left;-->
-            <!--width: 25%;-->
-            <!--margin-top: 6px;-->
-        <!--}-->
-
-        <!--.col-75 {-->
-            <!--float: left;-->
-            <!--width: 75%;-->
-            <!--margin-top: 6px;-->
-        <!--}-->
-
-        <!--/* Clear floats after the columns */-->
-        <!--.row:after {-->
-            <!--content: "";-->
-            <!--display: table;-->
-            <!--clear: both;-->
-        <!--}-->
-
-        <!--/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */-->
-        <!--@media screen and (max-width: 600px) {-->
-            <!--.col-25, .col-75, input[type=submit] {-->
-                <!--width: 100%;-->
-                <!--margin-top: 0;-->
-            <!--}-->
-        <!--}-->
-    <!--</style>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div th:replace="base :: nav"></div>-->
-<!--<h2>Form</h2>-->
-<!--<p>Please fill out the form below, so we can help you with the outfit for today</p>-->
-<!--<div class="container">-->
-    <!--<form action="#" th:action="@{/process}" th:object="${user}"-->
-          <!--method="post" enctype="multipart/form-data">-->
-        <!--<input type="hidden" th:field="*{id}"/>-->
-
-        <!--<div class="row">-->
-            <!--<div class="col-25">-->
-                <!--<label for="fname">Location</label>-->
-            <!--</div>-->
-            <!--<div class="col-75">-->
-                <!--<input type="text" id="fname" name="location" placeholder="...">-->
-            <!--</div>-->
-        <!--</div>-->
-
-        <!--<div class="row">-->
-            <!--<div class="col-25">-->
-                <!--<label for="category">Category</label>-->
-            <!--</div>-->
-            <!--<div class="col-75">-->
-                <!--<select id="category" name="Category">-->
-                    <!--<option value="formal">Formal</option>-->
-                    <!--<option value="informal">Informal</option>-->
-                <!--</select>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row">-->
-            <!--<input type="submit" value="Submit">-->
-        <!--</div>-->
-    <!--</form>-->
-<!--</div>-->
 
 </body>
 </html>
