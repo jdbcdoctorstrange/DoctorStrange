@@ -141,10 +141,11 @@ public class rekhaController {
             return "closetform";
         }
         else
-            return "redirect:/";
+            return "redirect:/listclosets";
     }
 
     @RequestMapping("/delete/{id}")
+
     public String delCloset(@PathVariable("id") long id) {
         User user = userService.getCurrentUser();
         Closet cls = closetRepository.findByIdAndUid(id,userService.getCurrentUser().getId());
