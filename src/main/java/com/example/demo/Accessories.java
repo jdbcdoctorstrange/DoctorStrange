@@ -3,7 +3,7 @@ package com.example.demo;
 import javax.persistence.*;
 
 @Entity
-public class Jacket extends Clothes {
+public class Accessories extends Clothes{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -11,7 +11,7 @@ public class Jacket extends Clothes {
     @ManyToOne(fetch = FetchType.EAGER)
     private Closet closet;
 
-    public Jacket(String color, String material, String size, String season, String imgUrl, String type, String category, Closet closet) {
+    public Accessories(String color, String material, String size, String season, String imgUrl, String type, String category, Closet closet) {
         super(color, material, size, season, imgUrl, type, category);
         this.closet = closet;
     }

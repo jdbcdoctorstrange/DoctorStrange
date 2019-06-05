@@ -33,6 +33,9 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
+    @OneToMany(mappedBy = "user",orphanRemoval = true)
+    private Collection<Closet> closets;
+
     public User() {
     }
 
@@ -107,5 +110,13 @@ public class User {
 
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
+    }
+
+    public Collection<Closet> getClosets() {
+        return closets;
+    }
+
+    public void setClosets(Collection<Closet> closets) {
+        this.closets = closets;
     }
 }

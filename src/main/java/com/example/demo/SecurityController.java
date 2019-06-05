@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-public class HomeController {
+public class SecurityController {
     @Autowired
     private UserService userService;
-
+    /*--------------------------------------------------------------------------
+        SECURITY
+    ---------------------------------------------------------------------------*/
     @GetMapping("/register")
     public String showRegistrationPage(Model model) {
         model.addAttribute("user", new User());
@@ -44,8 +46,4 @@ public class HomeController {
         return "/login";
     }
 
-    @RequestMapping("/hello")
-    public String helloWorld(){
-        return "/HelloWorld";
-    }
 }
