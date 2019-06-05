@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Closet Application</title>
-    <th:block th:insert="base :: header"></th:block>
-
+    <meta charset="UTF-8">
+    <title>Closet</title>
 </head>
 <body>
-<div><h2>Welcome [[${user.firstName}]] [[${user.lastName}]] </h2></div></br>
-<div th:replace="base :: navlinks"></div>
+<div th:replace="base :: nav"></div>
 
-
-<h2>Title: <span th:text="${closet.closetName}"></span></h2> <br/>
 <div class="container">
     <h1>Tops</h1>
     <table class="table table-bordered">
@@ -30,13 +26,13 @@
             <td th:text="${top.season}"></td>
             <img th:src="${top.imgUrl}">
             <td>
-                <div class="nav-item">
-                    <span >
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == top.user.id}">
                     <a th:href="@{/update/{id}(id=${top.id})}">Update</a>
                     <a th:href="@{/delete/{id}(id=${top.id})}">Delete</a>
                 </span>
                 </div>
-                <div class="nav-item" >
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                     <a th:href="@{/delete/{id}(id=${top.id})}">Delete</a>
                     <a th:href="@{/update/{id}(id=${top.id})}">Update</a>
                 </div>
@@ -64,13 +60,13 @@
             <td th:text="${jacket.season}"></td>
             <img th:src="${jacket.imgUrl}">
             <td>
-                <div class="nav-item" >
-                    <span>
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == jacket.user.id}">
                     <a th:href="@{/update/{id}(id=${jacket.id})}">Update</a>
                     <a th:href="@{/delete/{id}(id=${jacket.id})}">Delete</a>
                 </span>
                 </div>
-                <div class="nav-item">
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                     <a th:href="@{/delete/{id}(id=${jacket.id})}">Delete</a>
                     <a th:href="@{/update/{id}(id=${jacket.id})}">Update</a>
                 </div>
@@ -98,13 +94,13 @@
             <td th:text="${bottom.season}"></td>
             <img th:src="${bottom.imgUrl}">
             <td>
-                <div class="nav-item">
-                    <span>
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == bottom.user.id}">
                     <a th:href="@{/update/{id}(id=${bottom.id})}">Update</a>
                     <a th:href="@{/delete/{id}(id=${bottom.id})}">Delete</a>
                 </span>
                 </div>
-                <div class="nav-item">
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                     <a th:href="@{/delete/{id}(id=${bottom.id})}">Delete</a>
                     <a th:href="@{/update/{id}(id=${bottom.id})}">Update</a>
                 </div>
@@ -132,13 +128,13 @@
             <td th:text="${footwear.season}"></td>
             <img th:src="${footwear.imgUrl}">
             <td>
-                <div class="nav-item">
-                    <span >
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == footwear.user.id}">
                     <a th:href="@{/update/{id}(id=${footwear.id})}">Update</a>
                     <a th:href="@{/delete/{id}(id=${footwear.id})}">Delete</a>
                 </span>
                 </div>
-                <div class="nav-item">
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                     <a th:href="@{/delete/{id}(id=${footwear.id})}">Delete</a>
                     <a th:href="@{/update/{id}(id=${footwear.id})}">Update</a>
                 </div>
@@ -166,13 +162,13 @@
             <td th:text="${accessories.season}"></td>
             <img th:src="${accessories.imgUrl}">
             <td>
-                <div class="nav-item">
-                    <span>
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == accessories.user.id}">
                     <a th:href="@{/update/{id}(id=${accessories.id})}">Update</a>
                     <a th:href="@{/delete/{id}(id=${accessories.id})}">Delete</a>
                 </span>
                 </div>
-                <div class="nav-item">
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                     <a th:href="@{/delete/{id}(id=${accessories.id})}">Delete</a>
                     <a th:href="@{/update/{id}(id=${accessories.id})}">Update</a>
                 </div>
@@ -181,9 +177,5 @@
         </tbody>
     </table>
 </div>
-<h2><a th:href="@{/delete/{id}(id=${closet.id})}">Delete this closet</a></h2>
-
-</p>
-
 </body>
 </html>

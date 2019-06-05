@@ -32,7 +32,7 @@ public class Closet {
     @OneToMany(mappedBy = "closet",orphanRemoval = true)
     Set<Footwear> footwears;
 
-    @OneToMany(mappedBy = "closet", orphanRemoval = true)
+    @OneToMany(mappedBy = "closet")
     Set<Accessories> accessories;
 
     public Closet(){
