@@ -19,6 +19,9 @@ public class Clothes {
         this.category = category;
     }
 
+    public Clothes() {
+    }
+
     public String getColor() {
         return color;
     }

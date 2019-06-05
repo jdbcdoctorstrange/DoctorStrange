@@ -19,6 +19,13 @@ public class Top extends Clothes{
         this.sleeves = sleeves;
     }
 
+    public Top(String color, String material, String size, String season, String imgUrl, String type, String category) {
+        super(color, material, size, season, imgUrl, type, category);
+    }
+
+    public Top() {
+    }
+
     public long getId() {
         return id;
     }
