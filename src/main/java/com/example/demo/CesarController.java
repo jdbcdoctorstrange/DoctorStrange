@@ -28,10 +28,4 @@ public class CesarController {
     @Autowired
     AccessoriesRepository accessoriesRepository;
 
-    @RequestMapping("/clothes")
-    public String showAllClothes(Model model){
-        model.addAttribute("user", userService.getCurrentUser());
-        model.addAttribute("closets", closetRepository.findAllByUser(userService.getCurrentUser()));
-        return "HelloWorld";
-    }
 }

@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 
 @SuppressWarnings("ALL")
 @Controller
@@ -123,6 +124,12 @@ public class rekhaController {
         model.addAttribute("user", user );
         closetRepository.findById(id).ifPresent(o -> model.addAttribute("closet", o));
         // model.addAttribute("message", messageRepository.findById(id));
+        Optional <Closet> closet = closetRepository.findById(id);
+        model.addAttribute("tops", closetRepository.findById(id).get().getTops());
+        model.addAttribute("jackets", closetRepository.findById(id).get().getJackets());
+        model.addAttribute("bottoms", closetRepository.findById(id).get().getPants());
+        model.addAttribute("footwears", closetRepository.findById(id).get().getFootwears());
+        model.addAttribute("accessories", closetRepository.findById(id).get().getAccessories());
 
         return "show";
     }
