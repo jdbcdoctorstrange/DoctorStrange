@@ -14,6 +14,11 @@
       method="POST">
     <input type="hidden" th:field="*{id}" />
     <p>
+        Closet:<select th:field="*{closet}">
+        <option th:each="closet : ${closets}"
+                th:value="${closet.id}"
+                th:text="${closet.closetName}"></option>
+    </select>
         Color: <input type="text" th:field="*{color}" />
         <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></span> <br/>
 

@@ -9,8 +9,10 @@ public interface ClosetRepository extends CrudRepository<Closet, Long>{
     //Closet findByIdAndUid(Long id, Long uid);
     Iterable<Closet> findAllClosetsByUid(Long uid);
     Closet findByIdAndUid(Long id, Long uid);
+
     Closet findByIdAndUserId(Long id, Long uid);
 
     @Override
     Optional<Closet> findById(Long aLong);
+
 }

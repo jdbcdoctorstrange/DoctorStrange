@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 
 @SuppressWarnings("ALL")
 @Controller
@@ -75,14 +76,12 @@ public class rekhaController {
 
         User user = userService.getCurrentUser();
         Top top = new Top();
-        Closet closet = new Closet();
-        top.setCloset(closet);
-        User tuser = new User();
-        top.getCloset().setUser(tuser);
-        top.getCloset().setUser(user);
+
+
         // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
         model.addAttribute("user", user );
         model.addAttribute("top", top);
+        model.addAttribute("closets", closetRepository.findAll());
         model.addAttribute("file", top.getImgUrl());
         return "topform";
     }
@@ -109,7 +108,7 @@ public class rekhaController {
         }
         System.out.println("Debug 3>>>>>>>>>>>");
         //top.setUid(userService.getCurrentUser().getId());
-        top.getCloset().setUser(userService.getCurrentUser());
+       // top.getCloset().setUser(userService.getCurrentUser());
         
         topRepository.save(top);
         System.out.println("Debug 4>>>>>>>>>>>");
@@ -123,6 +122,12 @@ public class rekhaController {
         model.addAttribute("user", user );
         closetRepository.findById(id).ifPresent(o -> model.addAttribute("closet", o));
         // model.addAttribute("message", messageRepository.findById(id));
+        Optional <Closet> closet = closetRepository.findById(id);
+        model.addAttribute("tops", closetRepository.findById(id).get().getTops());
+        model.addAttribute("jackets", closetRepository.findById(id).get().getJackets());
+        model.addAttribute("bottoms", closetRepository.findById(id).get().getPants());
+        model.addAttribute("footwears", closetRepository.findById(id).get().getFootwears());
+        model.addAttribute("accessories", closetRepository.findById(id).get().getAccessories());
 
         return "show";
     }
