@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Top</title>
+</head>
+<body>
+    <div>
+        <form th:action="@{/processtopces}" th:object="${top}" method="post" enctype="multipart/form-data">
+            <input type="hidden" th:field="*{id}"/>
+            <select th:field="*{closet}">
+                <option th:each="closet: ${closets}"
+                        th:value="${closet.id}"
+                        th:text="${closet.closetName}"></option>
+            </select>
+            <input type="text" th:field="*{color}" placeholder="Color"/><br/>
+            <input type="text" th:field="*{material}" placeholder="Material"/><br/>
+            <input type="text" th:field="*{size}" placeholder="Size"/><br/>
+            <input type="text" th:field="*{season}" placeholder="Season"/><br/>
+            <input type="text" th:field="*{type}" placeholder="Type of Shirt"/><br/>
+            <input type="text" th:field="*{category}" placeholder="Formal or Informal"/><br/>
+            <input type="text" th:field="*{sleeves}" placeholder="Sleeve lenght"/><br/>
+            <input type="file" name="file"/><br/>
+            <input type="submit" value="Submit"/>
+
+        </form>
+    </div>
+</body>
+</html>
