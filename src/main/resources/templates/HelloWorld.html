@@ -5,6 +5,29 @@
     <title>Hello World</title>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <div class="container">
+        <div>
+            <h2 th:text="${user.username}"></h2>
+            <div>
+                <span>
+                    <strong>Season</strong> |
+                    <strong>Color</strong> |
+                    <strong>Material</strong> |
+                    <strong>image</strong> |
+                    <strong>Category</strong>
+                </span>
+            </div>
+            <div  th:each="closet : ${closets}">
+                <th:block>
+                    <ul th:each="top : ${closet.tops}">
+                        <li th:text="${top.category}"></li>
+                        <li th:text="${top.color}"></li>
+                        <li th:text="${top.material}"></li>
+                        <li th:text="${top.size}"></li>
+                    </ul>
+                </th:block>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
