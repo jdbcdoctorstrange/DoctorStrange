@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Closet Application</title>
+    <th:block th:insert="base :: header"></th:block>
+
+</head>
+<body>
+<div><h2>Welcome [[${user.firstName}]] [[${user.lastName}]] </h2></div></br>
+<div th:replace="base :: navlinks"></div>
+
+
+<h2>Title: <span th:text="${closet.closetName}"></span></h2> <br/>
+
+<h2><a th:href="@{/delete/{id}(id=${closet.id})}">Delete this closet</a></h2>
+
+</p>
+
+</body>
+</html>
