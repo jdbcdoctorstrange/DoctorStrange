@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -116,6 +113,46 @@ public class rekhaController {
         
         topRepository.save(top);
         System.out.println("Debug 4>>>>>>>>>>>");
+        return "redirect:/";
+    }
+
+    @RequestMapping("/detail/{id}")
+    public String showCloset(@PathVariable("id") long id, Model model) {
+        User user = userService.getCurrentUser();
+        // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
+        model.addAttribute("user", user );
+        closetRepository.findById(id).ifPresent(o -> model.addAttribute("closet", o));
+        // model.addAttribute("message", messageRepository.findById(id));
+
+        return "show";
+    }
+
+    @RequestMapping("/update/{id}")
+    public String updateCloset(@PathVariable("id") long id, Model model) {
+        User user = userService.getCurrentUser();
+        // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
+        model.addAttribute("user", user );
+        //model.addAttribute("message", messageRepository.findById(id));
+        closetRepository.findById(id).ifPresent(o -> model.addAttribute("closet", o));
+        Closet cls = closetRepository.findByIdAndUid(id,userService.getCurrentUser().getId());
+
+        if(cls != null) {
+            System.out.println("Found closet\n");
+            return "closetform";
+        }
+        else
+            return "redirect:/";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String delCloset(@PathVariable("id") long id) {
+        User user = userService.getCurrentUser();
+        Closet cls = closetRepository.findByIdAndUid(id,userService.getCurrentUser().getId());
+        if(cls != null || (roleRepository.findByRoleAndUsersId("ADMIN", user.getId()) != null)) {
+            closetRepository.deleteById(id);
+            System.out.println("Found closet\n");
+        }
+
         return "redirect:/";
     }
 }

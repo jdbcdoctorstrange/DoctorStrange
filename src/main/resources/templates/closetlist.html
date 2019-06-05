@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Closet List</title>
+    <th:block th:insert="base :: header"></th:block>
 </head>
 <body>
+<div><h2>Welcome [[${user.firstName}]] [[${user.lastName}]] </h2></div></br>
+<div th:replace="base :: navlinks"></div>
+
 <table class="table">
     <tr>
         <th>Closet Name</th>
