@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Closet Application</title>
+    <th:block th:insert="base :: header"></th:block>
+
+</head>
+<body>
+<div><h2>Welcome [[${user.firstName}]] [[${user.lastName}]] </h2></div></br>
+<div th:replace="base :: navlinks"></div>
+
+
+<form action="#"
+      th:action="@{/processcloset}"
+      th:object="${closet}"
+      method="POST">
+    <input type="hidden" th:field="*{id}" />
+    <p>
+        Closet Name: <input type="text" th:field="*{closetName}" />
+        <span th:if="${#fields.hasErrors('closetName')}" th:errors="*{closetName}"></span> <br/>
+        <input type="submit" value="Submit" />
+    </p>
+</form>
+
+</body>
+</html>

@@ -11,6 +11,12 @@ public class Closet {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column(name = "closet_name")
+    private String closetName;
+
+    @Column(name = "uid")
+    private long uid;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
@@ -26,7 +32,7 @@ public class Closet {
     @OneToMany(mappedBy = "closet",orphanRemoval = true)
     Set<Footwear> footwears;
 
-    @OneToMany(mappedBy = "closet", orphanRemoval = true)
+    @OneToMany(mappedBy = "closet")
     Set<Accessories> accessories;
 
     public Closet(){
@@ -87,6 +93,22 @@ public class Closet {
 
     public void setAccessories(Set<Accessories> accessories) {
         this.accessories = accessories;
+    }
+
+    public String getClosetName() {
+        return closetName;
+    }
+
+    public void setClosetName(String closetName) {
+        this.closetName = closetName;
+    }
+
+    public long getUid() {
+        return uid;
+    }
+
+    public void setUid(long uid) {
+        this.uid = uid;
     }
 
     //    public String randomOutfit(){

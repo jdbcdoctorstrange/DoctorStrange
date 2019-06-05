@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/extras/spring-security">
 <head>
-    <title>Local Weather</title>
+    <title>Closet app</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
     <th:block th:insert="base :: header"></th:block>
 </head>
 <body>
 
-    <div th:replace="base :: navlinks"></div>
-
-    <h2>Insecure Page</h2>
-
-    <h2>JavaScript getMonth()</h2>
-
-    <p>The getMonth() method returns the month of a date as a number from 0 to 11.</p>
-    <p>To get the correct month, you must add 1:</p>
-
+<div th:replace="base :: navlinks"></div>
 
     <h2 id="demoDay"></h2>
 
@@ -25,8 +17,9 @@
         var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
             "October", "November", "December" ];
+        var am = (((d.getHours()<12)) ? "am" :"pm");
         document.getElementById("demoDay").innerHTML = days[d.getDay()] +", " +months[d.getMonth()] +" "
-            +d.getDate() + " " +d.getHours() + ":"+d.getMinutes();
+            +d.getDate() + " " +d.getHours() + ":"+d.getMinutes() +am;
 
     </script>
 

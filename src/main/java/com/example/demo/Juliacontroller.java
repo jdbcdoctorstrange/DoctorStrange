@@ -29,10 +29,26 @@ public class Juliacontroller {
         return "userclosetform";
     }
 
+<<<<<<< HEAD
     @PostMapping("/process")
     public String processUserForm(@RequestParam("category") String category, Model model) {
         model.addAttribute("user", userService.getCurrentUser());
         return "index";
     }
 
+=======
+    @RequestMapping("/process")
+    public String processUserForm(@RequestParam("occasion") String occasion, Model model) {
+        model.addAttribute("user", userService.getCurrentUser());
+        return "suggestedclothes";
+    }
+
+//    @RequestMapping("/list")
+//    public String getlist(Model model) {
+//        model.addAttribute("user", userService.getCurrentUser());
+//        model.addAttribute("tops", userService.getCurrentUser());
+//        return "list";
+//    }
+
+>>>>>>> master
 }

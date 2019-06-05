@@ -116,7 +116,7 @@ public class User {
         return closets;
     }
 
-    public void setClosets(Collection<Closet> closets) {
-        this.closets = closets;
+    public void setCloset(Closet closet) {
+        this.closets.add(closet);
     }
 }

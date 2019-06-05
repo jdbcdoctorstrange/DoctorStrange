@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Closet</title>
+</head>
+<body>
+<div th:replace="base :: nav"></div>
+
+<div class="container">
+    <h1>Tops</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Color</th>
+            <th>Material</th>
+            <th>Size</th>
+            <th>Season</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="top : ${tops}">
+            <td th:text="${top.color}"></td>
+            <td th:text="${top.material}"></td>
+            <td th:text="${top.size}"></td>
+            <td th:text="${top.season}"></td>
+            <img th:src="${top.imgUrl}">
+            <td>
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == top.user.id}">
+                    <a th:href="@{/update/{id}(id=${top.id})}">Update</a>
+                    <a th:href="@{/delete/{id}(id=${top.id})}">Delete</a>
+                </span>
+                </div>
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/delete/{id}(id=${top.id})}">Delete</a>
+                    <a th:href="@{/update/{id}(id=${top.id})}">Update</a>
+                </div>
+        </tr>
+        </td>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <h1>Jackets</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Color</th>
+            <th>Material</th>
+            <th>Size</th>
+            <th>Season</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="jacket : ${jackets}">
+            <td th:text="${jacket.color}"></td>
+            <td th:text="${jacket.material}"></td>
+            <td th:text="${jacket.size}"></td>
+            <td th:text="${jacket.season}"></td>
+            <img th:src="${jacket.imgUrl}">
+            <td>
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == jacket.user.id}">
+                    <a th:href="@{/update/{id}(id=${jacket.id})}">Update</a>
+                    <a th:href="@{/delete/{id}(id=${jacket.id})}">Delete</a>
+                </span>
+                </div>
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/delete/{id}(id=${jacket.id})}">Delete</a>
+                    <a th:href="@{/update/{id}(id=${jacket.id})}">Update</a>
+                </div>
+        </tr>
+        </td>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <h1>Bottoms</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Color</th>
+            <th>Material</th>
+            <th>Size</th>
+            <th>Season</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bottom : ${bottoms}">
+            <td th:text="${bottom.color}"></td>
+            <td th:text="${bottom.material}"></td>
+            <td th:text="${bottom.size}"></td>
+            <td th:text="${bottom.season}"></td>
+            <img th:src="${bottom.imgUrl}">
+            <td>
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == bottom.user.id}">
+                    <a th:href="@{/update/{id}(id=${bottom.id})}">Update</a>
+                    <a th:href="@{/delete/{id}(id=${bottom.id})}">Delete</a>
+                </span>
+                </div>
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/delete/{id}(id=${bottom.id})}">Delete</a>
+                    <a th:href="@{/update/{id}(id=${bottom.id})}">Update</a>
+                </div>
+        </tr>
+        </td>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <h1>Footwear</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Color</th>
+            <th>Material</th>
+            <th>Size</th>
+            <th>Season</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="footwear : ${footwears}">
+            <td th:text="${footwear.color}"></td>
+            <td th:text="${footwear.material}"></td>
+            <td th:text="${footwear.size}"></td>
+            <td th:text="${footwear.season}"></td>
+            <img th:src="${footwear.imgUrl}">
+            <td>
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == footwear.user.id}">
+                    <a th:href="@{/update/{id}(id=${footwear.id})}">Update</a>
+                    <a th:href="@{/delete/{id}(id=${footwear.id})}">Delete</a>
+                </span>
+                </div>
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/delete/{id}(id=${footwear.id})}">Delete</a>
+                    <a th:href="@{/update/{id}(id=${footwear.id})}">Update</a>
+                </div>
+        </tr>
+        </td>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <h1>Accessories</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Color</th>
+            <th>Material</th>
+            <th>Size</th>
+            <th>Season</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="accessories : ${accessories}">
+            <td th:text="${accessories.color}"></td>
+            <td th:text="${accessories.material}"></td>
+            <td th:text="${accessories.size}"></td>
+            <td th:text="${accessories.season}"></td>
+            <img th:src="${accessories.imgUrl}">
+            <td>
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == accessories.user.id}">
+                    <a th:href="@{/update/{id}(id=${accessories.id})}">Update</a>
+                    <a th:href="@{/delete/{id}(id=${accessories.id})}">Delete</a>
+                </span>
+                </div>
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/delete/{id}(id=${accessories.id})}">Delete</a>
+                    <a th:href="@{/update/{id}(id=${accessories.id})}">Update</a>
+                </div>
+        </tr>
+        </td>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
