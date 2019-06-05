@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CesarController {
     @Autowired
+    UserService userService;
+
+    @Autowired
     ClosetRepository closetRepository;
 
     @Autowired
@@ -27,6 +30,8 @@ public class CesarController {
 
     @RequestMapping("/clothes")
     public String showAllClothes(Model model){
-
+        model.addAttribute("user", userService.getCurrentUser());
+        model.addAttribute("closets", closetRepository.findAllByUser(userService.getCurrentUser()));
+        return "HelloWorld";
     }
 }
