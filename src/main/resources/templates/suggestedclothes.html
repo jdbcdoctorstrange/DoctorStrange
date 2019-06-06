@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="base :: nav"></div>
+
+<h2>Suggested outfit</h2>
+<p th:inline="text">
+    You are [[${location}]] and your occasion is [[${occasion}]].
+</p>
+<div class="container">
+    Top:
+    <ul th:href="@{/addtop}">
+        <th:block th:each="top : ${closet.tops}">
+            <div th:if="${top.imgUrl} !=null">
+                <img th:src="${top.imgUrl}" />
+                <hr />
+            </div>
+            <li th:inline="text">[[${top.color}]] [[${top.material}]]</li>
+            <li th:inline="text">[[${top.size}]] [[${top.season}]]</li>
+        </th:block>
+    </ul>
+    Jacket:
+    <ul th:href="@{/addjacket}">
+        <th:block th:each="jacket : ${closet.jackets}">
+            <div th:if="${jacket.imgUrl} !=null">
+                <img th:src="${jacket}.imgUrl}" />
+                <hr />
+            </div>
+            <li th:inline="text">[[${jacket.color}]] [[${jacket.material}]]</li>
+            <li th:inline="text">[[${jacket.size}]] [[${jacket.season}]]</li>
+        </th:block>
+    </ul>
+    Bottom:
+    <ul th:href="@{/addbottom}">
+        <th:block th:each="bottom : ${closet.bottoms}">
+            <div th:if="${jacket.imgUrl} !=null">
+                <img th:src="${bottom}.imgUrl}" />
+                <hr />
+            </div>
+            <li th:inline="text">[[${bottom.color}]] [[${bottom.material}]]</li>
+            <li th:inline="text">[[${bottom.size}]] [[${bottom.season}]]</li>
+        </th:block>
+    </ul>
+    Footwear:
+    <ul th:href="@{/addfootwear}">
+        <th:block th:each="footwear : ${closet.footwears}">
+            <div th:if="${footwear.imgUrl} !=null">
+                <img th:src="${footwear}.imgUrl}" />
+                <hr />
+            </div>
+            <li th:inline="text">[[${footwear}.color}]] [[${footwear.material}]]</li>
+            <li th:inline="text">[[${footwear.size}]] [[${footwear}.season}]]</li>
+        </th:block>
+    </ul>
+    Accessories:
+    <ul th:href="@{/addaccessories}">
+        <th:block th:each="accessories : ${closet.accessories}">
+            <div th:if="${accessories.imgUrl} !=null">
+                <img th:src="${accessories}.imgUrl}" />
+                <hr />
+            </div>
+            <li th:inline="text">[[${accessories}.color}]] [[${accessories.material}]]</li>
+            <li th:inline="text">[[${accessories.size}]] [[${accessories}.season}]]</li>
+        </th:block>
+    </ul>
+
+</div>
+<h2> Enjoy your day!</h2>
+</body>
+</html>

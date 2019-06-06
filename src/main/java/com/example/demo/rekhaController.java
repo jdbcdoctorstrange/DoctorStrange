@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 
 @SuppressWarnings("ALL")
 @Controller
@@ -22,6 +23,19 @@ public class rekhaController {
     ClosetRepository closetRepository;
     @Autowired
     TopRepository topRepository;
+
+    @Autowired
+    BottomRepository bottomRepository;
+
+    @Autowired
+    JacketRepository jacketRepository;
+
+    @Autowired
+    FootwearRepository footwearRepository;
+
+    @Autowired
+    AccessoriesRepository accessoriesRepository;
+
     @Autowired
     RoleRepository roleRepository;
 
@@ -75,14 +89,12 @@ public class rekhaController {
 
         User user = userService.getCurrentUser();
         Top top = new Top();
-        Closet closet = new Closet();
-        top.setCloset(closet);
-        User tuser = new User();
-        top.getCloset().setUser(tuser);
-        top.getCloset().setUser(user);
+
+
         // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
         model.addAttribute("user", user );
         model.addAttribute("top", top);
+        model.addAttribute("closets", closetRepository.findAll());
         model.addAttribute("file", top.getImgUrl());
         return "topform";
     }
@@ -109,12 +121,193 @@ public class rekhaController {
         }
         System.out.println("Debug 3>>>>>>>>>>>");
         //top.setUid(userService.getCurrentUser().getId());
-        top.getCloset().setUser(userService.getCurrentUser());
+       // top.getCloset().setUser(userService.getCurrentUser());
         
         topRepository.save(top);
         System.out.println("Debug 4>>>>>>>>>>>");
         return "redirect:/";
     }
+
+    @GetMapping("/addbottom")
+    public String bottomForm(Model model) {
+
+        User user = userService.getCurrentUser();
+        Bottom bottom = new Bottom();
+
+
+        // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
+        model.addAttribute("user", user );
+        model.addAttribute("top", bottom);
+        model.addAttribute("closets", closetRepository.findAll());
+        model.addAttribute("file", bottom.getImgUrl());
+        return "bottomform";
+    }
+
+    @PostMapping("/processbottom")
+    public String processbottom(@Valid Bottom bottom, BindingResult result, Model model,
+                             @RequestParam("file")MultipartFile file) {
+
+        System.out.println("Debug 1>>>>>>>>>>>");
+        if (result.hasErrors()) {
+            model.addAttribute("users", userRepository.findAll());
+            return "bottomform";
+        }
+        System.out.println("Debug 2>>>>>>>>>>>");
+        if(!file.isEmpty()) {
+            try {
+                Map uploadResult = cloudc.upload(file.getBytes(),
+                        ObjectUtils.asMap("resourcetype", "auto"));
+                bottom.setImgUrl(uploadResult.get("url").toString());
+            }catch (IOException e) {
+                e.printStackTrace();
+                return "bottomform";
+            }
+        }
+        System.out.println("Debug 3>>>>>>>>>>>");
+        //top.setUid(userService.getCurrentUser().getId());
+        // top.getCloset().setUser(userService.getCurrentUser());
+
+        bottomRepository.save(bottom);
+        System.out.println("Debug 4>>>>>>>>>>>");
+        return "redirect:/";
+    }
+
+    @GetMapping("/addjacket")
+    public String jacketForm(Model model) {
+
+        User user = userService.getCurrentUser();
+        Jacket jacket = new Jacket();
+
+
+        // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
+        model.addAttribute("user", user );
+        model.addAttribute("jacket", jacket);
+        model.addAttribute("closets", closetRepository.findAll());
+        model.addAttribute("file", jacket.getImgUrl());
+        return "bottomform";
+    }
+
+    @PostMapping("/processjacket")
+    public String processjacket(@Valid Jacket jacket, BindingResult result, Model model,
+                                @RequestParam("file")MultipartFile file) {
+
+        System.out.println("Debug 1>>>>>>>>>>>");
+        if (result.hasErrors()) {
+            model.addAttribute("users", userRepository.findAll());
+            return "jacketform";
+        }
+        System.out.println("Debug 2>>>>>>>>>>>");
+        if(!file.isEmpty()) {
+            try {
+                Map uploadResult = cloudc.upload(file.getBytes(),
+                        ObjectUtils.asMap("resourcetype", "auto"));
+                jacket.setImgUrl(uploadResult.get("url").toString());
+            }catch (IOException e) {
+                e.printStackTrace();
+                return "jacketform";
+            }
+        }
+        System.out.println("Debug 3>>>>>>>>>>>");
+        //top.setUid(userService.getCurrentUser().getId());
+        // top.getCloset().setUser(userService.getCurrentUser());
+
+        jacketRepository.save(jacket);
+        System.out.println("Debug 4>>>>>>>>>>>");
+        return "redirect:/";
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    @GetMapping("/addfootwear")
+    public String footwearForm(Model model) {
+
+        User user = userService.getCurrentUser();
+        Footwear footwear = new Footwear();
+
+
+        // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
+        model.addAttribute("user", user );
+        model.addAttribute("footwear", footwear);
+        model.addAttribute("closets", closetRepository.findAll());
+        model.addAttribute("file", footwear.getImgUrl());
+        return "footwearform";
+    }
+
+    @PostMapping("/processfootwear")
+    public String processFootwear(@Valid Footwear footwear, BindingResult result, Model model,
+                                @RequestParam("file")MultipartFile file) {
+
+        System.out.println("Debug 1>>>>>>>>>>>");
+        if (result.hasErrors()) {
+            model.addAttribute("users", userRepository.findAll());
+            return "footwearform";
+        }
+        System.out.println("Debug 2>>>>>>>>>>>");
+        if(!file.isEmpty()) {
+            try {
+                Map uploadResult = cloudc.upload(file.getBytes(),
+                        ObjectUtils.asMap("resourcetype", "auto"));
+                footwear.setImgUrl(uploadResult.get("url").toString());
+            }catch (IOException e) {
+                e.printStackTrace();
+                return "footwearform";
+            }
+        }
+        System.out.println("Debug 3>>>>>>>>>>>");
+        //top.setUid(userService.getCurrentUser().getId());
+        // top.getCloset().setUser(userService.getCurrentUser());
+
+        footwearRepository.save(footwear);
+        System.out.println("Debug 4>>>>>>>>>>>");
+        return "redirect:/";
+    }
+    //------------------------------------------------------------------------------------------------------------------
+
+    @GetMapping("/addaccessory")
+    public String accessoryForm(Model model) {
+
+        User user = userService.getCurrentUser();
+        Accessories accessory = new Accessories();
+
+
+        // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
+        model.addAttribute("user", user );
+        model.addAttribute("accessory", accessory);
+        model.addAttribute("closets", closetRepository.findAll());
+        model.addAttribute("file", accessory.getImgUrl());
+        return "accessoryform";
+    }
+
+    @PostMapping("/processaccessory")
+    public String processAccessory(@Valid Accessories accessory, BindingResult result, Model model,
+                                  @RequestParam("file")MultipartFile file) {
+
+        System.out.println("Debug 1>>>>>>>>>>>");
+        if (result.hasErrors()) {
+            model.addAttribute("users", userRepository.findAll());
+            return "accessoryform";
+        }
+        System.out.println("Debug 2>>>>>>>>>>>");
+        if(!file.isEmpty()) {
+            try {
+                Map uploadResult = cloudc.upload(file.getBytes(),
+                        ObjectUtils.asMap("resourcetype", "auto"));
+                accessory.setImgUrl(uploadResult.get("url").toString());
+            }catch (IOException e) {
+                e.printStackTrace();
+                return "accessoryform";
+            }
+        }
+        System.out.println("Debug 3>>>>>>>>>>>");
+        //top.setUid(userService.getCurrentUser().getId());
+        // top.getCloset().setUser(userService.getCurrentUser());
+
+        accessoriesRepository.save(accessory);
+        System.out.println("Debug 4>>>>>>>>>>>");
+        return "redirect:/";
+    }
+
+
 
     @RequestMapping("/detail/{id}")
     public String showCloset(@PathVariable("id") long id, Model model) {
@@ -123,6 +316,12 @@ public class rekhaController {
         model.addAttribute("user", user );
         closetRepository.findById(id).ifPresent(o -> model.addAttribute("closet", o));
         // model.addAttribute("message", messageRepository.findById(id));
+        Optional <Closet> closet = closetRepository.findById(id);
+        model.addAttribute("tops", closetRepository.findById(id).get().getTops());
+        model.addAttribute("jackets", closetRepository.findById(id).get().getJackets());
+        model.addAttribute("bottoms", closetRepository.findById(id).get().getPants());
+        model.addAttribute("footwears", closetRepository.findById(id).get().getFootwears());
+        model.addAttribute("accessories", closetRepository.findById(id).get().getAccessories());
 
         return "show";
     }
@@ -141,10 +340,11 @@ public class rekhaController {
             return "closetform";
         }
         else
-            return "redirect:/";
+            return "redirect:/listclosets";
     }
 
     @RequestMapping("/delete/{id}")
+
     public String delCloset(@PathVariable("id") long id) {
         User user = userService.getCurrentUser();
         Closet cls = closetRepository.findByIdAndUid(id,userService.getCurrentUser().getId());

@@ -19,6 +19,9 @@ public class Bottom{
     @ManyToOne(fetch = FetchType.EAGER)
     private Closet closet;
 
+    public Bottom() {
+    }
+
     public Bottom(String color, String material, String size, String season, String imgUrl, String type, String category) {
         this.color = color;
         this.material = material;

@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Closet Application</title>
-    <th:block th:insert="base :: header"></th:block>
-
+    <meta charset="UTF-8">
+    <title>Closet</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<div><h2>Welcome [[${user.firstName}]] [[${user.lastName}]] </h2></div>
-</br>
-<div th:replace="base :: navlinks"></div>
+<div th:replace="base :: nav"></div>
 
-
-<h2>Title: <span th:text="${closet.closetName}"></span></h2> <br/>
 <div class="container">
     <h1>Tops</h1>
     <table class="table table-bordered">
@@ -21,8 +17,6 @@
             <th>Material</th>
             <th>Size</th>
             <th>Season</th>
-            <th>Image</th>
-            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -31,15 +25,18 @@
             <td th:text="${top.material}"></td>
             <td th:text="${top.size}"></td>
             <td th:text="${top.season}"></td>
-            <td><img th:src="${top.imgUrl}" height="400" width="400"/></td>
+            <img th:src="${top.imgUrl}">
             <td>
-                <div class="nav-item">
-                    <span>
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == top.user.id}">
                     <a th:href="@{/update/{id}(id=${top.id})}">Update</a>
                     <a th:href="@{/delete/{id}(id=${top.id})}">Delete</a>
                 </span>
                 </div>
-
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/delete/{id}(id=${top.id})}">Delete</a>
+                    <a th:href="@{/update/{id}(id=${top.id})}">Update</a>
+                </div>
         </tr>
         </td>
         </tbody>
@@ -54,8 +51,6 @@
             <th>Material</th>
             <th>Size</th>
             <th>Season</th>
-            <th>Image</th>
-            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -66,13 +61,16 @@
             <td th:text="${jacket.season}"></td>
             <img th:src="${jacket.imgUrl}">
             <td>
-                <div class="nav-item">
-                    <span>
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == jacket.user.id}">
                     <a th:href="@{/update/{id}(id=${jacket.id})}">Update</a>
                     <a th:href="@{/delete/{id}(id=${jacket.id})}">Delete</a>
                 </span>
                 </div>
-
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/delete/{id}(id=${jacket.id})}">Delete</a>
+                    <a th:href="@{/update/{id}(id=${jacket.id})}">Update</a>
+                </div>
         </tr>
         </td>
         </tbody>
@@ -87,8 +85,6 @@
             <th>Material</th>
             <th>Size</th>
             <th>Season</th>
-            <th>Image</th>
-            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -99,11 +95,15 @@
             <td th:text="${bottom.season}"></td>
             <img th:src="${bottom.imgUrl}">
             <td>
-                <div class="nav-item">
-                    <span>
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == bottom.user.id}">
                     <a th:href="@{/update/{id}(id=${bottom.id})}">Update</a>
                     <a th:href="@{/delete/{id}(id=${bottom.id})}">Delete</a>
                 </span>
+                </div>
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/delete/{id}(id=${bottom.id})}">Delete</a>
+                    <a th:href="@{/update/{id}(id=${bottom.id})}">Update</a>
                 </div>
         </tr>
         </td>
@@ -119,8 +119,6 @@
             <th>Material</th>
             <th>Size</th>
             <th>Season</th>
-            <th>Image</th>
-            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -131,11 +129,15 @@
             <td th:text="${footwear.season}"></td>
             <img th:src="${footwear.imgUrl}">
             <td>
-                <div class="nav-item">
-                    <span>
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == footwear.user.id}">
                     <a th:href="@{/update/{id}(id=${footwear.id})}">Update</a>
                     <a th:href="@{/delete/{id}(id=${footwear.id})}">Delete</a>
                 </span>
+                </div>
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/delete/{id}(id=${footwear.id})}">Delete</a>
+                    <a th:href="@{/update/{id}(id=${footwear.id})}">Update</a>
                 </div>
         </tr>
         </td>
@@ -151,41 +153,30 @@
             <th>Material</th>
             <th>Size</th>
             <th>Season</th>
-            <th>Image</th>
-            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="accessory : ${accessories}">
-            <td th:text="${accessory.color}"></td>
-            <td th:text="${accessory.material}"></td>
-            <td th:text="${accessory.size}"></td>
-            <td th:text="${accessory.season}"></td>
-            <img th:src="${accessory.imgUrl}">
+        <tr th:each="accessories : ${accessories}">
+            <td th:text="${accessories.color}"></td>
+            <td th:text="${accessories.material}"></td>
+            <td th:text="${accessories.size}"></td>
+            <td th:text="${accessories.season}"></td>
+            <img th:src="${accessories.imgUrl}">
             <td>
-                <div class="nav-item">
-                    <span>
-                    <a th:href="@{/update/{id}(id=${accessory.id})}">Update</a>
-                    <a th:href="@{/delete/{id}(id=${accessory.id})}">Delete</a>
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == accessories.user.id}">
+                    <a th:href="@{/update/{id}(id=${accessories.id})}">Update</a>
+                    <a th:href="@{/delete/{id}(id=${accessories.id})}">Delete</a>
                 </span>
+                </div>
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/delete/{id}(id=${accessories.id})}">Delete</a>
+                    <a th:href="@{/update/{id}(id=${accessories.id})}">Update</a>
                 </div>
         </tr>
         </td>
         </tbody>
     </table>
 </div>
-<h2><a th:href="@{/delete/{id}(id=${closet.id})}">Delete this closet</a></h2>
-
-</p>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
 </body>
 </html>
