@@ -47,21 +47,6 @@ public class DataLoader implements CommandLineRunner{
 
         user = new User("admin@adm.com",passwordEncoder.encode("password"),"Admin","User",true,"admin");
         user.setRoles(Arrays.asList(adminRole));
-
-
-        Top shirt1 = new Top("Blue",
-                "Cotton",
-                "M",
-                "Summer",
-                "https://res.cloudinary.com/dn5oij7hb/image/upload/v1559743100/81SPIOgoi1L._UY550_.jpg",
-                "polo",
-                "informal",
-                "short");
-        Closet closet = new Closet();
-        shirt1.setCloset(closet);
-        closet.setUser(user);
-        closet.setTops(Arrays.asList(shirt1));
-        user.setClosets(Arrays.asList(closet));
         userRepository.save(user);
     }
 }
