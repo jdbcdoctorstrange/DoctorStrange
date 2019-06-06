@@ -31,16 +31,15 @@ public class Juliacontroller {
 
 
     @RequestMapping("/process")
-    public String processUserForm(@RequestParam("occasion") String occasion, Model model) {
+    public String processUserForm(Model model) {
+        model.addAttribute("user", userService.getCurrentUser());
+        return "redirect:/suggestedclothes";
+    }
+
+    @RequestMapping("/suggestedclothes")
+    public String suggested(Model model){
         model.addAttribute("user", userService.getCurrentUser());
         return "suggestedclothes";
     }
-
-//    @RequestMapping("/list")
-//    public String getlist(Model model) {
-//        model.addAttribute("user", userService.getCurrentUser());
-//        model.addAttribute("tops", userService.getCurrentUser());
-//        return "list";
-//    }
 
 }
