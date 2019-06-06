@@ -357,35 +357,68 @@ public class rekhaController {
     }
 
     @GetMapping("/addpackinglist")
-    public String packingForm(@PathVariable("id") long id,Model model) {
-
+    public String packingForm(Model model) {
         User user = userService.getCurrentUser();
         // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
         model.addAttribute("user", user );
-        Closet pcloset = new Closet();
-        pcloset.setClosetName("Packing closet");
-        closetRepository.findById(id).ifPresent(o -> model.addAttribute("closet", o));
+
+
+
+
         // model.addAttribute("message", messageRepository.findById(id));
-        Optional <Closet> closet = closetRepository.findById(id);
-        model.addAttribute("tops", closetRepository.findById(id).get().getTops());
-        model.addAttribute("jackets", closetRepository.findById(id).get().getJackets());
-        model.addAttribute("bottoms", closetRepository.findById(id).get().getPants());
-        model.addAttribute("footwears", closetRepository.findById(id).get().getFootwears());
-        model.addAttribute("accessories", closetRepository.findById(id).get().getAccessories());
-        model.addAttribute("closet", pcloset);
+//        model.addAttribute("tops", pcloset.getTops());
+//        model.addAttribute("jackets", pcloset.getJackets());
+//        model.addAttribute("bottoms", pcloset.getPants());
+//        model.addAttribute("footwears", pcloset.getFootwears());
+//        model.addAttribute("accessories", pcloset.getAccessories());
+        Closet closet = closetRepository.findByUidAndClosetName(user.getId(), "Packing closet");
+
+        if(closet == null) {
+            model.addAttribute("pcloset", new Closet());
+        } else {
+            System.out.println("Closet found id"+closet.getId()+closet.getClosetName());
+            model.addAttribute("pcloset", closet);
+        }
+
+        model.addAttribute("closets", closetRepository.findAllClosetsByUid(user.getId()));
 
         return "packinglist";
     }
 
     @PostMapping("/processpackinglist")
-    public String processPacking(@Valid Closet closet, Model model) {
+    public String processPacking(@Valid @RequestParam("selectedcloset") Closet closet,
+                                 @ModelAttribute("pcloset") Closet pcloset,
+                                 Model model) {
         User user = userService.getCurrentUser();
         //top.setUid(userService.getCurrentUser().getId());
         // top.getCloset().setUser(userService.getCurrentUser());
 
         //Loop through all tops and check if selected
+        System.out.println("The selected closet id "+closet.getId());
+        pcloset.setClosetName("Packing closet");
+        pcloset.setUid(user.getId());
+        pcloset.setUser(user);
+        user.setCloset(pcloset);
         userRepository.save(user);
+       // closetRepository.save(pcloset);
         System.out.println("Debug 4>>>>>>>>>>>");
+        model.addAttribute("user", user);
+        model.addAttribute("pcloset", pcloset);
+        model.addAttribute("selectedcloset", closet);
+        return "packingitem";
+    }
+
+    @PostMapping("/processpackingitem")
+    public String processPackingItem(@Valid Closet pcloset, Model model) {
+        User user = userService.getCurrentUser();
+        pcloset.set
+        //closetRepository.save(pcloset);
+        //userRepository.save(user);
+        // closetRepository.save(pcloset);
+        System.out.println("Debug 4>>>>>>>>>>>");
+        model.addAttribute("user", user);
+        model.addAttribute("pcloset", pcloset);
+      //  model.addAttribute("selectedcloset", closet);
         return "redirect:/";
     }
 }

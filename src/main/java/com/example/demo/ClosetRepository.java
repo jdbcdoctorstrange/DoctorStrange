@@ -11,6 +11,7 @@ public interface ClosetRepository extends CrudRepository<Closet, Long>{
     Closet findByIdAndUid(Long id, Long uid);
 
     Closet findByIdAndUserId(Long id, Long uid);
+    Closet findByUidAndClosetName(Long uid, String name);
 
     @Override
     Optional<Closet> findById(Long aLong);

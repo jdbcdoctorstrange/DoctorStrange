@@ -9,184 +9,196 @@
 <div class="container">
 <div><h2>Welcome [[${user.firstName}]] [[${user.lastName}]] </h2></div>
 </br>
+
 <div th:replace="base :: navlinks"></div>
     <form action="#"
           th:action="@{/processpackinglist}"
-          th:object="${closet}"
           method="POST">
-        <input type="hidden" th:field="*{id}" />
-        <p>
-            Closet Name: <input type="text" th:field="*{closetName}" />
-            <span th:if="${#fields.hasErrors('closetName')}" th:errors="*{closetName}"></span> <br/>
+        <div class="form-group">
+            <label for="closetInput">Closet:</label>
+            <select id="closetInput" class="custom-select" name="selectedcloset">
+                <option value="">Select Closet</option>
+                <option th:each="pcloset : ${closets}"
+                        th:value="${pcloset.id}"
+                        th:text="${pcloset.closetName}"/>
+            </select><br/>
+        </div>
+        <!--
+       <p>
+           Closet Name: <input type="text" th:field="*{closetName}" />
+           <span th:if="${#fields.hasErrors('closetName')}" th:errors="*{closetName}"></span> <br/>
 
 
 <h2>Packing list </h2> <br/>
 <div class="container">
-    <h1>Tops</h1>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Color</th>
-            <th>Material</th>
-            <th>Size</th>
-            <th>Season</th>
-            <th>Image</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="top : ${tops}">
-            <td th:text="${top.color}"></td>
-            <td th:text="${top.material}"></td>
-            <td th:text="${top.size}"></td>
-            <td th:text="${top.season}"></td>
-            <td><img th:src="${top.imgUrl}" height="50" width="50"/></td>
-            <td>
-                <div class="nav-item">
-                    <span>
-            <td>
-                <input type="checkbox" name="topsSelect" th:value="${top.id}" /></td>
-                    </span>
+   <h1>Tops</h1>
+   <table class="table table-bordered">
+       <thead>
+       <tr>
+           <th>Color</th>
+           <th>Material</th>
+           <th>Size</th>
+           <th>Season</th>
+           <th>Image</th>
+           <th>Actions</th>
+       </tr>
+       </thead>
+       <tbody>
+       <tr th:each="top : ${tops}">
+           <td th:text="${top.color}"></td>
+           <td th:text="${top.material}"></td>
+           <td th:text="${top.size}"></td>
+           <td th:text="${top.season}"></td>
+           <td><img th:src="${top.imgUrl}" height="50" width="50"/></td>
+           <td>
+               <div class="nav-item">
+                   <span>
+           <td>
+               <input type="checkbox" name="topsSelect" th:value="${top.id}" /></td>
+                   </span>
 
-            </td>
+           </td>
 
-        </tr>
-        </td>
-        </tbody>
-    </table>
+       </tr>
+       </td>
+       </tbody>
+   </table>
 </div>
 <div class="container">
-    <h1>Jackets</h1>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Color</th>
-            <th>Material</th>
-            <th>Size</th>
-            <th>Season</th>
-            <th>Image</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="jacket : ${jackets}">
-            <td th:text="${jacket.color}"></td>
-            <td th:text="${jacket.material}"></td>
-            <td th:text="${jacket.size}"></td>
-            <td th:text="${jacket.season}"></td>
-            <img th:src="${jacket.imgUrl}">
-            <td>
-                <div class="nav-item">
-                    <span>
-                    <a th:href="@{/update/{id}(id=${jacket.id})}">Update</a>
-                    <a th:href="@{/delete/{id}(id=${jacket.id})}">Delete</a>
-                </span>
-                </div>
+   <h1>Jackets</h1>
+   <table class="table table-bordered">
+       <thead>
+       <tr>
+           <th>Color</th>
+           <th>Material</th>
+           <th>Size</th>
+           <th>Season</th>
+           <th>Image</th>
+           <th>Actions</th>
+       </tr>
+       </thead>
+       <tbody>
+       <tr th:each="jacket : ${jackets}">
+           <td th:text="${jacket.color}"></td>
+           <td th:text="${jacket.material}"></td>
+           <td th:text="${jacket.size}"></td>
+           <td th:text="${jacket.season}"></td>
+           <img th:src="${jacket.imgUrl}">
+           <td>
+               <div class="nav-item">
+                   <span>
+                   <a th:href="@{/update/{id}(id=${jacket.id})}">Update</a>
+                   <a th:href="@{/delete/{id}(id=${jacket.id})}">Delete</a>
+               </span>
+               </div>
 
-        </tr>
-        </td>
-        </tbody>
-    </table>
+       </tr>
+       </td>
+       </tbody>
+   </table>
 </div>
 <div class="container">
-    <h1>Bottoms</h1>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Color</th>
-            <th>Material</th>
-            <th>Size</th>
-            <th>Season</th>
-            <th>Image</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="bottom : ${bottoms}">
-            <td th:text="${bottom.color}"></td>
-            <td th:text="${bottom.material}"></td>
-            <td th:text="${bottom.size}"></td>
-            <td th:text="${bottom.season}"></td>
-            <img th:src="${bottom.imgUrl}">
-            <td>
-                <div class="nav-item">
-                    <span>
-                    <a th:href="@{/update/{id}(id=${bottom.id})}">Update</a>
-                    <a th:href="@{/delete/{id}(id=${bottom.id})}">Delete</a>
-                </span>
-                </div>
-        </tr>
-        </td>
-        </tbody>
-    </table>
+   <h1>Bottoms</h1>
+   <table class="table table-bordered">
+       <thead>
+       <tr>
+           <th>Color</th>
+           <th>Material</th>
+           <th>Size</th>
+           <th>Season</th>
+           <th>Image</th>
+           <th>Actions</th>
+       </tr>
+       </thead>
+       <tbody>
+       <tr th:each="bottom : ${bottoms}">
+           <td th:text="${bottom.color}"></td>
+           <td th:text="${bottom.material}"></td>
+           <td th:text="${bottom.size}"></td>
+           <td th:text="${bottom.season}"></td>
+           <img th:src="${bottom.imgUrl}">
+           <td>
+               <div class="nav-item">
+                   <span>
+                   <a th:href="@{/update/{id}(id=${bottom.id})}">Update</a>
+                   <a th:href="@{/delete/{id}(id=${bottom.id})}">Delete</a>
+               </span>
+               </div>
+       </tr>
+       </td>
+       </tbody>
+   </table>
 </div>
 <div class="container">
-    <h1>Footwear</h1>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Color</th>
-            <th>Material</th>
-            <th>Size</th>
-            <th>Season</th>
-            <th>Image</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="footwear : ${footwears}">
-            <td th:text="${footwear.color}"></td>
-            <td th:text="${footwear.material}"></td>
-            <td th:text="${footwear.size}"></td>
-            <td th:text="${footwear.season}"></td>
-            <img th:src="${footwear.imgUrl}">
-            <td>
-                <div class="nav-item">
-                    <span>
-                    <a th:href="@{/update/{id}(id=${footwear.id})}">Update</a>
-                    <a th:href="@{/delete/{id}(id=${footwear.id})}">Delete</a>
-                </span>
-                </div>
-        </tr>
-        </td>
-        </tbody>
-    </table>
+   <h1>Footwear</h1>
+   <table class="table table-bordered">
+       <thead>
+       <tr>
+           <th>Color</th>
+           <th>Material</th>
+           <th>Size</th>
+           <th>Season</th>
+           <th>Image</th>
+           <th>Actions</th>
+       </tr>
+       </thead>
+       <tbody>
+       <tr th:each="footwear : ${footwears}">
+           <td th:text="${footwear.color}"></td>
+           <td th:text="${footwear.material}"></td>
+           <td th:text="${footwear.size}"></td>
+           <td th:text="${footwear.season}"></td>
+           <img th:src="${footwear.imgUrl}">
+           <td>
+               <div class="nav-item">
+                   <span>
+                   <a th:href="@{/update/{id}(id=${footwear.id})}">Update</a>
+                   <a th:href="@{/delete/{id}(id=${footwear.id})}">Delete</a>
+               </span>
+               </div>
+       </tr>
+       </td>
+       </tbody>
+   </table>
 </div>
 <div class="container">
-    <h1>Accessories</h1>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Color</th>
-            <th>Material</th>
-            <th>Size</th>
-            <th>Season</th>
-            <th>Image</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="accessory : ${accessories}">
-            <td th:text="${accessory.color}"></td>
-            <td th:text="${accessory.material}"></td>
-            <td th:text="${accessory.size}"></td>
-            <td th:text="${accessory.season}"></td>
-            <img th:src="${accessory.imgUrl}">
-            <td>
-                <div class="nav-item">
-                    <span>
-                    <a th:href="@{/update/{id}(id=${accessory.id})}">Update</a>
-                    <a th:href="@{/delete/{id}(id=${accessory.id})}">Delete</a>
-                </span>
-                </div>
-        </tr>
-        </td>
-        </tbody>
-    </table>
+   <h1>Accessories</h1>
+   <table class="table table-bordered">
+       <thead>
+       <tr>
+           <th>Color</th>
+           <th>Material</th>
+           <th>Size</th>
+           <th>Season</th>
+           <th>Image</th>
+           <th>Actions</th>
+       </tr>
+       </thead>
+       <tbody>
+       <tr th:each="accessory : ${accessories}">
+           <td th:text="${accessory.color}"></td>
+           <td th:text="${accessory.material}"></td>
+           <td th:text="${accessory.size}"></td>
+           <td th:text="${accessory.season}"></td>
+           <img th:src="${accessory.imgUrl}">
+           <td>
+               <div class="nav-item">
+                   <span>
+                   <a th:href="@{/update/{id}(id=${accessory.id})}">Update</a>
+                   <a th:href="@{/delete/{id}(id=${accessory.id})}">Delete</a>
+               </span>
+               </div>
+       </tr>
+       </td>
+       </tbody>
+   </table>
+
 </div>
+ <-->
         <input type="submit" value="Submit" />
         </p>
     </form>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

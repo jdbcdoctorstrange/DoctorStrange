@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Packing items from closet [[${selectedcloset.closetName}]]</title>
+</head>
+
+<div class="container">
+<h2>Title: <span th:text="${selectedcloset.closetName}"></span></h2> <br/>
+
+    <form action="#"
+          th:action="@{/processpackingitem}"
+          th:object="${pcloset}"
+          enctype="multipart/form-data"
+          method="POST">
+        <input type="hidden" th:field="*{id}" />
+
+
+    <h1>Tops</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Color</th>
+            <th>Material</th>
+            <th>Size</th>
+            <th>Season</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="top : ${selectedcloset.tops}">
+            <td th:text="${top.color}"></td>
+            <td th:text="${top.material}"></td>
+            <td th:text="${top.size}"></td>
+            <td th:text="${top.season}"></td>
+            <td><img th:src="${top.imgUrl}" height="50" width="50"/></td>
+            <td>
+            <td>
+                <input type="checkbox" th:name="${pcloset.tops.add(top.id)}" value="${top}" />
+            </td>
+        </tr>
+        </tbody>
+    </table>
+        <input type="submit" value="Submit" />
+        </p>
+    </form>
+
+</div>
+
+<body>
+
+</body>
+</html>
