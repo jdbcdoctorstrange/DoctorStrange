@@ -119,4 +119,5 @@ public class User {
     public void setCloset(Closet closet) {
         this.closets.add(closet);
     }
-}
+
+   }

@@ -355,4 +355,37 @@ public class rekhaController {
 
         return "redirect:/";
     }
+
+    @GetMapping("/addpackinglist")
+    public String packingForm(@PathVariable("id") long id,Model model) {
+
+        User user = userService.getCurrentUser();
+        // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
+        model.addAttribute("user", user );
+        Closet pcloset = new Closet();
+        pcloset.setClosetName("Packing closet");
+        closetRepository.findById(id).ifPresent(o -> model.addAttribute("closet", o));
+        // model.addAttribute("message", messageRepository.findById(id));
+        Optional <Closet> closet = closetRepository.findById(id);
+        model.addAttribute("tops", closetRepository.findById(id).get().getTops());
+        model.addAttribute("jackets", closetRepository.findById(id).get().getJackets());
+        model.addAttribute("bottoms", closetRepository.findById(id).get().getPants());
+        model.addAttribute("footwears", closetRepository.findById(id).get().getFootwears());
+        model.addAttribute("accessories", closetRepository.findById(id).get().getAccessories());
+        model.addAttribute("closet", pcloset);
+
+        return "packinglist";
+    }
+
+    @PostMapping("/processpackinglist")
+    public String processPacking(@Valid Closet closet, Model model) {
+        User user = userService.getCurrentUser();
+        //top.setUid(userService.getCurrentUser().getId());
+        // top.getCloset().setUser(userService.getCurrentUser());
+
+        //Loop through all tops and check if selected
+        userRepository.save(user);
+        System.out.println("Debug 4>>>>>>>>>>>");
+        return "redirect:/";
+    }
 }
