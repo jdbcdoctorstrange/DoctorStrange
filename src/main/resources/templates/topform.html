@@ -28,6 +28,9 @@
         Size: <input type="text" th:field="*{size}" />
         <span th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></span> <br/>
 
+        <!--Sleeves: <input type="text" th:field="*{sleeves}" />-->
+        <!--<span th:if="${#fields.hasErrors('sleeves')}" th:errors="*{sleeves}"></span> <br/>-->
+
         <select th:field="*{season}">
             <option th:value="'Spring'" th:text="Spring"></option>
             <option th:value="'Summer'" th:text="Summer"></option>
