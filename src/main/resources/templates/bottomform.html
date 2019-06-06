@@ -29,6 +29,12 @@
         Size: <input type="text" th:field="*{size}" />
         <span th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></span> <br/>
 
+        Category: <select th:field="*{category}">
+        <option th:value="'pants'"  th:text="Pants"></option>
+        <option th:value="'shorts'" th:text="Shorts"></option>
+        <option th:value="'skirts'" th:text="Skirts"></option>
+    </select>
+
         <select th:field="*{season}">
             <option th:value="'Spring'" th:text="Spring"></option>
             <option th:value="'Summer'" th:text="Summer"></option>

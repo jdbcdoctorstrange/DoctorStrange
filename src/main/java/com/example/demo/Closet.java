@@ -20,19 +20,19 @@ public class Closet {
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
-    @OneToMany(mappedBy = "closet", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "closet", orphanRemoval = true)
     private Collection<Jacket> jackets;
 
-    @OneToMany(mappedBy = "closet", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "closet", orphanRemoval = true)
     Collection<Top> tops;
 
-    @OneToMany(mappedBy = "closet", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "closet", orphanRemoval = true)
     Collection<Bottom> bottoms;
 
-    @OneToMany(mappedBy = "closet", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "closet", orphanRemoval = true)
     Collection<Footwear> footwears;
 
-    @OneToMany(mappedBy = "closet", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "closet", orphanRemoval = true)
     Collection<Accessories> accessories;
 
     public Closet() {
