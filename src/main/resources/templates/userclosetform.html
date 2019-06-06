@@ -1,28 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Today's Outfit</title>
     <th:block th:insert="base :: header"></th:block>
 </head>
 <body>
 <div th:replace="base :: navlinks"></div>
 <div class="container">
+    <div class="col-3"></div>
+    <div class="col-6 pt-6">
+        <form action="#" th:action="@{/process}" th:object="${user}"
+              method="post"enctype="multipart/form-data" >
+            <input type="hidden" th:field="*{id}"/>
 
-    <form action="#" th:action="@{/process}" th:object="${user}"
-          method="post"enctype="multipart/form-data" >
-        <input type="hidden" th:field="*{id}"/>
+            <label for="location">Location: </label>
+            <input id="location" type="text" /><br/>
 
-        Location: <input type="text" /><br/>
+            <lable for="occasion">Occasion:</lable>
+            <select id="occasion" name="occasion" />
+            <option value="formal">Formal</option>
+            <option value="informal">Informal</option>
+            </select><br />
 
-        Occasion :<select name="occasion" />
-        <option value="formal">Formal</option>
-        <option value="informal">Informal</option>
-    </select><br />
+            <input type="submit" value="Submit"/>
+        </form>
+    </div>
+    <div class="col-3"></div>
 
-        <input type="submit" value="Submit"/>
-    </form>
 </div>
-
+<div th:replace="base :: bootstrap-js"></div>
 </body>
 </html>

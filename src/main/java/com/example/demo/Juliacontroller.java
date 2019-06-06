@@ -23,23 +23,17 @@ public class Juliacontroller {
     @Autowired
     ClosetRepository closetRepository;
 
-    @RequestMapping("/form")
-    public String getUserForm(Model model) {
-        model.addAttribute("user", userService.getCurrentUser());
-        return "userclosetform";
-    }
-
-
-    @RequestMapping("/process")
-    public String processUserForm(Model model) {
-        model.addAttribute("user", userService.getCurrentUser());
-        return "redirect:/suggestedclothes";
-    }
-
-    @RequestMapping("/suggestedclothes")
-    public String suggested(Model model){
-        model.addAttribute("user", userService.getCurrentUser());
-        return "suggestedclothes";
-    }
+//    @RequestMapping("/suggestedform")
+//    public String getUserForm(Model model) {
+//        model.addAttribute("user", userService.getCurrentUser());
+//        return "userclosetform";
+//    }
+//
+//
+//    @RequestMapping("/process")
+//    public String processUserForm(@RequestParam("occasion") String occasion, Model model) {
+//        model.addAttribute("user", userService.getCurrentUser());
+//        return "suggestedclothes";
+//    }
 
 }

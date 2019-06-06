@@ -330,21 +330,21 @@ public class rekhaController {
     public String updateCloset(@PathVariable("id") long id, Model model) {
         User user = userService.getCurrentUser();
         // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
-        model.addAttribute("user", user );
+        model.addAttribute("user", user);
         //model.addAttribute("message", messageRepository.findById(id));
         closetRepository.findById(id).ifPresent(o -> model.addAttribute("closet", o));
-        Closet cls = closetRepository.findByIdAndUid(id,userService.getCurrentUser().getId());
-
-        if(cls != null) {
+        Closet cls = closetRepository.findByIdAndUid(id, userService.getCurrentUser().getId());
+        if (cls != null) {
             System.out.println("Found closet\n");
+            cls.setUid(userService.getCurrentUser().getId());
+            closetRepository.save(cls);
             return "closetform";
-        }
-        else
+        } else {
             return "redirect:/listclosets";
+        }
     }
 
     @RequestMapping("/delete/{id}")
-
     public String delCloset(@PathVariable("id") long id) {
         User user = userService.getCurrentUser();
         Closet cls = closetRepository.findByIdAndUid(id,userService.getCurrentUser().getId());
@@ -352,7 +352,6 @@ public class rekhaController {
             closetRepository.deleteById(id);
             System.out.println("Found closet\n");
         }
-
         return "redirect:/";
     }
 }
