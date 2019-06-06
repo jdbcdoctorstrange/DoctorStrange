@@ -29,10 +29,10 @@
         <span th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></span> <br/>
 
         <select th:field="*{season}">
-            <option th:value="'Sp'" th:text="Spring"></option>
-            <option th:value="'Su'" th:text="Summer"></option>
-            <option th:value="'Fa'" th:text="Fall"></option>
-            <option th:value="'Wi'" th:text="Winter"></option>
+            <option th:value="'Spring'" th:text="Spring"></option>
+            <option th:value="'Summer'" th:text="Summer"></option>
+            <option th:value="'Fall'" th:text="Fall"></option>
+            <option th:value="'Winter'" th:text="Winter"></option>
         </select>
         <label for="file">Choose file to upload</label>
         <input type="file" id="file" name="file" /><br/><br/>
