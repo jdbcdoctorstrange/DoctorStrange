@@ -36,11 +36,4 @@ public class Juliacontroller {
 //        return "suggestedclothes";
 //    }
 
-//    @RequestMapping("/list")
-//    public String getlist(Model model) {
-//        model.addAttribute("user", userService.getCurrentUser());
-//        model.addAttribute("tops", userService.getCurrentUser());
-//        return "list";
-//    }
-
 }

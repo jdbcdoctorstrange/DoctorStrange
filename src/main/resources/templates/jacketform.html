@@ -5,6 +5,43 @@
     <title>Title</title>
 </head>
 <body>
+<form action="#"
+      th:action="@{/processjacket}"
+      th:object="${jacket}"
+      enctype="multipart/form-data"
+      method="POST">
+    <input type="hidden" th:field="*{id}" />
+    <p>
+        Closet:<select th:field="*{closet}">
+        <option th:each="closet : ${closets}"
+                th:value="${closet.id}"
+                th:text="${closet.closetName}"></option>
+    </select>
+        Color: <input type="text" th:field="*{color}" />
+        <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></span> <br/>
+
+        Material: <input type="text" th:field="*{material}" />
+        <span th:if="${#fields.hasErrors('material')}" th:errors="*{material}"></span> <br/>
+
+        Size: <input type="text" th:field="*{size}" />
+        <span th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></span> <br/>
+
+        <select th:field="*{season}">
+            <option th:value="'Spring'" th:text="Spring"></option>
+            <option th:value="'Summer'" th:text="Summer"></option>
+            <option th:value="'Fall'" th:text="Fall"></option>
+            <option th:value="'Winter'" th:text="Winter"></option>
+        </select>
+        <label for="file">Choose file to upload</label>
+        <input type="file" id="file" name="file" /><br/><br/>
+
+    <div th:if="*{imgUrl}" != null>
+        <img th:src ="*{imgUrl}" />
+        <hr />
+    </div>
+    <input type="submit" value="Submit" />
+    </p>
+</form>
 
 </body>
 </html>

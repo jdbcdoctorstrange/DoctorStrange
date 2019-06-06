@@ -137,7 +137,7 @@ public class rekhaController {
 
         // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
         model.addAttribute("user", user );
-        model.addAttribute("top", bottom);
+        model.addAttribute("bottom", bottom);
         model.addAttribute("closets", closetRepository.findAll());
         model.addAttribute("file", bottom.getImgUrl());
         return "bottomform";
@@ -184,7 +184,7 @@ public class rekhaController {
         model.addAttribute("jacket", jacket);
         model.addAttribute("closets", closetRepository.findAll());
         model.addAttribute("file", jacket.getImgUrl());
-        return "bottomform";
+        return "jacketform";
     }
 
     @PostMapping("/processjacket")
