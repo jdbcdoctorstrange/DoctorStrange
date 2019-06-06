@@ -20,22 +20,22 @@ public class Closet {
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
-    @OneToMany(mappedBy = "closet",orphanRemoval = true)
-    private Set<Jacket> jackets;
+    @OneToMany(mappedBy = "closet", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Collection<Jacket> jackets;
 
-    @OneToMany(mappedBy = "closet",orphanRemoval = true)
-    Set<Top> tops;
+    @OneToMany(mappedBy = "closet", cascade = CascadeType.ALL, orphanRemoval = true)
+    Collection<Top> tops;
 
-    @OneToMany(mappedBy = "closet",orphanRemoval = true)
-    Set<Bottom> pants;
+    @OneToMany(mappedBy = "closet", cascade = CascadeType.ALL, orphanRemoval = true)
+    Collection<Bottom> bottoms;
 
-    @OneToMany(mappedBy = "closet",orphanRemoval = true)
-    Set<Footwear> footwears;
+    @OneToMany(mappedBy = "closet", cascade = CascadeType.ALL, orphanRemoval = true)
+    Collection<Footwear> footwears;
 
-    @OneToMany(mappedBy = "closet")
-    Set<Accessories> accessories;
+    @OneToMany(mappedBy = "closet", cascade = CascadeType.ALL, orphanRemoval = true)
+    Collection<Accessories> accessories;
 
-    public Closet(){
+    public Closet() {
 
     }
 
@@ -47,38 +47,6 @@ public class Closet {
         this.id = id;
     }
 
-    public Collection<Jacket> getJackets() {
-        return jackets;
-    }
-
-    public void setJackets(Set<Jacket> jackets) {
-        this.jackets = jackets;
-    }
-
-    public Set<Top> getTops() {
-        return tops;
-    }
-
-    public void setTops(Set<Top> tops) {
-        this.tops = tops;
-    }
-
-    public Set<Bottom> getPants() {
-        return pants;
-    }
-
-    public void setPants(Set<Bottom> pants) {
-        this.pants = pants;
-    }
-
-    public Set<Footwear> getFootwears() {
-        return footwears;
-    }
-
-    public void setFootwears(Set<Footwear> footwears) {
-        this.footwears = footwears;
-    }
-
     public User getUser() {
         return user;
     }
@@ -87,11 +55,43 @@ public class Closet {
         this.user = user;
     }
 
-    public Set<Accessories> getAccessories() {
+    public Collection<Jacket> getJackets() {
+        return jackets;
+    }
+
+    public void setJackets(Collection<Jacket> jackets) {
+        this.jackets = jackets;
+    }
+
+    public Collection<Top> getTops() {
+        return tops;
+    }
+
+    public void setTops(Collection<Top> tops) {
+        this.tops = tops;
+    }
+
+    public Collection<Bottom> getPants() {
+        return bottoms;
+    }
+
+    public void setPants(Collection<Bottom> bottoms) {
+        this.bottoms = bottoms;
+    }
+
+    public Collection<Footwear> getFootwears() {
+        return footwears;
+    }
+
+    public void setFootwears(Collection<Footwear> footwears) {
+        this.footwears = footwears;
+    }
+
+    public Collection<Accessories> getAccessories() {
         return accessories;
     }
 
-    public void setAccessories(Set<Accessories> accessories) {
+    public void setAccessories(Collection<Accessories> accessories) {
         this.accessories = accessories;
     }
 
