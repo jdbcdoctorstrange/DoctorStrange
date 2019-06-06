@@ -39,10 +39,16 @@ public class CesarController {
 
 
     @RequestMapping("/process")
-    public String processUserForm(@RequestParam("occasion") String occasion, Model model) {
+    public String processUserForm(@RequestParam("occasion") String occasion,
+                                  Model model) {
         model.addAttribute("user", userService.getCurrentUser());
 
         return "suggestedclothes";
+    }
+
+    @RequestMapping("/currentweather")
+    public String showWeather(Model model){
+        return "currentWeather";
     }
 
 }
