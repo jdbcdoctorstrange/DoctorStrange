@@ -6,7 +6,8 @@
     <th:block th:insert="base :: header"></th:block>
 </head>
 <body>
-
+<div th:replace="base :: navlinks"></div>
+<div class="container">
 <form action="#"
       th:action="@{/processbottom}"
       th:object="${bottom}"
@@ -44,7 +45,6 @@
     <input type="submit" value="Submit" />
     </p>
 </form>
-
-
+</div>
 </body>
 </html>

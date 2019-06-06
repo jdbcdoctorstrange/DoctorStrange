@@ -6,8 +6,8 @@
     <th:block th:insert="base :: header"></th:block>
 </head>
 <body>
+<div th:replace="base :: navlinks"></div>
 <div class="container">
-    <div th:replace="base :: navlinks"></div>
     <div class="col-3"></div>
     <div class="col-6 pt-6">
         <form action="#" th:action="@{/process}" th:object="${user}"

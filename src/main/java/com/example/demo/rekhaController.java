@@ -352,7 +352,6 @@ public class rekhaController {
             closetRepository.deleteById(id);
             System.out.println("Found closet\n");
         }
-
         return "redirect:/";
     }
 }
