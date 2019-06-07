@@ -68,7 +68,7 @@ public class rekhaController {
 
     @PostMapping("/processcloset")
     public String processcloset(@Valid Closet closet, BindingResult result, Model model) {
-
+        model.addAttribute("user", userService.getCurrentUser());
         System.out.println("Debug 1>>>>>>>>>>>");
         if (result.hasErrors()) {
             model.addAttribute("users", userRepository.findAll());
@@ -102,7 +102,7 @@ public class rekhaController {
     @PostMapping("/processtop")
     public String processtop(@Valid Top top, BindingResult result, Model model,
                               @RequestParam("file")MultipartFile file) {
-
+        model.addAttribute("user", userService.getCurrentUser());
         System.out.println("Debug 1>>>>>>>>>>>");
         if (result.hasErrors()) {
             model.addAttribute("users", userRepository.findAll());
@@ -146,7 +146,7 @@ public class rekhaController {
     @PostMapping("/processbottom")
     public String processbottom(@Valid Bottom bottom, BindingResult result, Model model,
                              @RequestParam("file")MultipartFile file) {
-
+        model.addAttribute("user", userService.getCurrentUser());
         System.out.println("Debug 1>>>>>>>>>>>");
         if (result.hasErrors()) {
             model.addAttribute("users", userRepository.findAll());

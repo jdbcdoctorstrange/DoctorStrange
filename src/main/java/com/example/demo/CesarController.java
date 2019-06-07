@@ -6,8 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Collection;
-
 @Controller
 public class CesarController {
     @Autowired
@@ -48,6 +46,7 @@ public class CesarController {
 
     @RequestMapping("/currentweather")
     public String showWeather(Model model){
+        model.addAttribute("user", userService.getCurrentUser());
         return "currentWeather";
     }
 
