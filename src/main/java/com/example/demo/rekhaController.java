@@ -319,7 +319,7 @@ public class rekhaController {
         Optional <Closet> closet = closetRepository.findById(id);
         model.addAttribute("tops", closetRepository.findById(id).get().getTops());
         model.addAttribute("jackets", closetRepository.findById(id).get().getJackets());
-        model.addAttribute("bottoms", closetRepository.findById(id).get().getPants());
+        model.addAttribute("bottoms", closetRepository.findById(id).get().getBottoms());
         model.addAttribute("footwears", closetRepository.findById(id).get().getFootwears());
         model.addAttribute("accessories", closetRepository.findById(id).get().getAccessories());
 

@@ -17,8 +17,8 @@
     <div>
         Top:
         <ul th:href="@{/addtop}">
-            <th:block th:each="top : ${closet.tops}">
-                <div th:if="${top.imgUrl} !=null">
+            <th:block>
+                <div th:if="${top.imgUrl != null}">
                     <img th:src="${top.imgUrl}"/>
                     <hr/>
                 </div>
@@ -28,9 +28,9 @@
         </ul>
         Jacket:
         <ul th:href="@{/addjacket}">
-            <th:block th:each="jacket : ${closet.jackets}">
-                <div th:if="${jacket.imgUrl} !=null">
-                    <img th:src="${jacket}.imgUrl}"/>
+            <th:block>
+                <div th:if="${jacket.imgUrl != null}">
+                    <img th:src="${jacket.imgUrl}"/>
                     <hr/>
                 </div>
                 <li th:inline="text">[[${jacket.color}]] [[${jacket.material}]]</li>
@@ -39,9 +39,9 @@
         </ul>
         Bottom:
         <ul th:href="@{/addbottom}">
-            <th:block th:each="bottom : ${closet.bottoms}">
-                <div th:if="${jacket.imgUrl} !=null">
-                    <img th:src="${bottom}.imgUrl}"/>
+            <th:block>
+                <div th:if="${bottom.imgUrl} !=null">
+                    <img th:src="${bottom.imgUrl}"/>
                     <hr/>
                 </div>
                 <li th:inline="text">[[${bottom.color}]] [[${bottom.material}]]</li>
@@ -50,9 +50,9 @@
         </ul>
         Footwear:
         <ul th:href="@{/addfootwear}">
-            <th:block th:each="footwear : ${closet.footwears}">
+            <th:block>
                 <div th:if="${footwear.imgUrl} !=null">
-                    <img th:src="${footwear}.imgUrl}"/>
+                    <img th:src="${footwear.imgUrl}"/>
                     <hr/>
                 </div>
                 <li th:inline="text">[[${footwear}.color}]] [[${footwear.material}]]</li>
@@ -61,13 +61,13 @@
         </ul>
         Accessories:
         <ul th:href="@{/addaccessories}">
-            <th:block th:each="accessories : ${closet.accessories}">
-                <div th:if="${accessories.imgUrl} !=null">
-                    <img th:src="${accessories}.imgUrl}"/>
+            <th:block >
+                <div th:if="${accessory.imgUrl} !=null">
+                    <img th:src="${accessory.imgUrl}"/>
                     <hr/>
                 </div>
-                <li th:inline="text">[[${accessories}.color}]] [[${accessories.material}]]</li>
-                <li th:inline="text">[[${accessories.size}]] [[${accessories}.season}]]</li>
+                <li th:inline="text">[[${accessory.color}]] [[${accessory.material}]]</li>
+                <li th:inline="text">[[${accessory.size}]] [[${accessory.season}]]</li>
             </th:block>
         </ul>
 
