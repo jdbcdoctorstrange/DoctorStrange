@@ -6,7 +6,7 @@
 
 </head>
 <body>
-<div><h2>Welcome [[${user.firstName}]] [[${user.lastName}]] </h2></div></br>
+<!--<div><h2>Welcome [[${user.firstName}]] [[${user.lastName}]] </h2></div></br>-->
 <div th:replace="base :: navlinks"></div>
 
 
@@ -21,6 +21,6 @@
         <input type="submit" value="Submit" />
     </p>
 </form>
-
+<div th:replace="base :: bootstrap-js"></div>
 </body>
 </html>

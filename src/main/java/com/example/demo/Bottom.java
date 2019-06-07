@@ -14,7 +14,7 @@ public class Bottom{
     private String season;
     private String imgUrl;
     private String type;//pants or short
-    private String category;
+    private String category;//occassion
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Closet closet;

@@ -45,7 +45,7 @@ public class rekhaController {
     @Autowired
     CloudinaryConfig cloudc;
 
-    @RequestMapping("/listclosets")
+    @RequestMapping("/")
     public String listClosets(Model model) {
         User user = userService.getCurrentUser();
         // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
@@ -68,7 +68,7 @@ public class rekhaController {
 
     @PostMapping("/processcloset")
     public String processcloset(@Valid Closet closet, BindingResult result, Model model) {
-
+        model.addAttribute("user", userService.getCurrentUser());
         System.out.println("Debug 1>>>>>>>>>>>");
         if (result.hasErrors()) {
             model.addAttribute("users", userRepository.findAll());
@@ -102,7 +102,7 @@ public class rekhaController {
     @PostMapping("/processtop")
     public String processtop(@Valid Top top, BindingResult result, Model model,
                               @RequestParam("file")MultipartFile file) {
-
+        model.addAttribute("user", userService.getCurrentUser());
         System.out.println("Debug 1>>>>>>>>>>>");
         if (result.hasErrors()) {
             model.addAttribute("users", userRepository.findAll());
@@ -146,7 +146,7 @@ public class rekhaController {
     @PostMapping("/processbottom")
     public String processbottom(@Valid Bottom bottom, BindingResult result, Model model,
                              @RequestParam("file")MultipartFile file) {
-
+        model.addAttribute("user", userService.getCurrentUser());
         System.out.println("Debug 1>>>>>>>>>>>");
         if (result.hasErrors()) {
             model.addAttribute("users", userRepository.findAll());
@@ -319,7 +319,7 @@ public class rekhaController {
         Optional <Closet> closet = closetRepository.findById(id);
         model.addAttribute("tops", closetRepository.findById(id).get().getTops());
         model.addAttribute("jackets", closetRepository.findById(id).get().getJackets());
-        model.addAttribute("bottoms", closetRepository.findById(id).get().getPants());
+        model.addAttribute("bottoms", closetRepository.findById(id).get().getBottoms());
         model.addAttribute("footwears", closetRepository.findById(id).get().getFootwears());
         model.addAttribute("accessories", closetRepository.findById(id).get().getAccessories());
 
@@ -407,17 +407,17 @@ public class rekhaController {
         return "packingitem";
     }
 
-    @PostMapping("/processpackingitem")
-    public String processPackingItem(@Valid Closet pcloset, Model model) {
-        User user = userService.getCurrentUser();
+//    @PostMapping("/processpackingitem")
+//    public String processPackingItem(@Valid Closet pcloset, Model model) {
+//        User user = userService.getCurrentUser();
 //        pcloset.set
-        //closetRepository.save(pcloset);
-        //userRepository.save(user);
-        // closetRepository.save(pcloset);
-        System.out.println("Debug 4>>>>>>>>>>>");
-        model.addAttribute("user", user);
-        model.addAttribute("pcloset", pcloset);
-      //  model.addAttribute("selectedcloset", closet);
-        return "redirect:/";
-    }
+//        //closetRepository.save(pcloset);
+//        //userRepository.save(user);
+//        // closetRepository.save(pcloset);
+//        System.out.println("Debug 4>>>>>>>>>>>");
+//        model.addAttribute("user", user);
+//        model.addAttribute("pcloset", pcloset);
+//      //  model.addAttribute("selectedcloset", closet);
+//        return "redirect:/";
+//    }
 }

@@ -71,11 +71,11 @@ public class Closet {
         this.tops = tops;
     }
 
-    public Collection<Bottom> getPants() {
+    public Collection<Bottom> getBottoms() {
         return bottoms;
     }
 
-    public void setPants(Collection<Bottom> bottoms) {
+    public void setBottoms(Collection<Bottom> bottoms) {
         this.bottoms = bottoms;
     }
 
