@@ -114,6 +114,7 @@ public class rekhaController {
                 Map uploadResult = cloudc.upload(file.getBytes(),
                         ObjectUtils.asMap("resourcetype", "auto"));
                 top.setImgUrl(uploadResult.get("url").toString());
+                topRepository.save(top);
             }catch (IOException e) {
                 e.printStackTrace();
                 return "topform";
@@ -122,8 +123,7 @@ public class rekhaController {
         System.out.println("Debug 3>>>>>>>>>>>");
         //top.setUid(userService.getCurrentUser().getId());
        // top.getCloset().setUser(userService.getCurrentUser());
-        
-        topRepository.save(top);
+
         System.out.println("Debug 4>>>>>>>>>>>");
         return "redirect:/";
     }
@@ -410,7 +410,7 @@ public class rekhaController {
     @PostMapping("/processpackingitem")
     public String processPackingItem(@Valid Closet pcloset, Model model) {
         User user = userService.getCurrentUser();
-        pcloset.set
+//        pcloset.set
         //closetRepository.save(pcloset);
         //userRepository.save(user);
         // closetRepository.save(pcloset);

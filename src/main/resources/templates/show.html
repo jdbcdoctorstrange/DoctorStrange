@@ -21,6 +21,7 @@
             <th>Material</th>
             <th>Size</th>
             <th>Season</th>
+            <th>Category</th>
             <th>Image</th>
             <th>Actions</th>
         </tr>
@@ -30,13 +31,14 @@
             <td th:text="${top.color}"></td>
             <td th:text="${top.material}"></td>
             <td th:text="${top.size}"></td>
+            <td th:text="${top.category}"></td>
             <td th:text="${top.season}"></td>
             <td><img th:src="${top.imgUrl}" height="50" width="50"/></td>
             <td>
                 <div class="nav-item">
                     <span>
-                    <a th:href="@{/update/{id}(id=${top.id})}">Update</a>
-                    <a th:href="@{/delete/{id}(id=${top.id})}">Delete</a>
+                    <a th:href="@{/updatetop/{id}(id=${top.id})}">Update</a>
+                    <a th:href="@{/deletetop/{id}(id=${top.id})}">Delete</a>
                 </span>
                 </div>
 
@@ -54,6 +56,7 @@
             <th>Material</th>
             <th>Size</th>
             <th>Season</th>
+            <th>Category</th>
             <th>Image</th>
             <th>Actions</th>
         </tr>
@@ -64,13 +67,13 @@
             <td th:text="${jacket.material}"></td>
             <td th:text="${jacket.size}"></td>
             <td th:text="${jacket.season}"></td>
+            <td th:text="${jacket.category}"></td>
             <td><img th:src="${jacket.imgUrl}" height="50" width="50"/></td>
-            <!--<img th:src="${jacket.imgUrl}">-->
             <td>
                 <div class="nav-item">
                     <span>
                     <a th:href="@{/update/{id}(id=${jacket.id})}">Update</a>
-                    <a th:href="@{/delete/{id}(id=${jacket.id})}">Delete</a>
+                    <a th:href="@{/deletejacket/{id}(id=${jacket.id})}">Delete</a>
                 </span>
                 </div>
 
@@ -88,6 +91,7 @@
             <th>Material</th>
             <th>Size</th>
             <th>Season</th>
+            <th>Category</th>
             <th>Image</th>
             <th>Actions</th>
         </tr>
@@ -98,13 +102,13 @@
             <td th:text="${bottom.material}"></td>
             <td th:text="${bottom.size}"></td>
             <td th:text="${bottom.season}"></td>
+            <td th:text="${bottom.category}"></td>
             <td><img th:src="${bottom.imgUrl}" height="50" width="50"/></td>
-            <!--<img th:src="${bottom.imgUrl}">-->
             <td>
                 <div class="nav-item">
                     <span>
                     <a th:href="@{/update/{id}(id=${bottom.id})}">Update</a>
-                    <a th:href="@{/delete/{id}(id=${bottom.id})}">Delete</a>
+                    <a th:href="@{/deletebottom/{id}(id=${bottom.id})}">Delete</a>
                 </span>
                 </div>
         </tr>
@@ -121,6 +125,7 @@
             <th>Material</th>
             <th>Size</th>
             <th>Season</th>
+            <th>Category</th>
             <th>Image</th>
             <th>Actions</th>
         </tr>
@@ -131,13 +136,14 @@
             <td th:text="${footwear.material}"></td>
             <td th:text="${footwear.size}"></td>
             <td th:text="${footwear.season}"></td>
+            <td th:text="${footwear.category}"></td>
             <td><img th:src="${footwear.imgUrl}" height="50" width="50"/></td>
-            <!--<img th:src="${footwear.imgUrl}">-->
+
             <td>
                 <div class="nav-item">
                     <span>
                     <a th:href="@{/update/{id}(id=${footwear.id})}">Update</a>
-                    <a th:href="@{/delete/{id}(id=${footwear.id})}">Delete</a>
+                    <a th:href="@{/deletefootwear/{id}(id=${footwear.id})}">Delete</a>
                 </span>
                 </div>
         </tr>
@@ -154,6 +160,7 @@
             <th>Material</th>
             <th>Size</th>
             <th>Season</th>
+            <th>Category</th>
             <th>Image</th>
             <th>Actions</th>
         </tr>
@@ -164,13 +171,13 @@
             <td th:text="${accessory.material}"></td>
             <td th:text="${accessory.size}"></td>
             <td th:text="${accessory.season}"></td>
+            <td th:text="${accessory.category}"></td>
             <td><img th:src="${accessory.imgUrl}" height="50" width="50"/></td>
-            <!--<img th:src="${accessory.imgUrl}">-->
             <td>
                 <div class="nav-item">
                     <span>
                     <a th:href="@{/update/{id}(id=${accessory.id})}">Update</a>
-                    <a th:href="@{/delete/{id}(id=${accessory.id})}">Delete</a>
+                    <a th:href="@{/deleteaccessory/{id}(id=${accessory.id})}">Delete</a>
                 </span>
                 </div>
         </tr>
@@ -178,7 +185,7 @@
         </tbody>
     </table>
 </div>
-<h2><a th:href="@{/delete/{id}(id=${closet.id})}">Delete this closet</a></h2>
+<h5><a th:href="@{/delete/{id}(id=${closet.id})}">Delete this closet</a></h5>
 
 </p>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
