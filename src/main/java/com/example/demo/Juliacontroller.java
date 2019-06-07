@@ -112,15 +112,44 @@ public class Juliacontroller {
         User user = userService.getCurrentUser();
         model.addAttribute("user", user);
         model.addAttribute("closets", topRepository.findById(id).get().getCloset());
-//        model.addAttribute("closets", closetRepository.findAll());
         topRepository.findById(id).ifPresent(o -> model.addAttribute("top", o));
-//        Top top = topRepository.findById(id).get();
-//        if (top != null) {
-//            top.setId(userService.getCurrentUser().getId());
-//        }
+
 
         return "topform";
     }
+
+    @RequestMapping("/updatejacket/{id}")
+    public String updateJack(@PathVariable("id") long id, Model model) {
+        User user = userService.getCurrentUser();
+        model.addAttribute("user", user);
+        model.addAttribute("closets", jacketRepository.findById(id).get().getCloset());
+        jacketRepository.findById(id).ifPresent(o -> model.addAttribute("jacket", o));
+
+        return "jacketform";
+    }
+
+    @RequestMapping("/updatefootwear/{id}")
+    public String updateFoot(@PathVariable("id") long id, Model model) {
+        User user = userService.getCurrentUser();
+        model.addAttribute("user", user);
+        model.addAttribute("closets", footwearRepository.findById(id).get().getCloset());
+        footwearRepository.findById(id).ifPresent(o -> model.addAttribute("footwear", o));
+
+
+        return "footwearform";
+    }
+
+    @RequestMapping("/updateaccesory/{id}")
+    public String updateAcc(@PathVariable("id") long id, Model model) {
+        User user = userService.getCurrentUser();
+        model.addAttribute("user", user);
+        model.addAttribute("closets", accessoriesRepository.findById(id).get().getCloset());
+        accessoriesRepository.findById(id).ifPresent(o -> model.addAttribute("accessory", o));
+
+
+        return "accessoryform";
+    }
+
 }
 
 
