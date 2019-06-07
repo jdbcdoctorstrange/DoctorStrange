@@ -105,4 +105,23 @@ public class Juliacontroller {
         }
         return "redirect:/";
     }
+
+
+    @RequestMapping("/updatetop/{id}")
+    public String updateTop(@PathVariable("id") long id, Model model) {
+        User user = userService.getCurrentUser();
+        model.addAttribute("user", user);
+        model.addAttribute("closets", topRepository.findById(id).get().getCloset());
+//        model.addAttribute("closets", closetRepository.findAll());
+        topRepository.findById(id).ifPresent(o -> model.addAttribute("top", o));
+//        Top top = topRepository.findById(id).get();
+//        if (top != null) {
+//            top.setId(userService.getCurrentUser().getId());
+//        }
+
+        return "topform";
+    }
 }
+
+
+
