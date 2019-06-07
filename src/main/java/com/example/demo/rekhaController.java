@@ -45,7 +45,7 @@ public class rekhaController {
     @Autowired
     CloudinaryConfig cloudc;
 
-    @RequestMapping("/listclosets")
+    @RequestMapping("/")
     public String listClosets(Model model) {
         User user = userService.getCurrentUser();
         // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
@@ -407,17 +407,17 @@ public class rekhaController {
         return "packingitem";
     }
 
-    @PostMapping("/processpackingitem")
-    public String processPackingItem(@Valid Closet pcloset, Model model) {
-        User user = userService.getCurrentUser();
-        pcloset.set
-        //closetRepository.save(pcloset);
-        //userRepository.save(user);
-        // closetRepository.save(pcloset);
-        System.out.println("Debug 4>>>>>>>>>>>");
-        model.addAttribute("user", user);
-        model.addAttribute("pcloset", pcloset);
-      //  model.addAttribute("selectedcloset", closet);
-        return "redirect:/";
-    }
+//    @PostMapping("/processpackingitem")
+//    public String processPackingItem(@Valid Closet pcloset, Model model) {
+//        User user = userService.getCurrentUser();
+//        pcloset.set
+//        //closetRepository.save(pcloset);
+//        //userRepository.save(user);
+//        // closetRepository.save(pcloset);
+//        System.out.println("Debug 4>>>>>>>>>>>");
+//        model.addAttribute("user", user);
+//        model.addAttribute("pcloset", pcloset);
+//      //  model.addAttribute("selectedcloset", closet);
+//        return "redirect:/";
+//    }
 }

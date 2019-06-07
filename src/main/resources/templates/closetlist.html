@@ -6,7 +6,6 @@
     <th:block th:insert="base :: header"></th:block>
 </head>
 <body>
-<div><h2>Welcome [[${user.firstName}]] [[${user.lastName}]] </h2></div></br>
 <div th:replace="base :: navlinks"></div>
 
 <table class="table">
@@ -26,5 +25,6 @@
     </tr>
     </tbody>
 </table>
+<div th:replace="nav :: bootstrap-js"></div>
 </body>
 </html>
