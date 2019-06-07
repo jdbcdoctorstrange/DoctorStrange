@@ -88,13 +88,14 @@ public class rekhaController {
     public String topForm(Model model) {
 
         User user = userService.getCurrentUser();
+        long uid = userService.getCurrentUser().getId();
         Top top = new Top();
 
 
         // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
         model.addAttribute("user", user );
         model.addAttribute("top", top);
-        model.addAttribute("closets", closetRepository.findAll());
+        model.addAttribute("closets", closetRepository.findAllClosetsByUid(uid));
         model.addAttribute("file", top.getImgUrl());
         return "topform";
     }

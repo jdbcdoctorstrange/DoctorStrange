@@ -1,145 +1,86 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<html>
-
-<!--
-    This page shows how to search for a location (by free text) and
-    retrieve the current conditions for the location.
-    For more information visit: http://api.accuweather.com/developers/
-    ** Remember that you need to obtain your own API key by contacting AccuWeather. **
-    -->
-
+<!doctype html>
+<html lang="en">
 <head>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-    <script type="text/javascript">
-        // Configure our weather widget during jQuery.OnReady
-        $(function () {
-            var isMetric = false;
-            var locationUrl = "";
-            var currentConditionsUrl = "";
-            // Visit http://apidev.accuweather.com/developers/languages for a list of supported languages
-            var language = "en";
-            // Contact AccuWeather to get an official key. They key in this
-            // example is temporary and should NOT be used it in production.
-            var apiKey = "DoctorStrange";
-            var awxClearMessages = function() {
-                $("#awxLocationInfo").html("...");
-                $("#awxLocationUrl").html("...");
-                $("#awxWeatherInfo").html("...");
-                $("#awxWeatherUrl").html("...");
-            }
-            // Searches for a city with the name specified in freeText.
-            // freeText can be something like:
-            //          new york
-            //          new york, ny
-            //          paris
-            //          paris, france
-            // For more info about location API go to http://apidev.accuweather.com/developers/locations
-            var awxCityLookUp = function (freeText) {
-                awxClearMessages();
-                locationUrl = "http://apidev.accuweather.com/locations/v1/search?q=" + freeText + "&apikey=" + apiKey;
-                $.ajax({
-                    type: "GET",
-                    url: locationUrl,
-                    dataType: "jsonp",
-                    cache: true,                    // Use cache for better reponse times
-                    jsonpCallback: "awxCallback",   // Prevent unique callback name for better reponse times
-                    success: function (data) { awxCityLookUpFound(data); }
-                });
-            };
-            // Displays what location(s) were found.
-            var awxCityLookUpFound = function (data) {
-                var msg, locationKey = null;
-                $("#awxLocationUrl").html("<a href=" + encodeURI(locationUrl) + ">" + locationUrl + "</a>");
-                if (data.length == 1) {
-                    locationKey = data[0].Key;
-                    msg = "One location found: <b>" + data[0].LocalizedName + "</b>. Key: " + locationKey;
-                }
-                else if(data.length == 0) {
-                    msg = "No locations found."
-                }
-                else {
-                    locationKey = data[0].Key;
-                    msg = "Multiple locations found (" + data.length + "). Selecting the first one: " +
-                        "<b>" + data[0].LocalizedName + ", " + data[0].Country.ID + "</b>. Key: " + locationKey;
-                }
-                $("#awxLocationInfo").html(msg);
-                if(locationKey != null) {
-                    awxGetCurrentConditions(locationKey);
-                }
-
-            };
-            // Gets current conditions for the location.
-            // For more info about Current Conditions API go to http://apidev.accuweather.com/developers/locations
-            var awxGetCurrentConditions = function (locationKey) {
-                currentConditionsUrl = "http://apidev.accuweather.com/currentconditions/v1/" +
-                    locationKey + ".json?language=" + language + "&apikey=" + apiKey;
-                $.ajax({
-                    type: "GET",
-                    url: currentConditionsUrl,
-                    dataType: "jsonp",
-                    cache: true,                    // Use cache for better reponse times
-                    jsonpCallback: "awxCallback",   // Prevent unique callback name for better reponse times
-                    success: function (data) {
-                        var html;
-                        if(data && data.length > 0) {
-                            var conditions = data[0];
-                            var temp = isMetric ? conditions.Temperature.Metric : conditions.Temperature.Imperial;
-                            html = conditions.WeatherText + ", " + temp.Value + " " + temp.Unit;
-                        }
-                        else {
-                            html = "N/A";
-                        }
-                        $("#awxWeatherInfo").html(html);
-                        $("#awxWeatherUrl").html("<a href=" + currentConditionsUrl + ">" + currentConditionsUrl + "</a>");
-                    }
-                });
-            };
-            $("#awxSearchTextBox").keypress(function (e) {
-                if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-                    var text = $("#awxSearchTextBox").val();
-                    awxCityLookUp(text);
-                    return false;
-                } else {
-                    return true;
-                }
-            });
-            $("#awxSearchButton").click(function () {
-                var text = $("#awxSearchTextBox").val();
-                awxCityLookUp(text);
-            });
-        });
-    </script>
+    <meta charset="utf-8">
+    <title>Current Weather</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,900" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: .1em .1em 0 rgba(0,0,0,0.3);
+            font-size: 1.3em;
+            height: 100vh;
+            background-image: linear-gradient(to right top, #99bbcb, #a5c7d7, #b1d4e2, #bde0ee, #c9edfa);
+        }
+        h1 {
+            margin: 0 auto;
+            font-size: 2.2em;
+            text-align: center;
+            color: #fff;
+            font-size: 5em;
+        }
+        body.sunny {
+            background-image: linear-gradient(to right top, #ff4e50, #ff713e, #ff932b, #ffb41d, #f9d423);
+        }
+        body.cloudy {
+            background-image: linear-gradient(to right top, #63747c, #71858e, #7f96a0, #8da8b2, #9bbac5);
+        }
+        body.rainy {
+            background-image: linear-gradient(to right top, #637c7b, #718e8c, #7ea09e, #8db2b0, #9bc5c3);
+        }
+    </style>
 </head>
-
 <body>
-<h2>Location Search and Current Conditions</h2>
-<p>This page shows how to search for a location by name (e.g. new york, ny) or by postal code (e.g. 64110) and fetch the current conditions and the location.</p>
-
-<div>Enter location name:
-    <input id="awxSearchTextBox" placeholder="new york, ny" />
-    <input id="awxSearchButton" type="submit" value="Search" />
+<div class="bg"></div>
+<!--City Id: 6167865-->
+<div>
+    <div id="description"></div>
+    <h1 id="temp"></h1>
+    <input type="text" id="location" placeholder="location"/>
+    <button type="submit" value="submit" onclick="weatherBallon(document.getElementById('location').value)">Submit</button>
 </div>
+<script>
+    const key = 'b597a1dea2517708cda27cc435a1daca';
+    if(key=='') document.getElementById('temp').innerHTML = ('Remember to add your api key!');
 
-<h3>Location Information</h3>
-<ul>
-    <li>URL: <span id="awxLocationUrl"/>N/A
-    <li><span id="awxLocationInfo">(Location information will be displayed here)</span>
-</ul>
+    function weatherBallon( cityID ) {
+        fetch('https://api.openweathermap.org/data/2.5/weather?id=' + cityID+ '&appid=' + key)
+            .then(function(resp) { return resp.json() }) // Convert data to json
+            .then(function(data) {
+                drawWeather(data);
+            })
+            .catch(function() {
+                // catch any errors
+            });
+    }
+    function drawWeather( d ) {
+        var celcius = Math.round(parseFloat(d.main.temp)-273.15);
+        var fahrenheit = Math.round(((parseFloat(d.main.temp)-273.15)*1.8)+32);
+        var description = d.weather[0].description;
 
-<h3>Current Conditions</h3>
-<ul>
-    <li>URL: <span id="awxWeatherUrl"/>N/A
-    <li><span id="awxWeatherInfo">(Current conditions will be displayed here)</span>
-</ul>
+        document.getElementById('description').innerHTML = description;
+        document.getElementById('temp').innerHTML = celcius + '&deg;';
+        document.getElementById('location').innerHTML = d.name;
 
-<h3>More info</h3>
-<ul>
-    <li>The source code for this example is available at <a href="https://github.com/AccuWeather/AccuWeatherApiSamples">https://github.com/AccuWeather/AccuWeatherApiSamples</a>.</li>
-    <li>Detailed information about the AccuWeather API is available at <a href="http://api.accuweather.com/developers/">http://api.accuweather.com/developers/</a>.</li>
-    <li><b><i>Remember to get your own API key.</i></b> This sample is using a temporary key not suitable for production.</li>
-</ul>
+        if( description.indexOf('rain') > 0 ) {
+            document.body.className = 'rainy';
+        } else if( description.indexOf('cloud') > 0 ) {
+            document.body.className = 'cloudy';
+        } else if( description.indexOf('sunny') > 0 ) {
+            document.body.className = 'sunny';
+        } else {
+            document.body.className = 'clear';
+        }
+    }
+    window.onload = function(location) {
+
+        weatherBallon( location );
+    }
+</script>
 </body>
-
 </html>
