@@ -94,7 +94,7 @@ public class rekhaController {
         // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
         model.addAttribute("user", user );
         model.addAttribute("top", top);
-        model.addAttribute("closets", closetRepository.findAll());
+        model.addAttribute("closets", closetRepository.findAllClosetsByUid(user.getId()));
         model.addAttribute("file", top.getImgUrl());
         return "topform";
     }
@@ -138,7 +138,7 @@ public class rekhaController {
         // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
         model.addAttribute("user", user );
         model.addAttribute("bottom", bottom);
-        model.addAttribute("closets", closetRepository.findAll());
+        model.addAttribute("closets", closetRepository.findAllClosetsByUid(user.getId()));
         model.addAttribute("file", bottom.getImgUrl());
         return "bottomform";
     }
@@ -182,7 +182,7 @@ public class rekhaController {
         // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
         model.addAttribute("user", user );
         model.addAttribute("jacket", jacket);
-        model.addAttribute("closets", closetRepository.findAll());
+        model.addAttribute("closets", closetRepository.findAllClosetsByUid(user.getId()));
         model.addAttribute("file", jacket.getImgUrl());
         return "jacketform";
     }
@@ -228,7 +228,7 @@ public class rekhaController {
         // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
         model.addAttribute("user", user );
         model.addAttribute("footwear", footwear);
-        model.addAttribute("closets", closetRepository.findAll());
+        model.addAttribute("closets", closetRepository.findAllClosetsByUid(user.getId()));
         model.addAttribute("file", footwear.getImgUrl());
         return "footwearform";
     }
@@ -273,7 +273,7 @@ public class rekhaController {
         // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
         model.addAttribute("user", user );
         model.addAttribute("accessory", accessory);
-        model.addAttribute("closets", closetRepository.findAll());
+        model.addAttribute("closets", closetRepository.findAllClosetsByUid(user.getId()));
         model.addAttribute("file", accessory.getImgUrl());
         return "accessoryform";
     }

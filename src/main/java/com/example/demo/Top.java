@@ -20,7 +20,7 @@ public class Top {
     @ManyToOne(fetch = FetchType.EAGER)
     private Closet closet;
 
-    public Top(String color, String material, String size, String season, String imgUrl, String type, String category, String sleeves) {
+    public Top(String color, String material, String size, String season, String imgUrl, String type, String category, String sleeves ) {
         this.color = color;
         this.material = material;
         this.size = size;
@@ -29,6 +29,7 @@ public class Top {
         this.type = type;
         this.category = category;
         this.sleeves = sleeves;
+
     }
 
 

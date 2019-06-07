@@ -67,8 +67,8 @@ public class Closet {
         return tops;
     }
 
-    public void setTops(Collection<Top> tops) {
-        this.tops = tops;
+    public void setTops(Top top) {
+        this.tops.add(top);
     }
 
     public Collection<Bottom> getBottoms() {

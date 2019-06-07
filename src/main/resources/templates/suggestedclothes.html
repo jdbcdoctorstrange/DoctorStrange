@@ -11,68 +11,70 @@
 <div th:replace="base :: nav"></div>
 <div class="container">
     <h2>Suggested outfit</h2>
-    <p th:inline="text">
-        You are [[${location}]] and your occasion is [[${occasion}]].
-    </p>
+
     <div>
-        Top:
+        <h4>Top:</h4>
         <ul th:href="@{/addtop}">
             <th:block>
                 <div th:if="${top.imgUrl != null}">
-                    <img th:src="${top.imgUrl}"/>
+                    <img th:src="${top.imgUrl}" height="80" width="80"/>
                     <hr/>
                 </div>
-                <li th:inline="text">[[${top.color}]] [[${top.material}]]</li>
-                <li th:inline="text">[[${top.size}]] [[${top.season}]]</li>
+                <li th:inline="text"> color: [[${top.color}]];  material: [[${top.material}]];  size: [[${top.size}]];  season: [[${top.season}]]</li>
+                <!--<li th:inline="text">[[${top.size}]] [[${top.season}]]</li>-->
             </th:block>
         </ul>
-        Jacket:
+        <h4>Jacket:</h4>
         <ul th:href="@{/addjacket}">
             <th:block>
                 <div th:if="${jacket.imgUrl != null}">
-                    <img th:src="${jacket.imgUrl}"/>
+                    <img th:src="${jacket.imgUrl}" height="80" width="80" />
                     <hr/>
                 </div>
-                <li th:inline="text">[[${jacket.color}]] [[${jacket.material}]]</li>
-                <li th:inline="text">[[${jacket.size}]] [[${jacket.season}]]</li>
+                <li th:inline="text"> color: [[${jacket.color}]];  material: [[${jacket.material}]];  size: [[${jacket.size}]];  season: [[${jacket.season}]]</li>
+                <!--<li th:inline="text">[[${jacket.color}]] [[${jacket.material}]]</li>-->
+                <!--<li th:inline="text">[[${jacket.size}]] [[${jacket.season}]]</li>-->
             </th:block>
         </ul>
-        Bottom:
+        <h4>Bottom:</h4>
         <ul th:href="@{/addbottom}">
             <th:block>
                 <div th:if="${bottom.imgUrl} !=null">
-                    <img th:src="${bottom.imgUrl}"/>
+                    <img th:src="${bottom.imgUrl}" height="80" width="80"/>
                     <hr/>
                 </div>
-                <li th:inline="text">[[${bottom.color}]] [[${bottom.material}]]</li>
-                <li th:inline="text">[[${bottom.size}]] [[${bottom.season}]]</li>
+                <li th:inline="text"> color: [[${bottom.color}]];  material: [[${bottom.material}]];  size: [[${bottom.size}]];  season: [[${bottom.season}]]</li>
+                <!--<li th:inline="text">[[${bottom.color}]] [[${bottom.material}]]</li>-->
+                <!--<li th:inline="text">[[${bottom.size}]] [[${bottom.season}]]</li>-->
             </th:block>
         </ul>
-        Footwear:
+        <h4>Footwear:</h4>
         <ul th:href="@{/addfootwear}">
             <th:block>
                 <div th:if="${footwear.imgUrl} !=null">
-                    <img th:src="${footwear.imgUrl}"/>
+                    <img th:src="${footwear.imgUrl}" height="80" width="80" />
                     <hr/>
                 </div>
-                <li th:inline="text">[[${footwear}.color}]] [[${footwear.material}]]</li>
-                <li th:inline="text">[[${footwear.size}]] [[${footwear}.season}]]</li>
+                <li th:inline="text"> color: [[${footwear.color}]];  material: [[${footwear.material}]];  size: [[${footwear.size}]];  season: [[${footwear.season}]]</li>
+                <!--<li th:inline="text">[[${footwear.color}]] [[${footwear.material}]]</li>-->
+                <!--<li th:inline="text">[[${footwear.size}]] [[${footwear.season}]]</li>-->
             </th:block>
         </ul>
-        Accessories:
+        <h4>Accessories:</h4>
         <ul th:href="@{/addaccessories}">
             <th:block >
                 <div th:if="${accessory.imgUrl} !=null">
-                    <img th:src="${accessory.imgUrl}"/>
+                    <img th:src="${accessory.imgUrl}" height="80" width="80"/>
                     <hr/>
                 </div>
-                <li th:inline="text">[[${accessory.color}]] [[${accessory.material}]]</li>
-                <li th:inline="text">[[${accessory.size}]] [[${accessory.season}]]</li>
+                <li th:inline="text"> color: [[${accessory.color}]];  material: [[${accessory.material}]];  size: [[${accessory.size}]];  season: [[${accessory.season}]]</li>
+                <!--<li th:inline="text">[[${accessory.color}]] [[${accessory.material}]]</li>-->
+                <!--<li th:inline="text">[[${accessory.size}]] [[${accessory.season}]]</li>-->
             </th:block>
         </ul>
 
     </div>
-    <h2> Enjoy your day!</h2>
+    <h3> Enjoy your day!</h3>
 </div>
 <div th:replace="base :: bootstrap-js"></div>
 </body>

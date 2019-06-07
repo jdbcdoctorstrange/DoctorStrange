@@ -65,12 +65,12 @@ public class CesarController {
                 }
             }
             for(Footwear footwear: closet.getFootwears()){
-                if(footwear.equals(occasion)){
+                if(footwear.getCategory().equals(occasion)){
                     footwears.add(footwear);
                 }
             }
             for(Accessories accessory : closet.getAccessories()){
-                if(accessory.equals(occasion)){
+                if(accessory.getCategory().equals(occasion)){
                     accessories.add(accessory);
                 }
             }
