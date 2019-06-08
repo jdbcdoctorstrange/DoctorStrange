@@ -10,6 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -362,15 +364,6 @@ public class rekhaController {
         // Gets the currently logged in user and maps it to "user" in the Thymeleaf template
         model.addAttribute("user", user );
 
-
-
-
-        // model.addAttribute("message", messageRepository.findById(id));
-//        model.addAttribute("tops", pcloset.getTops());
-//        model.addAttribute("jackets", pcloset.getJackets());
-//        model.addAttribute("bottoms", pcloset.getPants());
-//        model.addAttribute("footwears", pcloset.getFootwears());
-//        model.addAttribute("accessories", pcloset.getAccessories());
         Closet closet = closetRepository.findByUidAndClosetName(user.getId(), "Packing closet");
 
         if(closet == null) {
@@ -379,7 +372,6 @@ public class rekhaController {
             System.out.println("Closet found id"+closet.getId()+closet.getClosetName());
             model.addAttribute("pcloset", closet);
         }
-
         model.addAttribute("closets", closetRepository.findAllClosetsByUid(user.getId()));
 
         return "packinglist";
@@ -398,7 +390,11 @@ public class rekhaController {
         pcloset.setClosetName("Packing closet");
         pcloset.setUid(user.getId());
         pcloset.setUser(user);
-        user.setCloset(pcloset);
+
+        //Check if this closet has already been added
+        Closet closetExists = closetRepository.findByUidAndClosetName(user.getId(), "Packing closet");
+        if(closetExists == null)
+            user.setCloset(pcloset);
         userRepository.save(user);
        // closetRepository.save(pcloset);
         System.out.println("Debug 4>>>>>>>>>>>");
@@ -408,17 +404,132 @@ public class rekhaController {
         return "packingitem";
     }
 
-//    @PostMapping("/processpackingitem")
-//    public String processPackingItem(@Valid Closet pcloset, Model model) {
-//        User user = userService.getCurrentUser();
-//        pcloset.set
-//        //closetRepository.save(pcloset);
-//        //userRepository.save(user);
-//        // closetRepository.save(pcloset);
-//        System.out.println("Debug 4>>>>>>>>>>>");
-//        model.addAttribute("user", user);
-//        model.addAttribute("pcloset", pcloset);
-//      //  model.addAttribute("selectedcloset", closet);
-//        return "redirect:/";
-//    }
+    @PostMapping("/processpackingitem")
+    public String processPackingItem(@Valid @RequestParam("selectedtops") List<String> selectedtops,
+                                     @Valid @RequestParam("selectedjackets") List<String> selectedjackets,
+                                     @Valid @RequestParam("selectedbottoms") List<String> selectedbottoms,
+                                     @Valid @RequestParam("selectedfootwear") List<String> selectedfootwear,
+                                     @Valid @RequestParam("selectedaccessory") List<String> selectedaccessory,
+                                     @ModelAttribute("pcloset") Closet pcloset, Model model) {
+        User user = userService.getCurrentUser();
+        Closet closet = closetRepository.findByUidAndClosetName(user.getId(), "Packing closet");
+
+        if(selectedtops.size() >=2) {
+            for (String s : selectedtops) {
+                if(s.equalsIgnoreCase("checked")) continue;
+                long topId = Long.parseLong(s);
+                System.out.println("The top id is " + topId);
+                //Add this to the packing list tops
+
+                Top t = topRepository.findById(topId).get();
+
+
+                if (t != null && closet != null) {
+                    System.out.println("Adding top to pcloset");
+                    t.setCloset(closet);
+                    closet.setTops(t);
+                    topRepository.save(t);
+                }
+
+            }
+        }
+        //Add the selected jackets
+        if(selectedjackets.size() >=2) {
+            for (String s : selectedjackets) {
+                if(s.equalsIgnoreCase("checked")) continue;
+                long jacketId = Long.parseLong(s);
+                System.out.println("The top id is " + jacketId);
+                //Add this to the packing list tops
+
+                Jacket j = jacketRepository.findById(jacketId).get();
+
+
+                if (j != null && closet != null) {
+                    System.out.println("Adding jacket to pcloset");
+                    j.setCloset(closet);
+                    closet.setJacket(j);
+                    jacketRepository.save(j);
+                }
+
+            }
+        }
+
+        //Add the selected bottoms
+        if(selectedbottoms.size() >=2) {
+            for (String s : selectedbottoms) {
+                if(s.equalsIgnoreCase("checked")) continue;
+                long bottomId = Long.parseLong(s);
+                System.out.println("The bottom id is " + bottomId);
+                //Add this to the packing list tops
+
+                Bottom b = bottomRepository.findById(bottomId).get();
+
+
+                if (b != null && closet != null) {
+                    System.out.println("Adding bottom to pcloset");
+                    b.setCloset(closet);
+                    closet.setBottom(b);
+                    bottomRepository.save(b);
+                }
+
+            }
+        }
+
+
+
+        //Add the selected footwear
+        if(selectedfootwear.size() >=2) {
+            for (String s : selectedfootwear) {
+                if(s.equalsIgnoreCase("checked")) continue;
+                long footwearId = Long.parseLong(s);
+                System.out.println("The footwear id is " + footwearId);
+                //Add this to the packing list tops
+
+                Footwear f = footwearRepository.findById(footwearId).get();
+
+                if (f != null && closet != null) {
+                    System.out.println("Adding footwear to pcloset");
+                    f.setCloset(closet);
+                    closet.setFootwear(f);
+                    footwearRepository.save(f);
+                }
+
+            }
+        }
+
+        //Add the selected accessory
+        if(selectedaccessory.size() >=2) {
+            for (String s : selectedaccessory) {
+                if(s.equalsIgnoreCase("checked")) continue;
+                long accessoryId = Long.parseLong(s);
+                System.out.println("The accessory id is " + accessoryId);
+                //Add this to the packing list tops
+
+                Accessories a = accessoriesRepository.findById(accessoryId).get();
+
+                if (a != null && closet != null) {
+                    System.out.println("Adding footwear to pcloset");
+                    a.setCloset(closet);
+                    closet.setAccessory(a);
+                    accessoriesRepository.save(a);
+                }
+
+            }
+        }
+
+
+        //closetRepository.save(pcloset);
+        //closet.setUid(userService.getCurrentUser().getId());
+        user.setCloset(closet);
+
+        userRepository.save(userService.getCurrentUser());
+        //closetRepository.save(closet);
+
+
+        System.out.println("Debug 4>>>>>>>>>>>");
+        model.addAttribute("user", user);
+        model.addAttribute("pcloset", pcloset);
+      //  model.addAttribute("selectedcloset", closet);
+        return "redirect:/";
+    }
 }

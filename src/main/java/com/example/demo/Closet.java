@@ -63,6 +63,10 @@ public class Closet {
         this.jackets = jackets;
     }
 
+    public void setJacket(Jacket j) {
+        this.jackets.add(j);
+    }
+
     public Collection<Top> getTops() {
         return tops;
     }
@@ -73,6 +77,10 @@ public class Closet {
 
     public Collection<Bottom> getBottoms() {
         return bottoms;
+    }
+
+    public void setBottom(Bottom b) {
+        this.bottoms.add(b);
     }
 
     public void setBottoms(Collection<Bottom> bottoms) {
@@ -87,12 +95,20 @@ public class Closet {
         this.footwears = footwears;
     }
 
+    public void setFootwear(Footwear f) {
+        this.footwears.add(f);
+    }
+
     public Collection<Accessories> getAccessories() {
         return accessories;
     }
 
     public void setAccessories(Collection<Accessories> accessories) {
         this.accessories = accessories;
+    }
+
+    public void setAccessory(Accessories a) {
+        this.accessories.add(a);
     }
 
     public String getClosetName() {
