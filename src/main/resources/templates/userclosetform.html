@@ -15,7 +15,7 @@
             <input type="hidden" th:field="*{id}"/>
 
             <label for="location">Location: </label>
-            <input id="location" type="text" /><br/>
+            <input id="location" type="text" name="temp"/><br/>
 
             <lable for="occasion">Occasion:</lable>
             <select id="occasion" name="occasion" />
@@ -23,12 +23,14 @@
             <option value="informal">Informal</option>
             </select><br />
 
-            <input type="submit" value="Submit"/>
+<!--            <input type="submit" value="Submit"/>-->
+            <input type="submit" value="Submit" onclick="weatherBallon(document.getElementById('location').value)"/>
         </form>
     </div>
     <div class="col-3"></div>
 
 </div>
+<div th:replace="base :: weather"></div>
 <div th:replace="base :: bootstrap-js"></div>
 </body>
 </html>

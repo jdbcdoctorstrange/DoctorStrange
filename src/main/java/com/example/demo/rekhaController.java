@@ -88,6 +88,7 @@ public class rekhaController {
     public String topForm(Model model) {
 
         User user = userService.getCurrentUser();
+        long uid = userService.getCurrentUser().getId();
         Top top = new Top();
 
 
