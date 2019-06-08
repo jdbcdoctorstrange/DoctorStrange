@@ -12,11 +12,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-shadow: .1em .1em 0 rgba(0,0,0,0.3);
+            text-shadow: .1em .1em 0 rgba(0, 0, 0, 0.3);
             font-size: 1.3em;
             height: 100vh;
             background-image: linear-gradient(to right top, #99bbcb, #a5c7d7, #b1d4e2, #bde0ee, #c9edfa);
         }
+
         h1 {
             margin: 0 auto;
             font-size: 2.2em;
@@ -24,12 +25,15 @@
             color: #fff;
             font-size: 5em;
         }
+
         body.sunny {
             background-image: linear-gradient(to right top, #ff4e50, #ff713e, #ff932b, #ffb41d, #f9d423);
         }
+
         body.cloudy {
             background-image: linear-gradient(to right top, #63747c, #71858e, #7f96a0, #8da8b2, #9bbac5);
         }
+
         body.rainy {
             background-image: linear-gradient(to right top, #637c7b, #718e8c, #7ea09e, #8db2b0, #9bc5c3);
         }
@@ -40,46 +44,53 @@
 <!--City Id: 6167865-->
 <div>
     <div id="description"></div>
+    <h3 id="city"></h3>
     <h1 id="temp"></h1>
     <input type="text" id="location" placeholder="location"/>
-    <button type="submit" value="submit" onclick="weatherBallon(document.getElementById('location').value)">Submit</button>
+    <input type="submit" value="submit" onclick="weatherBallon(document.getElementById('location').value)"/>
 </div>
 <script>
     const key = 'b597a1dea2517708cda27cc435a1daca';
-    if(key=='') document.getElementById('temp').innerHTML = ('Remember to add your api key!');
+    if (key == '') document.getElementById('temp').innerHTML = ('Remember to add your api key!');
 
-    function weatherBallon( cityID ) {
-        fetch('https://api.openweathermap.org/data/2.5/weather?id=' + cityID+ '&appid=' + key)
-            .then(function(resp) { return resp.json() }) // Convert data to json
-            .then(function(data) {
+    function weatherBallon(cityName) {
+        fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key)
+            .then(function (resp) {
+                return resp.json()
+            }) // Convert data to json
+            .then(function (data) {
                 drawWeather(data);
             })
-            .catch(function() {
+            .catch(function () {
                 // catch any errors
             });
     }
-    function drawWeather( d ) {
-        var celcius = Math.round(parseFloat(d.main.temp)-273.15);
-        var fahrenheit = Math.round(((parseFloat(d.main.temp)-273.15)*1.8)+32);
+
+    function drawWeather(d) {
+        var celcius = Math.round(parseFloat(d.main.temp) - 273.15);
+        var fahrenheit = Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32);
         var description = d.weather[0].description;
+        var location = d.name.concat(", ", d.sys.country);
 
         document.getElementById('description').innerHTML = description;
-        document.getElementById('temp').innerHTML = celcius + '&deg;';
+        document.getElementById('temp').innerHTML = fahrenheit + '&deg;';
         document.getElementById('location').innerHTML = d.name;
+        document.getElementById('city').innerHTML = location;
 
-        if( description.indexOf('rain') > 0 ) {
+        if (description.indexOf('rain') > 0) {
             document.body.className = 'rainy';
-        } else if( description.indexOf('cloud') > 0 ) {
+        } else if (description.indexOf('cloud') > 0) {
             document.body.className = 'cloudy';
-        } else if( description.indexOf('sunny') > 0 ) {
+        } else if (description.indexOf('sunny') > 0) {
             document.body.className = 'sunny';
         } else {
             document.body.className = 'clear';
         }
     }
-    window.onload = function(location) {
 
-        weatherBallon( location );
+    window.onload = function (location) {
+
+        weatherBallon(location);
     }
 </script>
 </body>
