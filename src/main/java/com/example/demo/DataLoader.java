@@ -6,7 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
-
+/*
 // Add user/role data into the database before the application runs
 @Component
 public class DataLoader implements CommandLineRunner{
@@ -46,6 +46,7 @@ public class DataLoader implements CommandLineRunner{
         loaded and right before the Spring Application run method is
         completed.
      */
+/*
     @Override
     public void run(String... strings) throws Exception{
         System.out.println("Loading data...");
@@ -127,3 +128,4 @@ public class DataLoader implements CommandLineRunner{
 
     }
 }
+*/
