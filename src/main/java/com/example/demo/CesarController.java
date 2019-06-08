@@ -39,7 +39,7 @@ public class CesarController {
 
 
     @RequestMapping("/process")
-    public String processUserForm(@RequestParam("occasion") String occasion, Model model) {
+    public String processUserForm(@RequestParam("occasion") String occasion, @RequestParam("temp") String temp, Model model) {
         long uid = userService.getCurrentUser().getId();
         ArrayList<Top> tops = new ArrayList<>();
         ArrayList<Jacket> jackets = new ArrayList<>();
@@ -47,6 +47,7 @@ public class CesarController {
         ArrayList<Footwear> footwears = new ArrayList<>();
         ArrayList<Accessories> accessories = new ArrayList<>();
         model.addAttribute("user", userService.getCurrentUser());
+        System.out.println(temp);
 //        model.addAttribute("closets", closetRepository.findAllClosetsByUid(uid));
         for(Closet closet: closetRepository.findAllClosetsByUid(uid)){
             for(Top top : closet.getTops()){
