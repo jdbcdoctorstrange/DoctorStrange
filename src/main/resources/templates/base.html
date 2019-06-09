@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="header">
     <meta charset="UTF-8"/>
+
     <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/> <!--custom stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -10,7 +11,16 @@
 
 <body>
 <div th:fragment="navlinks">
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark mb-3 justify-content-end">
+    <nav class="navbar navbar-expand-sm navbar-light mb-3 justify-content-end" style="background-color:#b3d7ff;">
+        <a class="navbar-brand mr-auto" href="#">
+            
+          <img src="https://www.designmantic.com/create_thumb?id=166886&company=Doctor%2BStrange&slogan=" width="60" height="60">
+            
+            
+<!--        <img src="https://www.designmantic.com/logo-images/166857.png?company=Doctor+Strange&slogan=&verify=1" width="60" height="60" alt="">&ndash;&gt;-->
+        </a>
+        
+        
         <ul class="navbar-nav">
             <li class="nav-item" sec:authorize="isAnonymous()">
                 <a class="nav-link" href="/register">Register</a>
