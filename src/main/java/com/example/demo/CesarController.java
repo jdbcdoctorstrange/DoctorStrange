@@ -6,6 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.*;
 
 @Controller
@@ -34,12 +40,23 @@ public class CesarController {
     @RequestMapping("/suggestedform")
     public String getUserForm(Model model) {
         model.addAttribute("user", userService.getCurrentUser());
+        System.out.println(new File(".").getAbsoluteFile());
+
+        ScriptEngineManager factory = new ScriptEngineManager();
+        ScriptEngine engine = factory.getEngineByName("JavaScript");
+        try {
+            engine.eval(new FileReader("js/weather.js"));
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException fe) {
+            fe.printStackTrace();
+        }
         return "userclosetform";
     }
 
 
     @RequestMapping("/process")
-    public String processUserForm(@RequestParam("occasion") String occasion, Model model) {
+    public String processUserForm(@RequestParam("occasion") String occasion, @RequestParam("location") String location, Model model) {
         long uid = userService.getCurrentUser().getId();
         ArrayList<Top> tops = new ArrayList<>();
         ArrayList<Jacket> jackets = new ArrayList<>();
@@ -47,6 +64,14 @@ public class CesarController {
         ArrayList<Footwear> footwears = new ArrayList<>();
         ArrayList<Accessories> accessories = new ArrayList<>();
         model.addAttribute("user", userService.getCurrentUser());
+
+        ScriptEngineManager factory = new ScriptEngineManager();
+        ScriptEngine engine = factory.getEngineByName("JavaScript");
+        try {
+            engine.eval("print('"+location+"')");
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        }
 //        model.addAttribute("closets", closetRepository.findAllClosetsByUid(uid));
         for(Closet closet: closetRepository.findAllClosetsByUid(uid)){
             for(Top top : closet.getTops()){
