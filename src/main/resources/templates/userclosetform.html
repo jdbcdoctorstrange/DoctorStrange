@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Today's Outfit</title>
@@ -14,12 +14,13 @@
             <h3 id="location"></h3>
             <h3 id="temp" name="temp"></h3>
             <label for="userlocation">Location: </label>
-            <input id="userlocation" type="text"/><br/>
+            <input id="userlocation" type="text"/>
             <input type="submit" value="Today's Weather" onclick="weatherBallon(document.getElementById('userlocation').value)"/>
         </div>
         <form action="#" th:action="@{/process}" th:object="${user}"
               method="post" enctype="multipart/form-data" >
             <input type="hidden" id="temperature" name="temperature"/>
+            <input type="hidden" id="month" name="month"/>
             <input type="hidden" th:field="*{id}"/>
             <lable for="occasion">Occasion:</lable>
             <select id="occasion" name="occasion" />
@@ -35,5 +36,15 @@
 </div>
 <div th:replace="base :: weather"></div>
 <div th:replace="base :: bootstrap-js"></div>
+<script>
+    var d = new Date();
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+        "October", "November", "December"];
+    var am = (((d.getHours() < 12)) ? "am" : "pm");
+    document.getElementById("demoDay").innerHTML = days[d.getDay()] + ", " + months[d.getMonth()] + " "
+        + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + am;
+    document.getElementById('month').setAttribute("value", months[d.getMonth()]);
+</script>
 </body>
 </html>

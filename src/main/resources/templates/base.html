@@ -89,8 +89,7 @@
             // document.getElementById('description').innerHTML = description;
             document.getElementById('temp').innerHTML = fahrenheit + '&deg;';
             document.getElementById('temperature').innerHTML = fahrenheit;
-            document.forms.namedItem('temperature').innerHTML = fahrenheit;
-
+            document.getElementById('temperature').setAttribute("value", fahrenheit);
             // document.getElementById('location').innerHTML = d.name;
             document.getElementById('location').innerHTML = location;
 
@@ -114,16 +113,6 @@
     </script>
 </div>
 <div th:fragment="bootstrap-js">
-    <script>
-        var d = new Date();
-        var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
-            "October", "November", "December"];
-        var am = (((d.getHours() < 12)) ? "am" : "pm");
-        document.getElementById("demoDay").innerHTML = days[d.getDay()] + ", " + months[d.getMonth()] + " "
-            + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + am;
-
-    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
