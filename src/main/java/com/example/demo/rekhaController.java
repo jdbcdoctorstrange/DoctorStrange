@@ -89,6 +89,7 @@ public class rekhaController {
 
         Top redSweater = new Top();
         redSweater.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560116246/611pcKkQCqL._UX522_.jpg");
+        redSweater.setColor("blue");
         redSweater.setSize("small");
         redSweater.setMaterial("linen");
         redSweater.setCategory("formal");
@@ -99,7 +100,8 @@ public class rekhaController {
         topRepository.save(redSweater);
 
         Top sumShirt = new Top();
-        sumShirt.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560115909/Hot-sale-T-Shirt-Women-Summer-crop-top-blus-stripe-Cold-Shoulder-V-neck-bandage-top_1024x1024.jpg");
+        sumShirt.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560118645/1568b9a5bdd1b3b3bb8753f45d4458b3_xlarge.jpg");
+        sumShirt.setColor("orange");
         sumShirt.setSize("small");
         sumShirt.setMaterial("cotton");
         sumShirt.setCategory("informal");
@@ -108,6 +110,19 @@ public class rekhaController {
         sumShirt.setType("cold shoulder");
         sumShirt.setCloset(bobCloset);
         topRepository.save(sumShirt);
+
+
+        Top fShirt = new Top();
+        fShirt.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560119464/c483e26b1e45f5825271e75605331c35.jpg");
+        fShirt.setColor("green");
+        fShirt.setSize("small");
+        fShirt.setMaterial("wool");
+        fShirt.setCategory("formal");
+        fShirt.setSeason("fall");
+        fShirt.setSleeves("long");
+        fShirt.setType("sweater");
+        fShirt.setCloset(bobCloset);
+        topRepository.save(fShirt);
 
 
 
@@ -123,7 +138,7 @@ public class rekhaController {
         bottomRepository.save(blueBottom);
 
         Bottom bBottom = new Bottom();
-        bBottom.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560116512/2997525927_2086932431.jpg");
+        bBottom.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560119169/81X9cZaOZ-L._UX522_.jpg");
         bBottom.setColor("blue");
         bBottom.setSize("small");
         bBottom.setMaterial("denim");
@@ -146,16 +161,38 @@ public class rekhaController {
         bottomRepository.save(blackBottom);
 
 
+        Bottom fBottom = new Bottom();
+        fBottom.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560119955/women-s-high-waist-maxi-chiffon-pleated-skirt.jpg");
+        fBottom.setColor("brown");
+        fBottom.setSize("small");
+        fBottom.setMaterial("wool");
+        fBottom.setCategory("formal");
+        fBottom.setSeason("fall");
+        fBottom.setType("skirt");
+        fBottom.setCloset(bobCloset);
+        bottomRepository.save(fBottom);
+
 
         Jacket sJacket = new Jacket();
-        sJacket.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560116923/il_794xN.1491224798_qm64.jpg");
-        sJacket.setColor("yellow");
+        sJacket.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560118870/zu8968882_main_tm1396037478.jpg");
+        sJacket.setColor("white");
         sJacket.setSize("small");
         sJacket.setMaterial("cotton");
         sJacket.setCategory("informal");
         sJacket.setSeason("summer");
         sJacket.setCloset(bobCloset);
         jacketRepository.save(sJacket);
+
+        Jacket fJacket = new Jacket();
+        fJacket.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560119640/1543837506_917M80A3332_X1700_E01_ZHC.jpg");
+        fJacket.setColor("beige");
+        fJacket.setSize("small");
+        fJacket.setMaterial("cotton");
+        fJacket.setCategory("formal");
+        fJacket.setSeason("fall");
+        fJacket.setCloset(bobCloset);
+        jacketRepository.save(fJacket);
+
 
         Jacket blackJacket = new Jacket();
         blackJacket.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1559929830/rBVaJFjU0dyAf9vyAAEfjj0Qa_A786.jpg");
@@ -166,9 +203,6 @@ public class rekhaController {
         blackJacket.setSeason("spring");
         blackJacket.setCloset(bobCloset);
         jacketRepository.save(blackJacket);
-
-
-
 
 
         Jacket blJacket = new Jacket();
@@ -192,6 +226,17 @@ public class rekhaController {
         sFootwear.setCloset(bobCloset);
         footwearRepository.save(sFootwear);
 
+        Footwear fFootwear = new Footwear();
+        fFootwear.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560120184/04.w710.h473.2x.jpg");
+        fFootwear.setColor("brown");
+        fFootwear.setSize("small");
+        fFootwear.setMaterial("rubber");
+        fFootwear.setCategory("formal");
+        fFootwear.setSeason("fall");
+        fFootwear.setCloset(bobCloset);
+        footwearRepository.save(fFootwear);
+
+
 
         Footwear blackFootwear = new Footwear();
         blackFootwear.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1559930120/9244051_fpx.jpg");
@@ -204,7 +249,7 @@ public class rekhaController {
         footwearRepository.save(blackFootwear);
 
         Footwear blFootwear = new Footwear();
-        blFootwear.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560115562/1024x1024-Women-Major-Black-LB1_1024x1024.jpg");
+        blFootwear.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560120514/cole-haan-womens-galina-boot-tall-boots_2XMjj2D.jpg");
         blFootwear.setColor("black");
         blFootwear.setSize("small");
         blFootwear.setMaterial("leather");
@@ -248,6 +293,18 @@ public class rekhaController {
         sAccessories.setSeason("summer");
         sAccessories.setCloset(bobCloset);
         accessoriesRepository.save(sAccessories);
+
+
+
+        Accessories fAccessories = new Accessories();
+        fAccessories.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560120359/71vbDyl3VTL._SX466_.jpg");
+        fAccessories.setColor("rainbow");
+        fAccessories.setSize("big");
+        fAccessories.setMaterial("metal");
+        fAccessories.setCategory("formal");
+        fAccessories.setSeason("fall");
+        fAccessories.setCloset(bobCloset);
+        accessoriesRepository.save(fAccessories);
 
 
 
