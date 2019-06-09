@@ -87,6 +87,28 @@ public class rekhaController {
         whiteShirt.setCloset(bobCloset);
         topRepository.save(whiteShirt);
 
+        Top redSweater = new Top();
+        redSweater.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560116246/611pcKkQCqL._UX522_.jpg");
+        redSweater.setSize("small");
+        redSweater.setMaterial("linen");
+        redSweater.setCategory("formal");
+        redSweater.setSeason("fall");
+        redSweater.setSleeves("short");
+        redSweater.setType("Botton down");
+        redSweater.setCloset(bobCloset);
+        topRepository.save(redSweater);
+
+        Top sumShirt = new Top();
+        sumShirt.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560115909/Hot-sale-T-Shirt-Women-Summer-crop-top-blus-stripe-Cold-Shoulder-V-neck-bandage-top_1024x1024.jpg");
+        sumShirt.setSize("small");
+        sumShirt.setMaterial("cotton");
+        sumShirt.setCategory("informal");
+        sumShirt.setSeason("summer");
+        sumShirt.setSleeves("short");
+        sumShirt.setType("cold shoulder");
+        sumShirt.setCloset(bobCloset);
+        topRepository.save(sumShirt);
+
 
 
         Bottom blueBottom = new Bottom();
@@ -100,6 +122,41 @@ public class rekhaController {
         blueBottom.setCloset(bobCloset);
         bottomRepository.save(blueBottom);
 
+        Bottom bBottom = new Bottom();
+        bBottom.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560116512/2997525927_2086932431.jpg");
+        bBottom.setColor("blue");
+        bBottom.setSize("small");
+        bBottom.setMaterial("denim");
+        bBottom.setCategory("informal");
+        bBottom.setSeason("summer");
+        bBottom.setType("shorts");
+        bBottom.setCloset(bobCloset);
+        bottomRepository.save(bBottom);
+
+
+        Bottom blackBottom = new Bottom();
+        blackBottom.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560115067/LX94_015_Black_W_StormLineStretchRainPants_Front.jpg");
+        blackBottom.setColor("black");
+        blackBottom.setSize("small");
+        blackBottom.setMaterial("wool");
+        blackBottom.setCategory("formal");
+        blackBottom.setSeason("spring");
+        blackBottom.setType("pants");
+        blackBottom.setCloset(bobCloset);
+        bottomRepository.save(blackBottom);
+
+
+
+        Jacket sJacket = new Jacket();
+        sJacket.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560116923/il_794xN.1491224798_qm64.jpg");
+        sJacket.setColor("yellow");
+        sJacket.setSize("small");
+        sJacket.setMaterial("cotton");
+        sJacket.setCategory("informal");
+        sJacket.setSeason("summer");
+        sJacket.setCloset(bobCloset);
+        jacketRepository.save(sJacket);
+
         Jacket blackJacket = new Jacket();
         blackJacket.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1559929830/rBVaJFjU0dyAf9vyAAEfjj0Qa_A786.jpg");
         blackJacket.setColor("black");
@@ -109,6 +166,32 @@ public class rekhaController {
         blackJacket.setSeason("spring");
         blackJacket.setCloset(bobCloset);
         jacketRepository.save(blackJacket);
+
+
+
+
+
+        Jacket blJacket = new Jacket();
+        blJacket.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560115348/Coats_L0BA210F_4291_674F.jpg");
+        blJacket.setColor("peach");
+        blJacket.setSize("small");
+        blJacket.setMaterial("cashmere");
+        blJacket.setCategory("formal");
+        blJacket.setSeason("winter");
+        blJacket.setCloset(bobCloset);
+        jacketRepository.save(blJacket);
+
+
+        Footwear sFootwear = new Footwear();
+        sFootwear.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560117088/e418ca8a-0972-41b5-afdc-f04767652e06.jpg");
+        sFootwear.setColor("white");
+        sFootwear.setSize("small");
+        sFootwear.setMaterial("leather");
+        sFootwear.setCategory("informal");
+        sFootwear.setSeason("summer");
+        sFootwear.setCloset(bobCloset);
+        footwearRepository.save(sFootwear);
+
 
         Footwear blackFootwear = new Footwear();
         blackFootwear.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1559930120/9244051_fpx.jpg");
@@ -120,6 +203,19 @@ public class rekhaController {
         blackFootwear.setCloset(bobCloset);
         footwearRepository.save(blackFootwear);
 
+        Footwear blFootwear = new Footwear();
+        blFootwear.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560115562/1024x1024-Women-Major-Black-LB1_1024x1024.jpg");
+        blFootwear.setColor("black");
+        blFootwear.setSize("small");
+        blFootwear.setMaterial("leather");
+        blFootwear.setCategory("formal");
+        blFootwear.setSeason("winter");
+        blFootwear.setCloset(bobCloset);
+        footwearRepository.save(blFootwear);
+
+
+
+
         Accessories bobAccessories = new Accessories();
         bobAccessories.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1559930371/oMQc_xqN_400x400.png");
         bobAccessories.setColor("red");
@@ -129,6 +225,31 @@ public class rekhaController {
         bobAccessories.setSeason("spring");
         bobAccessories.setCloset(bobCloset);
         accessoriesRepository.save(bobAccessories);
+
+
+
+        Accessories bozAccessories = new Accessories();
+        bozAccessories.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560115706/61S_2B6qp9EiL._UL1161_.jpg");
+        bozAccessories.setColor("black");
+        bozAccessories.setSize("medium");
+        bozAccessories.setMaterial("leather");
+        bozAccessories.setCategory("formal");
+        bozAccessories.setSeason("winter");
+        bozAccessories.setCloset(bobCloset);
+        accessoriesRepository.save(bozAccessories);
+
+
+        Accessories sAccessories = new Accessories();
+        sAccessories.setImgUrl("https://res.cloudinary.com/drd5k7s5s/image/upload/v1560117218/sunglasses-rose-theater-1_grande.jpg");
+        sAccessories.setColor("rainbow");
+        sAccessories.setSize("small");
+        sAccessories.setMaterial("metal");
+        sAccessories.setCategory("informal");
+        sAccessories.setSeason("summer");
+        sAccessories.setCloset(bobCloset);
+        accessoriesRepository.save(sAccessories);
+
+
 
     }
 
