@@ -58,7 +58,8 @@ public class CesarController {
 
 
     @RequestMapping("/process")
-    public String processUserForm(@RequestParam("occasion") String occasion, @RequestParam("temperature") String temp, Model model) {
+    public String processUserForm(@RequestParam("occasion") String occasion, @RequestParam("temperature") String temp,
+                                  Model model) {
         long uid = userService.getCurrentUser().getId();
         String season ="";
         ArrayList<Top> tops = new ArrayList<>();
@@ -70,7 +71,7 @@ public class CesarController {
         if (Integer.parseInt(temp) <= 32){
             season = "winter";
         }else if(Integer.parseInt(temp) >= 45 || Integer.parseInt(temp) <= 75){
-            //generating a random because this temperatures range in either fall or spring
+            //generating a random because these temperatures range in either fall or spring
             int num = (int) (Math.random()*10)+1;
             if(num % 2 == 0){
                 season = "fall";
@@ -80,16 +81,9 @@ public class CesarController {
         }else if(Integer.parseInt(temp) >= 76){
             season = "summer";
         }
-        System.out.println(season);
+        System.out.println(season);//testing output
         season = "spring";//Hard coded because of lack of outfits
-//        ScriptEngineManager factory = new ScriptEngineManager();
-//        ScriptEngine engine = factory.getEngineByName("JavaScript");
-//        try {
-//            engine.eval("print('"+location+"')");
-//        } catch (ScriptException e) {
-//            e.printStackTrace();
-//        }
-//        model.addAttribute("closets", closetRepository.findAllClosetsByUid(uid));
+        model.addAttribute("closets", closetRepository.findAllClosetsByUid(uid));
         for(Closet closet: closetRepository.findAllClosetsByUid(uid)){
             for(Top top : closet.getTops()){
                 if(top.getCategory().equals(occasion) && top.getSeason().equalsIgnoreCase(season)){
