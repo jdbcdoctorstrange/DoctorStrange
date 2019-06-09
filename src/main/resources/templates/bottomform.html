@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="style.css">
     <th:block th:insert="base :: header"></th:block>
 </head>
 <body>
@@ -13,49 +14,71 @@
           th:object="${bottom}"
           enctype="multipart/form-data"
           method="POST">
-        <input type="hidden" th:field="*{id}"/>
-        <p>
-            Closet:<select th:field="*{closet}">
-            <option th:each="closet : ${closets}"
-                    th:value="${closet.id}"
-                    th:text="${closet.closetName}"></option>
-        </select>
-            Color: <input type="text" th:field="*{color}"/>
-            <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></span> <br/>
+        <input type="hidden" th:field="*{id}" />
+        <form>
 
-            Material: <input type="text" th:field="*{material}"/>
-            <span th:if="${#fields.hasErrors('material')}" th:errors="*{material}"></span> <br/>
+            <label for="closet">
+                Closet:
+            </label>
 
-            Size: <input type="text" th:field="*{size}"/>
-            <span th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></span> <br/>
+            <select id="closet" th:field="*{closet}">
+                <option th:each="closet : ${closets}"
+                        th:value="${closet.id}"
+                        th:text="${closet.closetName}"></option>
+            </select><br/>
 
-            Type: <select th:field="*{type}">
-            <option th:value="'pants'" th:text="Pants"></option>
-            <option th:value="'shorts'" th:text="Shorts"></option>
-            <option th:value="'skirts'" th:text="Skirts"></option>
-        </select>
 
-            Category: <select th:field="*{category}">
-            <option th:value="'formal'" th:text="Formal"></option>
-            <option th:value="'informal'" th:text="Informal"></option>
-        </select>
 
-            <select th:field="*{season}">
+
+            <label for="color">
+                Color:
+            </label>
+            <input type="text" id="color" th:field="*{color}" />
+            <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></span>
+
+
+            <label for="material">
+                Material:
+            </label>
+            <input type="text" id="material" th:field="*{material}" />
+            <span th:if="${#fields.hasErrors('material')}" th:errors="*{material}"></span>
+
+            <label for="size">
+                Size:
+            </label>
+
+            <input type="text" id="size" th:field="*{size}" />
+            <span th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></span>
+
+            <label for="category">
+                Category:
+            </label>
+
+            <select id="category" th:field="*{category}">
+                <option th:value="'formal'"  th:text="Formal"></option>
+                <option th:value="'informal'" th:text="Informal"></option>
+            </select>
+
+            <label for="season">
+                Season:
+            </label>
+
+            <select id="season" th:field="*{season}">
                 <option th:value="'Spring'" th:text="Spring"></option>
                 <option th:value="'Summer'" th:text="Summer"></option>
                 <option th:value="'Fall'" th:text="Fall"></option>
                 <option th:value="'Winter'" th:text="Winter"></option>
-            </select>
+            </select></br>
             <label for="file">Choose file to upload</label>
-            <input type="file" id="file" name="file"/><br/><br/>
+            <input type="file" id="file" name="file" /><br/>
 
-        <div th:if="*{imgUrl}" !=null>
-            <img th:src="*{imgUrl}"/>
-            <hr/>
-        </div>
-        <input type="submit" value="Submit"/>
-        </p>
+            <div th:if="*{imgUrl}" != null>
+                <img th:src ="*{imgUrl}" />
+                <hr />
+            </div>
+            <input type="submit" value="Submit" id="subBtn"/>
+        </form>
     </form>
 </div>
 </body>
-</html>
+
