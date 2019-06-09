@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8">
     <title>Current Weather</title>
@@ -42,13 +42,17 @@
 <body>
 <div class="bg"></div>
 <!--City Id: 6167865-->
+<form action="#"
+      th:action="@{/processweather}"
+      method="POST">
 <div>
     <div id="description"></div>
     <h3 id="city"></h3>
-    <h1 id="temp"></h1>
+    <input type="hidden" id="temp" name = "temp" />
     <input type="text" id="location" placeholder="location"/>
     <input type="submit" value="submit" onclick="weatherBallon(document.getElementById('location').value)"/>
 </div>
+</form>
 <script>
     const key = 'b597a1dea2517708cda27cc435a1daca';
     if (key == '') document.getElementById('temp').innerHTML = ('Remember to add your api key!');
@@ -74,6 +78,7 @@
 
         document.getElementById('description').innerHTML = description;
         document.getElementById('temp').innerHTML = fahrenheit + '&deg;';
+        document.getElementById('temp').value = fahrenheit;
         document.getElementById('location').innerHTML = d.name;
         document.getElementById('city').innerHTML = location;
 

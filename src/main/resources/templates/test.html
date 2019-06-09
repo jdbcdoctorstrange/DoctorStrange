@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <title>Title</title>
+
+    <th:block th:insert="base :: header"></th:block>
+</head>
+<body>
+<form id="test" method="post" action="/profile">
+
+
+    <div>
+        <input type="text" name="firstname" id="firstname">
+    </div>
+
+
+
+
+    <div>
+        <input type="text" name="lastname" id="lastname">
+    </div>
+
+
+
+
+    <div>
+        <button type="submit" name="submit">Submit</button>
+    </div>
+
+
+</form>
+
+<script>
+
+    $(document).ready(function() {
+        $('#test').submit(
+            function(event) {
+                var firstname = $('#firstname').val();
+                var lastname = $('#lastname').val();
+                var data = 'firstname='
+                    + encodeURIComponent(firstname)
+                    + '&amp;lastname='
+                    + encodeURIComponent(lastname);
+                $.ajax({
+                    url : $("#test").attr("action"),
+                    data : data,
+                    type : "GET",
+
+                    success : function(response) {
+                        alert( response );
+                    },
+                    error : function(xhr, status, error) {
+                        alert(xhr.responseText);
+                    }
+                });
+                return false;
+            });
+    });
+
+
+</script>
+
+
+
+
+<div th:replace="base :: weather"></div>
+<div th:replace="base :: bootstrap-js"></div>
+
+</body>
+</html>

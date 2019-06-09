@@ -53,10 +53,23 @@
 </div>
 <div th:fragment="weather">
     <script>
-        const key = 'b597a1dea2517708cda27cc435a1daca';
+        const key = 'b5bea8437fc25cb64be9c9527b80bc18';
         if (key == '') document.getElementById('temp').innerHTML = ('Remember to add your api key!');
 
         function weatherBallon(cityName) {
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML =
+                        this.responseText;
+                }
+            };
+
+            var url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + '&appid=' + key
+            xhttp.open("GET", url, true);
+            xhttp.send();
+
             fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key)
                 .then(function (resp) {
                     return resp.json()
@@ -77,6 +90,9 @@
 
             //document.getElementById('description').innerHTML = description;
             document.getElementById('temp').innerHTML = fahrenheit;
+
+            document.getElementById('temp').value = fahrenheit;
+            document.write("The temperature is set to "+fahrenheit);
             document.getElementById('location').innerHTML = d.name;
             //document.getElementById('city').innerHTML = location;
 
