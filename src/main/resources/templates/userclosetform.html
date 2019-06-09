@@ -13,10 +13,8 @@
         <form action="#" th:action="@{/process}" th:object="${user}"
               method="post"enctype="multipart/form-data" >
             <input type="hidden" th:field="*{id}"/>
-            <h2 id="temp" name="temp"></h2>
             <label for="location">Location: </label>
-            <input id="location" type="text"/><br/>
-            <button type="submit" onclick="weatherBallon(document.getElementById('location').value)">Locate Me</button>
+            <input id="location" type="text" name="location"/><br/>
 
             <lable for="occasion">Occasion:</lable>
             <select id="occasion" name="occasion" />
@@ -24,7 +22,6 @@
             <option value="informal">Informal</option>
             </select><br />
 
-<!--            <input type="submit" value="Submit"/>-->
             <input type="submit" value="Submit"/>
         </form>
     </div>
