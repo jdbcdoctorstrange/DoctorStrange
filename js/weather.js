@@ -1,20 +1,21 @@
 // print("Hello, this is testing");
-const key = 'b597a1dea2517708cda27cc435a1daca';
+key = 'b597a1dea2517708cda27cc435a1daca';
 
-function WeatherBalloon(cityName) {
+function weatherBalloon(cityName) {
+    var result = "";
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key)
         .then(function (resp) {
             return resp.json()
         }) // Convert data to json
         .then(function (data) {
-            drawWeather(data);
+            result = drawWeather(data);
         })
         .catch(function () {
             // catch any errors
         });
+    print(result);
 }
 
 function drawWeather(d) {
-    return Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32);
-
+    print(Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32));
 }
