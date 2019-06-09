@@ -20,30 +20,56 @@
 <div class="container">
     </br> </br>
 
+
     <h4>What to wear? These clothes manager app helps you dress better for work or play
         — based on your wardrobe and the weather</h4></br></br>
 
 </div>
 
-<img src="https://previews.123rf.com/images/lenm/lenm1406/lenm140600069/28829940-図は、服を搭載ラック女性服の完全な.jpg" alt="Paris"
-     width="500" height="300" class="mx-auto d-block">
+    <img src="https://previews.123rf.com/images/lenm/lenm1406/lenm140600069/28829940-図は、服を搭載ラック女性服の完全な.jpg" alt="Paris"
+         width="500" height="300" class="mx-auto d-block">
 
 
-<div th:if="${param.error}">
-    Invalid username and password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
-
-<form th:action="@{/login}" method="post">
-    <div>
-        <label>User Name: <input type="text" name="username"/></label>
+    <div th:if="${param.error}">
+        Invalid username and password.
     </div>
-    <div>
-        <label>Password: <input type="password" name="password"/></label>
+    <div th:if="${param.logout}">
+        You have been logged out.
     </div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
-</body>
-</html>
+
+
+
+
+
+<!--                    <div class="col-sm-5" form th:action="@{/login}" method="post">-->
+<!--                    <div>-->
+<!--                        <label>User Name: <input type="text" name="username"/></label>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <label>Password: <input type="password" name="password"/></label>-->
+<!--                    </div>-->
+<!--                    <div><input type="submit" value="Sign In"/></div>-->
+<!--                </form></div>-->
+
+<!--                <div class="col-sm-7">-->
+<!--                <div>-->
+<!--                    <img src="https://previews.123rf.com/images/lenm/lenm1406/lenm140600069/28829940-図は、服を搭載ラック女性服の完全な.jpg" width="500" height="300">-->
+
+<!--                </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--</div>-->
+
+
+                <form th:action="@{/login}" method="post">
+        <div>
+            <label>User Name: <input type="text" name="username"/></label>
+        </div>
+        <div>
+            <label>Password: <input type="password" name="password"/></label>
+        </div>
+        <div><input type="submit" value="Sign In"/></div>
+    </form>
+    </body>
+    </html>
