@@ -80,6 +80,7 @@ public class CesarController {
         }else if(Integer.parseInt(temp) >= 76){
             season = "summer";
         }
+        System.out.println(season);
         season = "spring";//Hard coded because of lack of outfits
 //        ScriptEngineManager factory = new ScriptEngineManager();
 //        ScriptEngine engine = factory.getEngineByName("JavaScript");
