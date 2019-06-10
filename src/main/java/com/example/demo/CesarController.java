@@ -68,6 +68,7 @@ public class CesarController {
         ArrayList<Footwear> footwears = new ArrayList<>();
         ArrayList<Accessories> accessories = new ArrayList<>();
         model.addAttribute("user", userService.getCurrentUser());
+
         if (Integer.parseInt(temp) <= 32){
             season = "winter";
         }else if(Integer.parseInt(temp) >= 45 || Integer.parseInt(temp) <= 75){
@@ -81,6 +82,7 @@ public class CesarController {
         }else if(Integer.parseInt(temp) >= 76){
             season = "summer";
         }
+
         System.out.println(season);//testing output
         season = "spring"; //hard coded for lack of outfits.
         model.addAttribute("closets", closetRepository.findAllClosetsByUid(uid));
