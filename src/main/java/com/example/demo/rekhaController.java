@@ -441,6 +441,7 @@ public class rekhaController {
                 return "topform";
             }
         }
+        topRepository.save(top);
         System.out.println("Debug 3>>>>>>>>>>>");
         //top.setUid(userService.getCurrentUser().getId());
        // top.getCloset().setUser(userService.getCurrentUser());
