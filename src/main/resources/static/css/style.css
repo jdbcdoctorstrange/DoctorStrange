@@ -67,10 +67,5 @@ input, textarea {
     padding-left: 15px;
 }
 
-@media only screen and (max-width: 690px) {
-    #login-img{
-        display: none;
-    }
-}
 
 

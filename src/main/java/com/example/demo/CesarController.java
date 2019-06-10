@@ -73,8 +73,10 @@ public class CesarController {
             season = "winter";
         }else if(Integer.parseInt(temp) >= 45 || Integer.parseInt(temp) <= 75){
             //generating a random because these temperatures range in either fall or spring
-            int num = (int) (Math.random()*10)+1;
-            if(num % 2 == 0){
+            Random random = new Random();
+            //For 50% chance of true
+            boolean fallOrSpring = (random.nextInt(2) == 0) ? true : false;
+            if(fallOrSpring){
                 season = "fall";
             }else{
                 season = "spring";
