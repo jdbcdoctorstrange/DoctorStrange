@@ -61,7 +61,7 @@ public class rekhaController {
         Role userRole = roleRepository.findByRole("USER");
         Role adminRole = roleRepository.findByRole("ADMIN");
 
-        User user = new User("bob@bob.com",passwordEncoder.encode("password"),"Bob","Bobberson",true,"bob");
+        User user = new User("katy@email.com",passwordEncoder.encode("password"),"Katy","Bobberson",true,"katy");
         user.setRoles(Arrays.asList(userRole));
         userRepository.save(user);
 
@@ -70,7 +70,7 @@ public class rekhaController {
 //        userRepository.save(user);
 
         Closet bobCloset = new Closet();
-        bobCloset.setClosetName("Bob's Closet");
+        bobCloset.setClosetName("Katy's Closet");
         bobCloset.setUid(user.getId());
         bobCloset.setUser(user);
         closetRepository.save(bobCloset);

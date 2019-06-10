@@ -82,7 +82,7 @@ public class CesarController {
             season = "summer";
         }
         System.out.println(season);//testing output
-        season = "spring";//Hard coded because of lack of outfits
+        season = "spring"; //hard coded for lack of outfits.
         model.addAttribute("closets", closetRepository.findAllClosetsByUid(uid));
         for(Closet closet: closetRepository.findAllClosetsByUid(uid)){
             for(Top top : closet.getTops()){
