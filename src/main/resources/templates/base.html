@@ -2,15 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="header">
     <meta charset="UTF-8"/>
+
     <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/> <!--custom stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
-<body>
 
+<body>
 <div th:fragment="navlinks">
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark mb-3 justify-content-end">
+    <nav class="navbar navbar-expand-sm navbar-light mb-3 justify-content-end" style="background-color:#b3d7ff;">
+        <a class="navbar-brand mr-auto" href="#">
+            
+          <img src="https://www.designmantic.com/create_thumb?id=166886&company=Doctor%2BStrange&slogan=" width="60" height="60">
+            
+            
+<!--        <img src="https://www.designmantic.com/logo-images/166857.png?company=Doctor+Strange&slogan=&verify=1" width="60" height="60" alt="">&ndash;&gt;-->
+        </a>
+        
+        
         <ul class="navbar-nav">
             <li class="nav-item" sec:authorize="isAnonymous()">
                 <a class="nav-link" href="/register">Register</a>
@@ -23,6 +33,9 @@
             </li>
             <li class="nav-item" sec:authorize="isAuthenticated()">
                 <a class="nav-link" href="/addcloset">Add New Closet</a>
+            </li>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link" href="/addpackinglist">Pack for Trip</a>
             </li>
             <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -48,17 +61,58 @@
         </ul>
     </nav>
 </div>
-<div th:fragment="bootstrap-js">
+<div th:fragment="weather">
     <script>
-        var d = new Date();
-        var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
-            "October", "November", "December"];
-        var am = (((d.getHours() < 12)) ? "am" : "pm");
-        document.getElementById("demoDay").innerHTML = days[d.getDay()] + ", " + months[d.getMonth()] + " "
-            + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + am;
+        const key = 'b597a1dea2517708cda27cc435a1daca';
+        if (key == '') document.getElementById('location').innerHTML = ('Remember to add your api key!');
+
+        function weatherBallon(cityName) {
+            fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key)
+                .then(function (resp) {
+                    return resp.json()
+                }) // Convert data to json
+                .then(function (data) {
+                    drawWeather(data);
+                })
+                .catch(function () {
+                    // catch any errors
+                });
+        }
+
+        function drawWeather(d) {
+            var celcius = Math.round(parseFloat(d.main.temp) - 273.15);
+            var fahrenheit = Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32);
+            var description = d.weather[0].description;
+            var location = d.name.concat(", ", d.sys.country);
+
+
+            // document.getElementById('description').innerHTML = description;
+            document.getElementById('temp').innerHTML = fahrenheit + '&deg;';
+            document.getElementById('temperature').innerHTML = fahrenheit;
+            document.getElementById('temperature').setAttribute("value", fahrenheit);
+            // document.getElementById('location').innerHTML = d.name;
+            document.getElementById('location').innerHTML = location;
+
+
+            if (description.indexOf('rain') > 0) {
+                document.body.className = 'rainy';
+            } else if (description.indexOf('cloud') > 0) {
+                document.body.className = 'cloudy';
+            } else if (description.indexOf('sunny') > 0) {
+                document.body.className = 'sunny';
+            } else {
+                document.body.className = 'clear';
+            }
+        }
+
+        window.onload = function (location) {
+            weatherBallon(location);
+        }
+
 
     </script>
+</div>
+<div th:fragment="bootstrap-js">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>

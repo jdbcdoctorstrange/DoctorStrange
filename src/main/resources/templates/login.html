@@ -3,26 +3,55 @@
 <head>
     <title>Login</title>
     <th:block th:insert="base :: header"></th:block>
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
 </head>
+
 <body>
 
-    <div th:replace="base :: navlinks"></div>
-
-    <div th:if="${param.error}">
-        Invalid username and password.
+<div th:replace="base :: navlinks"></div>
+<div class="container">
+    <div class="row">
+        <h4>What to wear? These clothes manager app helps you dress better for work or play
+            — based on your wardrobe and the weather</h4>
     </div>
-    <div th:if="${param.logout}">
-        You have been logged out.
-    </div>
-    <form th:action="@{/login}" method="post">
-        <div>
-            <label>User Name: <input type="text" name="username"/></label>
-        </div>
-        <div>
-            <label>Password: <input type="password" name="password"/></label>
-        </div>
-        <div><input type="submit" value="Sign In"/></div>
-    </form>
+    <div class="row">
+        <div class="col-lg-6 justify-content-center" id="login">
+            <div th:if="${param.error}">
+                Invalid username and password.
+            </div>
+            <div th:if="${param.logout}">
+                You have been logged out.
+            </div>
 
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input id="username" class="form-control w-50" type="text" name="username"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input id="password" class="form-control w-50" type="password" name="password"/>
+                </div>
+                <div class="form-group pt-2 pl-1">
+                    <input type="submit" value="Sign In"/>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-lg-6" id="login-img">
+            <img src="https://previews.123rf.com/images/lenm/lenm1406/lenm140600069/28829940-図は、服を搭載ラック女性服の完全な.jpg" alt="Paris"
+                 width="500" height="300" class="mx-auto d-block">
+        </div>
+    </div>
+
+</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Today's Outfit</title>
@@ -8,27 +8,53 @@
 <body>
 <div th:replace="base :: navlinks"></div>
 <div class="container">
-    <div class="col-3"></div>
-    <div class="col-6 pt-6">
-        <form action="#" th:action="@{/process}" th:object="${user}"
-              method="post"enctype="multipart/form-data" >
-            <input type="hidden" th:field="*{id}"/>
-
-            <label for="location">Location: </label>
-            <input id="location" type="text" /><br/>
-
-            <lable for="occasion">Occasion:</lable>
-            <select id="occasion" name="occasion" />
-            <option value="formal">Formal</option>
-            <option value="informal">Informal</option>
-            </select><br />
-
-            <input type="submit" value="Submit"/>
-        </form>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6 pt-6">
+            <div>
+                <div class="form-group">
+                    <h3 id="location"></h3>
+                    <h3 id="temp" name="temp"></h3>
+                </div>
+                <div class="form-group">
+                    <label for="userlocation">Location: </label>
+                    <input id="userlocation" type="text" class="form-control" placeholder="Rockville, USA"/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Today's Weather" class="form-control"
+                           onclick="weatherBallon(document.getElementById('userlocation').value)"/>
+                </div>
+            </div>
+            <form action="#" th:action="@{/process}" th:object="${user}"
+                  method="post" enctype="multipart/form-data">
+                <input type="hidden" id="temperature" name="temperature"/>
+                <input type="hidden" th:field="*{id}"/>
+                <div class="form-group">
+                    <lable for="occasion">Occasion:</lable>
+                    <select id="occasion" name="occasion"/>
+                    <option value="formal">Formal</option>
+                    <option value="informal">Informal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit"/>
+                </div>
+            </form>
+        </div>
+        <div class="col-3"></div>
     </div>
-    <div class="col-3"></div>
-
 </div>
+<div th:replace="base :: weather"></div>
 <div th:replace="base :: bootstrap-js"></div>
+<script>
+    var d = new Date();
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+        "October", "November", "December"];
+    var am = (((d.getHours() < 12)) ? "am" : "pm");
+    document.getElementById("demoDay").innerHTML = days[d.getDay()] + ", " + months[d.getMonth()] + " "
+        + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + am;
+    document.getElementById('month').setAttribute("value", months[d.getMonth()]);
+</script>
 </body>
 </html>

@@ -1,13 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+<<<<<<< HEAD
+=======
+    <link rel="stylesheet" href="style.css">
+>>>>>>> 2cb4c3c30e411ed3e6e41508ed980750ce47c59a
     <th:block th:insert="base :: header"></th:block>
 </head>
 <body>
 <div th:replace="base :: navlinks"></div>
 <div class="container">
+<<<<<<< HEAD
 <form action="#"
       th:action="@{/processjacket}"
       th:object="${jacket}"
@@ -51,5 +57,78 @@
     </p>
 </form>
 </div>
+=======
+    <form action="#"
+          th:action="@{/processjacket}"
+          th:object="${jacket}"
+          enctype="multipart/form-data"
+          method="POST">
+        <input type="hidden" th:field="*{id}" />
+        <form>
+
+            <label for="closet">
+                Closet:
+            </label>
+
+            <select id="closet" th:field="*{closet}">
+                <option th:each="closet : ${closets}"
+                        th:value="${closet.id}"
+                        th:text="${closet.closetName}"></option>
+            </select><br/>
+
+
+
+
+            <label for="color">
+                Color:
+            </label>
+            <input type="text" id="color" th:field="*{color}" />
+            <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></span>
+
+
+            <label for="material">
+                Material:
+            </label>
+            <input type="text" id="material" th:field="*{material}" />
+            <span th:if="${#fields.hasErrors('material')}" th:errors="*{material}"></span>
+
+            <label for="size">
+                Size:
+            </label>
+
+            <input type="text" id="size" th:field="*{size}" />
+            <span th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></span>
+
+            <label for="category">
+                Category:
+            </label>
+
+            <select id="category" th:field="*{category}">
+                <option th:value="'formal'"  th:text="Formal"></option>
+                <option th:value="'informal'" th:text="Informal"></option>
+            </select>
+
+            <label for="season">
+                Season:
+            </label>
+
+            <select id="season" th:field="*{season}">
+                <option th:value="'Spring'" th:text="Spring"></option>
+                <option th:value="'Summer'" th:text="Summer"></option>
+                <option th:value="'Fall'" th:text="Fall"></option>
+                <option th:value="'Winter'" th:text="Winter"></option>
+            </select></br>
+            <label for="file">Choose file to upload</label>
+            <input type="file" id="file" name="file" /><br/>
+
+            <div th:if="*{imgUrl}" != null>
+                <img th:src ="*{imgUrl}" />
+                <hr />
+            </div>
+            <input type="submit" value="Submit" id="subBtn"/>
+        </form>
+    </form>
+</div>
+<div th:replace="base :: bootstrap-js"></div>
+>>>>>>> 2cb4c3c30e411ed3e6e41508ed980750ce47c59a
 </body>
-</html>

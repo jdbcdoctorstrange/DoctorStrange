@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8">
-    <title>Packing items from closet [[${selectedcloset.closetName}]]</title>
+    <title>Closet Application</title>
+    <th:block th:insert="base :: header"></th:block>
 </head>
+<body>
+
+<div th:replace="base :: navlinks"></div>
 
 <div class="container">
-<h2>Title: <span th:text="${selectedcloset.closetName}"></span></h2> <br/>
+<h3>Title: <span th:text="${pcloset.closetName}"></span></h3> <br/>
 
     <form action="#"
           th:action="@{/processpackingitem}"
@@ -15,7 +18,7 @@
           method="POST">
         <input type="hidden" th:field="*{id}" />
 
-
+        <div class="container">
     <h1>Tops</h1>
     <table class="table table-bordered">
         <thead>
@@ -24,8 +27,10 @@
             <th>Material</th>
             <th>Size</th>
             <th>Season</th>
+            <th>Category</th>
             <th>Image</th>
             <th>Actions</th>
+            <input type="hidden" name="selectedtops" value="checked">
         </tr>
         </thead>
         <tbody>
@@ -34,21 +39,153 @@
             <td th:text="${top.material}"></td>
             <td th:text="${top.size}"></td>
             <td th:text="${top.season}"></td>
+            <td th:text="${top.category}"></td>
             <td><img th:src="${top.imgUrl}" height="50" width="50"/></td>
             <td>
-            <td>
-                <input type="checkbox" th:name="${pcloset.tops.add(top.id)}" value="${top}" />
+                <input type="checkbox" name="selectedtops" th:value="${top.id}" />
             </td>
         </tr>
         </tbody>
     </table>
+        </div>
+
+
+
+        <div class="container">
+            <h4>Jackets</h4>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Color</th>
+                    <th>Material</th>
+                    <th>Size</th>
+                    <th>Season</th>
+                    <th>Category</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                    <input type="hidden" name="selectedjackets" value="checked">
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="jacket : ${selectedcloset.jackets}">
+                    <td th:text="${jacket.color}"></td>
+                    <td th:text="${jacket.material}"></td>
+                    <td th:text="${jacket.size}"></td>
+                    <td th:text="${jacket.season}"></td>
+                    <td th:text="${jacket.category}"></td>
+                    <td><img th:src="${jacket.imgUrl}" height="50" width="50"/></td>
+                    <td>
+                        <input type="checkbox" name="selectedjackets" th:value="${jacket.id}" />
+                    </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <div class="container">
+            <h4>Bottoms</h4>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Color</th>
+                    <th>Material</th>
+                    <th>Size</th>
+                    <th>Season</th>
+                    <th>Category</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                    <input type="hidden" name="selectedbottoms" value="checked">
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="bottom : ${selectedcloset.bottoms}">
+                    <td th:text="${bottom.color}"></td>
+                    <td th:text="${bottom.material}"></td>
+                    <td th:text="${bottom.size}"></td>
+                    <td th:text="${bottom.season}"></td>
+                    <td th:text="${bottom.category}"></td>
+                    <td><img th:src="${bottom.imgUrl}" height="50" width="50"/></td>
+                    <td>
+                        <input type="checkbox" name="selectedbottoms" th:value="${bottom.id}" />
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <h4>Footwear</h4>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Color</th>
+                    <th>Material</th>
+                    <th>Size</th>
+                    <th>Season</th>
+                    <th>Category</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                    <input type="hidden" name="selectedfootwear" value="checked">
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="footwear : ${selectedcloset.footwears}">
+                    <td th:text="${footwear.color}"></td>
+                    <td th:text="${footwear.material}"></td>
+                    <td th:text="${footwear.size}"></td>
+                    <td th:text="${footwear.season}"></td>
+                    <td th:text="${footwear.category}"></td>
+                    <td><img th:src="${footwear.imgUrl}" height="50" width="50"/></td>
+
+                    <td>
+                        <input type="checkbox" name="selectedfootwear" th:value="${footwear.id}" />
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <h4>Accessories</h4>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Color</th>
+                    <th>Material</th>
+                    <th>Size</th>
+                    <th>Season</th>
+                    <th>Category</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                    <input type="hidden" name="selectedaccessory" value="checked">
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="accessory : ${selectedcloset.accessories}">
+
+                    <td th:text="${accessory.color}"></td>
+                    <td th:text="${accessory.material}"></td>
+                    <td th:text="${accessory.size}"></td>
+                    <td th:text="${accessory.season}"></td>
+                    <td th:text="${accessory.category}"></td>
+                    <td><img th:src="${accessory.imgUrl}" height="50" width="50"/></td>
+                    <td>
+                        <input type="checkbox" name="selectedaccessory" th:value="${accessory.id}" />
+                    </td>
+                </tr>
+                </td>
+                </tbody>
+            </table>
+        </div>
+
         <input type="submit" value="Submit" />
         </p>
     </form>
 
+
 </div>
-
-<body>
-
 </body>
 </html>
