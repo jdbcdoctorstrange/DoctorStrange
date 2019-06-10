@@ -68,12 +68,15 @@ public class CesarController {
         ArrayList<Footwear> footwears = new ArrayList<>();
         ArrayList<Accessories> accessories = new ArrayList<>();
         model.addAttribute("user", userService.getCurrentUser());
+
         if (Integer.parseInt(temp) <= 32){
             season = "winter";
         }else if(Integer.parseInt(temp) >= 45 || Integer.parseInt(temp) <= 75){
             //generating a random because these temperatures range in either fall or spring
-            int num = (int) (Math.random()*10)+1;
-            if(num % 2 == 0){
+            Random random = new Random();
+            //For 50% chance of true
+            boolean fallOrSpring = (random.nextInt(2) == 0) ? true : false;
+            if(fallOrSpring){
                 season = "fall";
             }else{
                 season = "spring";
@@ -81,8 +84,9 @@ public class CesarController {
         }else if(Integer.parseInt(temp) >= 76){
             season = "summer";
         }
+
         System.out.println(season);//testing output
-        season = "spring"; //hard coded for lack of outfits.
+//        season = "spring"; //hard coded for lack of outfits.
         model.addAttribute("closets", closetRepository.findAllClosetsByUid(uid));
         for(Closet closet: closetRepository.findAllClosetsByUid(uid)){
             for(Top top : closet.getTops()){

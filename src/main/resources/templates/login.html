@@ -7,6 +7,19 @@
         <title>Bootstrap Example</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            @media only screen and (min-width: 691px) and (max-width: 1000px){
+                #login-img{
+                    padding-top: 30px;
+                }
+            }
+
+            @media only screen and (max-width: 690px) {
+                #login-img{
+                    display: none;
+                }
+            }
+        </style>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -18,11 +31,11 @@
 
 <div th:replace="base :: navlinks"></div>
 <div class="container">
-    <div class="row">
+    <div class="row pt-5 font-italic">
         <h4>What to wear? These clothes manager app helps you dress better for work or play
             — based on your wardrobe and the weather</h4>
     </div>
-    <div class="row">
+    <div class="row pt-5">
         <div class="col-lg-6 justify-content-center" id="login">
             <div th:if="${param.error}">
                 Invalid username and password.
@@ -41,7 +54,7 @@
                     <input id="password" class="form-control w-50" type="password" name="password"/>
                 </div>
                 <div class="form-group pt-2 pl-1">
-                    <input type="submit" value="Sign In"/>
+                    <input class="btn btn-secondary" type="submit" value="Sign In"/>
                 </div>
             </form>
 

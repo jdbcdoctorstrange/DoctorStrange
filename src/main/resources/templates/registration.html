@@ -3,55 +3,72 @@
 <head>
     <title>Register</title>
     <th:block th:insert="base :: header"></th:block>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
-    <div th:replace="base :: navlinks"></div>
+<div th:replace="base :: navlinks"></div>
 
-    <h2>New User Registration</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6 justify-content-center mt-5">
+            <h2 class="mb-3">New User Registration</h2>
 
-    <form autocomplete="off" action="#" th:action="@{/register}" th:object="${user}" method="post">
-        First Name
-        <mark>
-            <strong>
-                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</span>
-            </strong>
-        </mark>
-        <input type="text" id="firstName" placeholder="First Name" th:field="*{firstName}"/><br/>
-        Last Name
-        <mark>
-            <strong>
-                <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</span>
-            </strong>
-        </mark>
-        <input type="text" id="lastName" placeholder="Last Name" th:field="*{lastName}"/><br/>
-        Email
-        <mark>
-            <strong>
-                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</span>
-            </strong>
-        </mark>
-        <input type="text" id="email" placeholder="Email" th:field="*{email}"/><br/>
-        Username
-        <mark>
-            <strong>
-                <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</span>
-            </strong>
-        </mark>
-        <input type="text" id="username" placeholder="Username" th:field="*{username}"/><br/>
-        Password
-        <mark>
-            <strong>
-                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span>
-            </strong>
-        </mark>
-        <input type="text" id="password" placeholder="Password" th:field="*{password}"/><br/>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <div th:replace="base :: bootstrap-js"></div>
+            <form autocomplete="off" action="#" th:action="@{/register}" th:object="${user}" method="post">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <strong>
+                        <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</span>
+                    </strong>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" th:field="*{firstName}"/>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Lastname</label>
+                    <strong>
+                        <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</span>
+                    </strong>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" th:field="*{lastName}"/>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <strong>
+                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</span>
+                    </strong>
+                    <input type="text" class="form-control" id="email" placeholder="Email" th:field="*{email}"/>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <strong>
+                        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</span>
+                    </strong>
+                    <input type="text" class="form-control" id="username" placeholder="Username" th:field="*{username}"/>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <strong>
+                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span>
+                    </strong>
+                    <input type="text" class="form-control" id="password" placeholder="Password" th:field="*{password}"/><br/>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-secondary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>
