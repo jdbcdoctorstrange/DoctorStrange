@@ -13,6 +13,7 @@
 <body>
 <div th:replace="base :: navlinks"></div>
 <div class="container">
+    <h2 class="mt-5 justify-content-center">Adding New Jacket</h2>
 <form action="#"
       th:action="@{/processjacket}"
       th:object="${jacket}"
@@ -52,7 +53,7 @@
         <img th:src ="*{imgUrl}" />
         <hr />
     </div>
-    <input type="submit" value="Submit" />
+    <input class="btn btn-secondary" type="submit" value="Submit" />
     </p>
 </form>
 </div>

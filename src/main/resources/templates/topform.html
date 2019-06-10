@@ -2,135 +2,135 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Adding Top</title>
     <th:block th:insert="base :: header"></th:block>
 </head>
 <body>
 <div th:replace="base :: navlinks"></div>
 <div class="container">
 <!--<<<<<<< HEAD-->
-<form action="#"
-      th:action="@{/processtop}"
-      th:object="${top}"
-      enctype="multipart/form-data"
-      method="POST">
-    <input type="hidden" th:field="*{id}" />
-    <p>
-        Closet:<select th:field="*{closet}">
-        <option th:each="closet : ${closets}"
-                th:value="${closet.id}"
-                th:text="${closet.closetName}"></option>
-    </select></br>
-        Color: <input type="text" th:field="*{color}" />
-        <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></span> <br/>
 
-        Material: <input type="text" th:field="*{material}" />
-        <span th:if="${#fields.hasErrors('material')}" th:errors="*{material}"></span> <br/>
+<!--<form action="#"-->
+      <!--th:action="@{/processtop}"-->
+      <!--th:object="${top}"-->
+      <!--enctype="multipart/form-data"-->
+      <!--method="POST">-->
+    <!--<input type="hidden" th:field="*{id}" />-->
+    <!--<p>-->
+        <!--Closet:<select th:field="*{closet}">-->
+        <!--<option th:each="closet : ${closets}"-->
+                <!--th:value="${closet.id}"-->
+                <!--th:text="${closet.closetName}"></option>-->
+    <!--</select></br>-->
+        <!--Color: <input type="text" th:field="*{color}" />-->
+        <!--<span th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></span> <br/>-->
 
-        Size: <input type="text" th:field="*{size}" />
-        <span th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></span> <br/>
+        <!--Material: <input type="text" th:field="*{material}" />-->
+        <!--<span th:if="${#fields.hasErrors('material')}" th:errors="*{material}"></span> <br/>-->
+
+        <!--Size: <input type="text" th:field="*{size}" />-->
+        <!--<span th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></span> <br/>-->
 
 
-        Sleeves: <select th:field="*{sleeves}">
-            <option th:value="'Long'"  th:text="Long"></option>
-            <option th:value="'short'" th:text="Short"></option>
-        </select>
+        <!--Sleeves: <select th:field="*{sleeves}">-->
+            <!--<option th:value="'Long'"  th:text="Long"></option>-->
+            <!--<option th:value="'short'" th:text="Short"></option>-->
+        <!--</select>-->
 
-        Category: <select th:field="*{category}">
-        <option th:value="'formal'"  th:text="Formal"></option>
-        <option th:value="'informal'" th:text="Informal"></option>
-        </select>
+        <!--Category: <select th:field="*{category}">-->
+        <!--<option th:value="'formal'"  th:text="Formal"></option>-->
+        <!--<option th:value="'informal'" th:text="Informal"></option>-->
+        <!--</select>-->
 
-        <select th:field="*{season}">
-            <option th:value="'Spring'" th:text="Spring"></option>
-            <option th:value="'Summer'" th:text="Summer"></option>
-            <option th:value="'Fall'" th:text="Fall"></option>
-            <option th:value="'Winter'" th:text="Winter"></option>
-        </select>
-        <label for="file">Choose file to upload</label>
-        <input type="file" id="file" name="file" /><br/><br/>
+        <!--<select th:field="*{season}">-->
+            <!--<option th:value="'Spring'" th:text="Spring"></option>-->
+            <!--<option th:value="'Summer'" th:text="Summer"></option>-->
+            <!--<option th:value="'Fall'" th:text="Fall"></option>-->
+            <!--<option th:value="'Winter'" th:text="Winter"></option>-->
+        <!--</select>-->
+        <!--<label for="file">Choose file to upload</label>-->
+        <!--<input type="file" id="file" name="file" /><br/><br/>-->
 
-    <div th:if="*{imgUrl}" != null>
-        <img th:src ="*{imgUrl}" />
-        <hr />
-    </div>
-    <input type="submit" value="Submit" />
-    </p>
-</form>
+    <!--<div th:if="*{imgUrl}" != null>-->
+        <!--<img th:src ="*{imgUrl}" />-->
+        <!--<hr />-->
+    <!--</div>-->
+    <!--<input type="submit" value="Submit" />-->
+    <!--</p>-->
+<!--</form>-->
 
 <!--</div>-->
-<!--=======-->
-    <!--<form action="#"-->
-          <!--th:action="@{/processtop}"-->
-          <!--th:object="${top}"-->
-          <!--enctype="multipart/form-data"-->
-          <!--method="POST">-->
-        <!--<input type="hidden" th:field="*{id}" />-->
-        <!--<form>-->
+    <h2 class="mt-5 justify-content-center">Adding New Top</h2>
+    <form action="#"
+          th:action="@{/processtop}"
+          th:object="${top}"
+          enctype="multipart/form-data"
+          method="POST">
+        <input type="hidden" th:field="*{id}" />
+        <form>
 
-            <!--<label for="closet">-->
-                <!--Closet:-->
-            <!--</label>-->
+            <label for="closet">
+                Closet:
+            </label>
 
-            <!--<select id="closet" th:field="*{closet}">-->
-                <!--<option th:each="closet : ${closets}"-->
-                        <!--th:value="${closet.id}"-->
-                        <!--th:text="${closet.closetName}"></option>-->
-            <!--</select><br/>-->
-
-
+            <select id="closet" th:field="*{closet}">
+                <option th:each="closet : ${closets}"
+                        th:value="${closet.id}"
+                        th:text="${closet.closetName}"></option>
+            </select><br/>
 
 
-            <!--<label for="color">-->
-                <!--Color:-->
-            <!--</label>-->
-            <!--<input type="text" id="color" th:field="*{color}" />-->
-            <!--<span th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></span>-->
 
 
-            <!--<label for="material">-->
-                <!--Material:-->
-            <!--</label>-->
-            <!--<input type="text" id="material" th:field="*{material}" />-->
-            <!--<span th:if="${#fields.hasErrors('material')}" th:errors="*{material}"></span>-->
+            <label for="color">
+                Color:
+            </label>
+            <input type="text" id="color" th:field="*{color}" />
+            <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></span>
 
-            <!--<label for="size">-->
-                <!--Size:-->
-            <!--</label>-->
 
-            <!--<input type="text" id="size" th:field="*{size}" />-->
-            <!--<span th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></span>-->
+            <label for="material">
+                Material:
+            </label>
+            <input type="text" id="material" th:field="*{material}" />
+            <span th:if="${#fields.hasErrors('material')}" th:errors="*{material}"></span>
 
-            <!--<label for="category">-->
-                <!--Category:-->
-            <!--</label>-->
+            <label for="size">
+                Size:
+            </label>
 
-            <!--<select id="category" th:field="*{category}">-->
-                <!--<option th:value="'formal'"  th:text="Formal"></option>-->
-                <!--<option th:value="'informal'" th:text="Informal"></option>-->
-            <!--</select>-->
+            <input type="text" id="size" th:field="*{size}" />
+            <span th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></span>
 
-            <!--<label for="season">-->
-                <!--Season:-->
-            <!--</label>-->
+            <label for="category">
+                Category:
+            </label>
 
-            <!--<select id="season" th:field="*{season}">-->
-                <!--<option th:value="'Spring'" th:text="Spring"></option>-->
-                <!--<option th:value="'Summer'" th:text="Summer"></option>-->
-                <!--<option th:value="'Fall'" th:text="Fall"></option>-->
-                <!--<option th:value="'Winter'" th:text="Winter"></option>-->
-            <!--</select></br>-->
-            <!--<label for="file">Choose file to upload</label>-->
-            <!--<input type="file" id="file" name="file" /><br/>-->
+            <select id="category" th:field="*{category}">
+                <option th:value="'formal'"  th:text="Formal"></option>
+                <option th:value="'informal'" th:text="Informal"></option>
+            </select>
 
-            <!--<div th:if="*{imgUrl}" != null>-->
-                <!--<img th:src ="*{imgUrl}" />-->
-                <!--<hr />-->
-            <!--</div>-->
-            <!--<input type="submit" value="Submit" id="subBtn"/>-->
-        <!--</form>-->
-    <!--</form>-->
+            <label for="season">
+                Season:
+            </label>
+
+            <select id="season" th:field="*{season}">
+                <option th:value="'Spring'" th:text="Spring"></option>
+                <option th:value="'Summer'" th:text="Summer"></option>
+                <option th:value="'Fall'" th:text="Fall"></option>
+                <option th:value="'Winter'" th:text="Winter"></option>
+            </select></br>
+            <label for="file">Choose file to upload</label>
+            <input type="file" id="file" name="file" /><br/>
+
+            <div th:if="*{imgUrl}" != null>
+                <img th:src ="*{imgUrl}" />
+                <hr />
+            </div>
+            <input class="btn btn-secondary" type="submit" value="Submit" />
+        </form>
+    </form>
 </div>
 <div th:replace="base :: bootstrap-js"></div>
 </body>
