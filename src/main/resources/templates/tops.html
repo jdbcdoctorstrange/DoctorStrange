@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello World</title>
+    <th:block th:insert="base :: header"></th:block>
 </head>
 <body>
     <div class="container">
@@ -29,5 +30,6 @@
             </div>
         </div>
     </div>
+    <div th:replace="base :: bootstrap-js"></div>
 </body>
 </html>
