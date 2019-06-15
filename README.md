@@ -24,6 +24,6 @@ from their wardrobe.
 
 
 ####Default user:
- admin/password
+ katy/password
 
 ###Heroku Link: ....................
